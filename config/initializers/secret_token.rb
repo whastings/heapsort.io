@@ -9,4 +9,20 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-WebDevBookmarks::Application.config.secret_key_base = 'f46fe9e5ccd6fd5522c25cd7db5cb22785643d4f8cce47c370f2ffa00b44eeee6e0cd6b6a6540d2bd871a60264095636699b75520b1a0bb0ef70996215c9c6c3'
+
+require 'securerandom'
+
+def secure_token
+  token_file = Rails.root.join('.secret')
+  if File.exist?(token_file)
+    # Use the existing token.
+    File.read(token_file).chomp
+  else
+    # Generate a new token and store it in token_file.
+    token = SecureRandom.hex(64)
+    File.write(token_file, token)
+    token
+  end
+end
+
+WebDevBookmarks::Application.config.secret_key_base = secure_token

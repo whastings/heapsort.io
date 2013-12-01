@@ -14,3 +14,10 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+# Ignore OS & tool files.
+.ruby-gemset
+.ruby-version
+
+# Ignore sensitive files.
+.secret
