@@ -9,4 +9,8 @@ FactoryGirl.define do
     blocked false
   end
 
+  factory :session do
+    sequence(:user_id) { |n| n }
+  end
+
 end

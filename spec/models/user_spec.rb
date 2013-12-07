@@ -68,4 +68,21 @@ describe User do
     it { should_not be_blocked }
   end
 
+  describe "session" do
+    let(:attribute) { :session }
+    let(:session) { user.session }
+    before { user.create_session }
+
+    it { should have_attribute(attribute) }
+    specify { expect(session.user_id).to equal(user.id) }
+  end
+
+  describe "sign_out" do
+    before do
+      user.sign_in
+      user.sign_out
+    end
+    its(:session) { should be_nil }
+  end
+
 end

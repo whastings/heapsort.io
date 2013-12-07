@@ -1,0 +1,42 @@
+require 'spec_helper'
+
+describe Session do
+
+  let(:user) { get_test_user }
+  let(:session) { Session.new(user_id: user.id) }
+  subject { session }
+
+  it { should be_valid }
+
+  describe "token" do
+    let(:attribute) { :token }
+    it { should have_attribute(attribute) }
+
+    describe "validations" do
+      it_should_behave_like "required attribute"
+      it_should_behave_like "unique attribute"
+    end
+  end
+
+  describe "user_id" do
+    let(:attribute) { :user_id }
+
+    describe "validations" do
+      it_should_behave_like "required attribute"
+      it_should_behave_like "unique attribute"
+    end
+  end
+
+  describe "user" do
+    let(:attribute) { :user }
+    it { should have_attribute(attribute) }
+    its(:user) { should == user }
+  end
+
+  describe "Session.get_user_by_token" do
+    let(:session_user) { Session.get_user_by_token(session.token) }
+    before { session.save! }
+    specify { expect(session_user.id).to equal(user.id) }
+  end
+
+end
