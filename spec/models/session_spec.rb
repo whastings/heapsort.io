@@ -37,6 +37,11 @@ describe Session do
     let(:session_user) { Session.get_user_by_token(session.token) }
     before { session.save! }
     specify { expect(session_user.id).to equal(user.id) }
+
+    context "with invalid token" do
+      let(:invalid_token) { 'invalid_token' }
+      specify { expect(Session.get_user_by_token(invalid_token)).to be_nil }
+    end
   end
 
 end

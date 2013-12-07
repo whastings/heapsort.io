@@ -32,7 +32,10 @@ class User < ActiveRecord::Base
   validates :email, length: { maximum: 100 },
             format: { with: VALID_EMAIL_REGEX }
 
-  alias_method :sign_in, :create_session
+  def sign_in
+    create_session
+    session.token
+  end
 
   def sign_out
     session.destroy

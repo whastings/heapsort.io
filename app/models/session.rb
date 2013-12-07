@@ -23,7 +23,7 @@ class Session < ActiveRecord::Base
 
   def self.get_user_by_token(token)
     session = where(token: token).first
-    session.user
+    session.user unless session.nil?
   end
 
   private

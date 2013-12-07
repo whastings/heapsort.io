@@ -77,6 +77,12 @@ describe User do
     specify { expect(session.user_id).to equal(user.id) }
   end
 
+  describe "sign_in" do
+    let(:sign_in_token) { user.sign_in }
+
+    specify { expect(sign_in_token).to equal(user.session.token) }
+  end
+
   describe "sign_out" do
     before do
       user.sign_in
