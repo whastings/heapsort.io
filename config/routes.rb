@@ -1,5 +1,8 @@
 WebDevBookmarks::Application.routes.draw do
+  root to: 'pages#home'
+
   resources :sessions, only: [:create]
+  resources :users, only: [:create]
 
   delete '/signout' => 'sessions#destroy'
 
