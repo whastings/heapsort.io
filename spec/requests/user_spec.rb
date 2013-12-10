@@ -4,12 +4,11 @@ describe "User requests" do
   subject { response }
 
   describe "Sign up" do
-    let(:email) { 'will@example.com' }
-    let(:username) { 'willh' }
+    let(:user) { get_new_user }
     let(:info) do
       {
-        user: { username: username, email: email,
-                password: 'foobar', password_confirmation: 'foobar' }
+        user: { username: user.username, email: user.email,
+                password: user.password, password_confirmation: user.password }
       }
     end
 
@@ -18,7 +17,7 @@ describe "User requests" do
 
       its(:status) { should == 200 }
       its(:cookies) { should include('token') }
-      specify { expect(User.find_by_email(email).username).to eq(username) }
+      specify { expect(user).to have_been_created }
     end
 
     context "with invalid information" do
@@ -30,7 +29,7 @@ describe "User requests" do
 
       its(:status) { should == 400 }
       its(:cookies) { should_not include('token') }
-      specify { expect(User.find_by_email(email)).to be_nil }
+      specify { expect(user).to not_exist }
     end
 
   end
