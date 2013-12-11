@@ -1,13 +1,18 @@
 class UsersController < ApplicationController
   include AuthenticationHelper
 
+  def new
+    @user = User.new
+  end
+
   def create
     @user = User.new(user_params)
     if @user.save
       sign_in(@user)
-      render text: 'User created!'
+      flash[:success] = 'Account created successfully!'
+      redirect_to root_path
     else
-      render text: 'Creation failed...', status: 400
+      render 'new'
     end
   end
 

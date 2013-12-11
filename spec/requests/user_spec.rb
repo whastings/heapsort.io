@@ -15,7 +15,7 @@ describe "User requests" do
     context "with valid information" do
       before { post users_path, info }
 
-      its(:status) { should == 200 }
+      it { should redirect_to root_path }
       its(:cookies) { should include('token') }
       specify { expect(user).to have_been_created }
     end
@@ -27,9 +27,20 @@ describe "User requests" do
         post users_path, info
       end
 
-      its(:status) { should == 400 }
       its(:cookies) { should_not include('token') }
       specify { expect(user).to not_exist }
+    end
+
+    context "with existing user information" do
+      let(:existing_user) { get_test_user }
+      before do
+        info[:user][:username] = existing_user.username
+        info[:user][:email] = existing_user.email
+      end
+
+      specify do
+        expect { post users_path, info }.to_not change(User, :count)
+      end
     end
 
   end
