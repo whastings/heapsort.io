@@ -9,7 +9,6 @@ describe "Authentication" do
     shared_examples_for "failed signin" do
       before { post sessions_path, credentials }
 
-      its(:status) { should == 403 }
       its(:cookies) { should_not include('token') }
       specify { expect(user.session).to be_nil }
     end
@@ -23,7 +22,7 @@ describe "Authentication" do
         user.reload
       end
 
-      its(:status) { should == 200 }
+      it { should redirect_to(root_path) }
       its(:cookies) { should include('token') }
       specify { expect(response.cookies['token']).to_not be_nil }
       specify { expect(user.session).to_not be_nil }
@@ -51,7 +50,7 @@ describe "Authentication" do
       user.reload
     end
 
-    its(:status) { should == 200 }
+    it { should redirect_to root_path }
     its(:cookies) { should include('token') }
     specify { expect(response.cookies['token']).to be_nil }
     specify { expect(user.session).to be_nil }

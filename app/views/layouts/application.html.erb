@@ -13,6 +13,7 @@
         <div class="row">
           <div class="messages col-md-12">
             <% flash.each do |key, value| %>
+              <% key = :danger if key == :error %>
               <%= content_tag(:div, value, class: "alert alert-#{key}") %>
             <% end %>
           </div>
