@@ -16,7 +16,9 @@ describe "Authentication" do
     specify { expect(user.session).to be_nil }
 
     context "with valid credentials" do
-      let(:credentials) { {email: user.email, password: user.password} }
+      let(:credentials) do
+        {session: {email: user.email, password: user.password}}
+      end
       before do
         post sessions_path, credentials
         user.reload
@@ -30,13 +32,17 @@ describe "Authentication" do
 
     context "with nonexistent user" do
       let(:bad_email) { 'nobody@nothing.com' }
-      let(:credentials) { {email: bad_email, password: user.password} }
+      let(:credentials) do
+        {session: {email: bad_email, password: user.password}}
+      end
 
       it_should_behave_like "failed signin"
     end
 
     context "with wrong password" do
-      let(:credentials) { {email: user.email, password: 'wrong_pass'} }
+      let(:credentials) do
+        {session: {email: user.email, password: 'wrong_pass'}}
+      end
 
       it_should_behave_like "failed signin"
     end

@@ -1,17 +1,13 @@
-<%= form_for(@user) do |f| %>
+<%= bootstrap_form_for(@user) do |f| %>
   <%= render 'shared/error_messages', object: @user %>
 
-  <%= f.label :username %>
-  <%= f.text_field :username %>
+  <%= f.field :text_field, :username %>
 
-  <%= f.label :email %>
-  <%= f.text_field :email %>
+  <%= f.field :text_field, :email %>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %>
+  <%= f.field :password_field, :password %>
 
-  <%= f.label :password_confirmation, 'Confirm Password' %>
-  <%= f.password_field :password_confirmation %>
+  <%= f.field :password_field, :password_confirmation, 'Confirm Password' %>
 
   <%= f.submit 'Sign up' %>
 

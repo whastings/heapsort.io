@@ -1,12 +1,10 @@
 <% provide(:page_title, 'Sign In') %>
 <h1>Sign In</h1>
 
-<%= form_tag(sessions_path) do %>
-  <%= label_tag :email %>
-  <%= text_field_tag :email %>
+<%= bootstrap_form_for(:session, url: sessions_path) do |f| %>
+  <%= f.field :text_field, :email %>
 
-  <%= label_tag :password %>
-  <%= password_field_tag :password %>
+  <%= f.field :password_field, :password %>
 
-  <%= submit_tag 'Sign in' %>
+  <%= f.submit 'Sign in' %>
 <% end %>
