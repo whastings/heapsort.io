@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "User requests" do
+describe UsersController do
   subject { response }
 
   describe "Sign up" do
@@ -13,7 +13,7 @@ describe "User requests" do
     end
 
     context "with valid information" do
-      before { post users_path, info }
+      before { post :create, info }
 
       it { should redirect_to root_path }
       its(:cookies) { should include('token') }
@@ -24,7 +24,7 @@ describe "User requests" do
       before do
         info[:user][:username] = ''
         info[:user][:password_confirmation] = 'barbaz'
-        post users_path, info
+        post :create, info
       end
 
       its(:cookies) { should_not include('token') }
@@ -39,7 +39,7 @@ describe "User requests" do
       end
 
       specify do
-        expect { post users_path, info }.to_not change(User, :count)
+        expect { post :create, info }.to_not change(User, :count)
       end
     end
 

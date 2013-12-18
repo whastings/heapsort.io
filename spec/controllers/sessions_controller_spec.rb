@@ -1,13 +1,13 @@
 require 'spec_helper'
 
-describe "Authentication" do
+describe SessionsController do
   let(:user) { get_test_user }
   subject { response }
 
   describe "signing in" do
 
     shared_examples_for "failed signin" do
-      before { post sessions_path, credentials }
+      before { post :create, credentials }
 
       its(:cookies) { should_not include('token') }
       specify { expect(user.session).to be_nil }
@@ -20,7 +20,7 @@ describe "Authentication" do
         {session: {email: user.email, password: user.password}}
       end
       before do
-        post sessions_path, credentials
+        post :create, credentials
         user.reload
       end
 
@@ -52,7 +52,7 @@ describe "Authentication" do
   describe "signing out" do
     before do
       sign_in(user)
-      delete signout_path
+      delete :destroy
       user.reload
     end
 
