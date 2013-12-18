@@ -11,10 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131206231022) do
+ActiveRecord::Schema.define(version: 20131216000339) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookmarks", force: true do |t|
+    t.string   "title",        limit: 150,                  null: false
+    t.string   "domain",       limit: 75,                   null: false
+    t.string   "path",                     default: "/",    null: false
+    t.string   "query_string"
+    t.integer  "port",                     default: 80,     null: false
+    t.string   "protocol",     limit: 10,  default: "http", null: false
+    t.text     "description"
+    t.integer  "user_id",                                   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "bookmarks", ["domain", "path", "query_string"], name: "index_bookmarks_on_domain_and_path_and_query_string", unique: true, using: :btree
+  add_index "bookmarks", ["user_id"], name: "index_bookmarks_on_user_id", using: :btree
 
   create_table "sessions", force: true do |t|
     t.string   "token",      limit: 24, null: false

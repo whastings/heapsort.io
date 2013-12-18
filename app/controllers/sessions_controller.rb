@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by_email(params[:session][:email])
     if user && user.authenticate(params[:session][:password])
+      reset_session # Prevents session fixation.
       sign_in(user)
       flash[:success] = 'Welcome!'
       redirect_to root_path

@@ -13,4 +13,11 @@ FactoryGirl.define do
     sequence(:user_id) { |n| n }
   end
 
+  factory :bookmark do
+    user
+    sequence(:title) { |n| "RubyMonk - Interactive Ruby tutorials - #{n}" }
+    domain 'rubymonk.com'
+    path '/'
+  end
+
 end
