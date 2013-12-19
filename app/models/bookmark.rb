@@ -29,4 +29,19 @@ class Bookmark < ActiveRecord::Base
   validates :path, :query_string, length: { maximum: 255 }
   validates :protocol, length: { maximum: 10 }
 
+  def url
+    assembled_url = URI::Generic.new(protocol, nil, domain, port, nil, path,
+                                     nil, query_string, nil)
+    assembled_url.to_s
+  end
+
+  def url=(url_string)
+    parsed_url = URI.parse(url_string)
+    self.protocol = parsed_url.scheme
+    self.domain = parsed_url.host
+    self.path = parsed_url.path
+    self.port = parsed_url.port
+    self.query_string = parsed_url.query
+  end
+
 end

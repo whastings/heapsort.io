@@ -16,8 +16,7 @@ FactoryGirl.define do
   factory :bookmark do
     user
     sequence(:title) { |n| "RubyMonk - Interactive Ruby tutorials - #{n}" }
-    domain 'rubymonk.com'
-    path '/'
+    url 'http://rubymonk.com/'
   end
 
 end

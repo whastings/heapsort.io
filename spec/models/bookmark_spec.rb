@@ -92,4 +92,18 @@ describe Bookmark do
     its(:user) { should == user }
   end
 
+  describe "url" do
+    let(:attribute) { :url }
+    let(:url) { 'http://www.objectdotcreate.net:8080/a/url/path?this_is=a_test' }
+    before { bookmark.url = url }
+
+    it { should have_attribute(attribute) }
+    its(:protocol) { should == 'http' }
+    its(:domain) { should == 'www.objectdotcreate.net' }
+    its(:port) { should == 8080 }
+    its(:path) { should == '/a/url/path' }
+    its(:query_string) { should == 'this_is=a_test' }
+    its(:url) { should == url }
+  end
+
 end

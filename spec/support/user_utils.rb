@@ -20,18 +20,11 @@ module WebDevBookmarks
         cookies.delete(:token)
       end
 
+      def user_created?(user)
+        found_user = User.find_by_email(user.email)
+        found_user && found_user.username == user.username
+      end
+
     end
-  end
-end
-
-RSpec::Matchers.define(:have_been_created) do
-  match do |user|
-    expect(User.find_by_email(user.email).username).to eq(user.username)
-  end
-end
-
-RSpec::Matchers.define(:not_exist) do
-  match do |user|
-    expect(User.find_by_email(user.email)).to be_nil
   end
 end

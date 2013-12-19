@@ -5,6 +5,24 @@ RSpec::Matchers.define(:have_attribute) do |attribute|
   end
 end
 
+RSpec::Matchers.define(:have_been_created) do
+  match do |object|
+    result = case object
+      when User
+        user_created?(object)
+      when Bookmark
+        bookmark_created?(object)
+    end
+    expect(result).to be_true
+  end
+end
+
+RSpec::Matchers.define(:not_exist) do
+  match do |user|
+    expect(User.find_by_email(user.email)).to be_nil
+  end
+end
+
 shared_examples_for "required attribute" do
   before { subject.send("#{attribute}=", ' ') }
   it { should_not be_valid }
