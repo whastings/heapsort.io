@@ -34,6 +34,7 @@ end
 
 group :development do
   gem 'annotate', '2.5.0'
+  gem 'faker', '1.2.0'
 end
 
 group :test do
