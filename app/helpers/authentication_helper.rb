@@ -2,7 +2,10 @@ module AuthenticationHelper
 
   def sign_in(user)
     token = user.sign_in
-    cookies.permanent[:token] = token
+    cookies.permanent[:token] = {
+      value: token,
+      httponly: true
+    }
   end
 
   def sign_out(user)

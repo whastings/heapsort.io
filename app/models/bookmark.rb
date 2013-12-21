@@ -28,20 +28,41 @@ class Bookmark < ActiveRecord::Base
   validates :domain, length: { maximum: 75 }
   validates :path, :query_string, length: { maximum: 255 }
   validates :protocol, length: { maximum: 10 }
+  validate :validate_url
 
   def url
+    return @failed_url unless @failed_url.nil?
+    return 'http://' if domain.blank?
     assembled_url = URI::Generic.new(protocol, nil, domain, port, nil, path,
                                      nil, query_string, nil)
     assembled_url.to_s
   end
 
   def url=(url_string)
-    parsed_url = URI.parse(url_string)
+    parsed_url = nil
+    begin
+      parsed_url = URI.parse(url_string)
+    rescue URI::InvalidURIError => error
+      @failed_url = url_string
+      return
+    end
+    @failed_url = nil
     self.protocol = parsed_url.scheme
     self.domain = parsed_url.host
-    self.path = parsed_url.path
+    self.path = parsed_url.path.blank? ? '/' : parsed_url.path
     self.port = parsed_url.port
     self.query_string = parsed_url.query
   end
+
+  private
+
+    def validate_url
+      unless @failed_url.nil?
+        errors.add(:url, 'is invalid.')
+        [:domain, :path, :port, :protocol].each do |attribute|
+          errors.delete(attribute) if errors[attribute]
+        end
+      end
+    end
 
 end

@@ -17,6 +17,7 @@ FactoryGirl.define do
     user
     sequence(:title) { |n| "RubyMonk - Interactive Ruby tutorials - #{n}" }
     url 'http://rubymonk.com/'
+    description 'Fun Ruby practice!'
   end
 
 end

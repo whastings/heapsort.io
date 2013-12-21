@@ -11,11 +11,7 @@ describe "Authentication pages" do
 
     context "with valid credentials" do
       let(:user) { get_test_user }
-      before do
-        fill_in 'Email', with: user.email
-        fill_in 'Password', with: user.password
-        click_button submit_button
-      end
+      before { perform_sign_in(user) }
 
       it { should have_success_message('Welcome!') }
     end

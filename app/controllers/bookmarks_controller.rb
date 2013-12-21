@@ -1,12 +1,21 @@
 class BookmarksController < ApplicationController
   include AuthenticationHelper
+  include AuthorizationHelper
+
+  # Filters:
+  before_filter :restrict_to_signed_in, only: [:new, :create]
+
+  def new
+    @bookmark = current_user.bookmarks.build
+  end
 
   def create
     @bookmark = current_user.bookmarks.build(bookmark_params)
     if @bookmark.save
-      render text: 'success', status: 200
+      flash[:success] = 'Bookmark added!'
+      redirect_to root_path
     else
-      render text: 'failure', status: 400
+      render 'new'
     end
   end
 

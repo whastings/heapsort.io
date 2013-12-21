@@ -20,7 +20,7 @@ describe BookmarksController do
         user.reload
       end
 
-      its(:status) { should == 200 }
+      it { should redirect_to(root_path) }
       specify { expect(bookmark).to have_been_created }
     end
 
@@ -30,7 +30,16 @@ describe BookmarksController do
         post :create, bookmark_info
       end
 
-      its(:status) { should == 400 }
+      specify { expect(bookmark).to_not have_been_created }
+    end
+
+    context "when signed out" do
+      before do
+        sign_out(user)
+        post :create, bookmark_info
+      end
+
+      its(:status) { should == 403 }
       specify { expect(bookmark).to_not have_been_created }
     end
 

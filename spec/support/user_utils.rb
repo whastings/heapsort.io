@@ -11,8 +11,19 @@ module WebDevBookmarks
       end
 
       def sign_in(user)
-        session = user.create_session!
-        cookies[:token] = session.token
+        if example.metadata[:type] == :request
+          visit signin_path
+          perform_sign_in(user)
+        else
+          session = user.create_session!
+          cookies[:token] = session.token
+        end
+      end
+
+      def perform_sign_in(user)
+        fill_in 'Email', with: user.email
+        fill_in 'Password', with: user.password
+        click_button 'Sign in'
       end
 
       def sign_out(user)

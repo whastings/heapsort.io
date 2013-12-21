@@ -9,6 +9,8 @@ WebDevBookmarks::Application.routes.draw do
   delete '/signout' => 'sessions#destroy'
   get '/signin' => 'sessions#new'
 
+  get '/add-bookmark' => 'bookmarks#new', as: :add_bookmark
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
