@@ -62,4 +62,11 @@ describe "Bookmark pages" do
     end
   end
 
+  describe "Bookmark View" do
+    let(:bookmark) { FactoryGirl.create(:bookmark) }
+    before { visit bookmark_path(bookmark) }
+
+    it { should show_full_bookmark(bookmark) }
+  end
+
 end

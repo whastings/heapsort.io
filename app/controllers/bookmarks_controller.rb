@@ -1,4 +1,5 @@
 class BookmarksController < ApplicationController
+
   include AuthenticationHelper
   include AuthorizationHelper
 
@@ -7,6 +8,10 @@ class BookmarksController < ApplicationController
 
   def index
     @bookmarks = Bookmark.paginate(page: params[:page])
+  end
+
+  def show
+    @bookmark = Bookmark.find(params[:id])
   end
 
   def new

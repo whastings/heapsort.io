@@ -21,3 +21,12 @@ RSpec::Matchers.define(:show_bookmark) do |bookmark|
     expect(page).to have_content(bookmark.user.username)
   end
 end
+
+RSpec::Matchers.define(:show_full_bookmark) do |bookmark|
+  match do |page|
+    expect(page).to have_selector('h1', text: bookmark.title)
+    expect(page).to have_link(bookmark.url)
+    expect(page).to have_content(bookmark.user.username)
+    expect(page).to have_content(bookmark.description)
+  end
+end

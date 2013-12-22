@@ -21,3 +21,7 @@
 
 en:
   hello: "Hello world"
+
+  time:
+    formats:
+      date_with_time: '%B %-d, %Y, %l:%M%P'

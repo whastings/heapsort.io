@@ -58,4 +58,12 @@ describe BookmarksController do
     specify { expect(assigns(:bookmarks)).to eq(bookmarks.reverse) }
   end
 
+  describe "show" do
+    let(:bookmark) { FactoryGirl.create(:bookmark) }
+    before { get :show, id: bookmark.id }
+
+    its(:status) { should == 200 }
+    specify { expect(assigns(:bookmark)).to eq(bookmark) }
+  end
+
 end
