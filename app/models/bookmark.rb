@@ -17,7 +17,10 @@
 
 class Bookmark < ActiveRecord::Base
 
+  extend FriendlyId
+
   self.per_page = 15
+  friendly_id :title, use: :slugged
 
   # Associations:
   belongs_to :user

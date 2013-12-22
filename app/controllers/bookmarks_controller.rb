@@ -11,7 +11,7 @@ class BookmarksController < ApplicationController
   end
 
   def show
-    @bookmark = Bookmark.find(params[:id])
+    @bookmark = Bookmark.friendly.find(params[:id])
   end
 
   def new

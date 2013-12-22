@@ -79,6 +79,7 @@ describe Bookmark do
 
   describe "description" do
     let(:attribute) { :description }
+
     it { should have_attribute(attribute) }
   end
 
@@ -122,6 +123,12 @@ describe Bookmark do
         ])
       end
     end
+  end
+
+  describe "slug" do
+    let(:attribute) { :slug }
+
+    it { should have_attribute(attribute) }
   end
 
 end
