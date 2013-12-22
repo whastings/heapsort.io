@@ -104,6 +104,24 @@ describe Bookmark do
     its(:path) { should == '/a/url/path' }
     its(:query_string) { should == 'this_is=a_test' }
     its(:url) { should == url }
+
+    context "with default http port" do
+      before { bookmark.url = url.sub(':8080', '') }
+
+      its(:url) { should_not =~ /:80\// }
+    end
+
+    describe "validations" do
+      let(:bad_url) { 'http:www/this is one malformed url... com?' }
+      before { bookmark.url = bad_url }
+
+      it { should_not be_valid }
+      specify do
+        expect(bookmark.errors.keys).to_not include(*[
+          :domain, :path, :port, :protocol
+        ])
+      end
+    end
   end
 
 end

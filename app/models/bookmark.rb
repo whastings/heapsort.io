@@ -33,7 +33,8 @@ class Bookmark < ActiveRecord::Base
   def url
     return @failed_url unless @failed_url.nil?
     return 'http://' if domain.blank?
-    assembled_url = URI::Generic.new(protocol, nil, domain, port, nil, path,
+    rendered_port = (port == 80) ? '' : port
+    assembled_url = URI::Generic.new(protocol, nil, domain, rendered_port, nil, path,
                                      nil, query_string, nil)
     assembled_url.to_s
   end
