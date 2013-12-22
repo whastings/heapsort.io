@@ -43,4 +43,8 @@ class User < ActiveRecord::Base
     reload
   end
 
+  def to_s
+    username
+  end
+
 end

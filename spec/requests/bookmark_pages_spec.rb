@@ -34,4 +34,32 @@ describe "Bookmark pages" do
     end
   end
 
+  describe "Bookmark Index" do
+    let(:bookmarks) { Bookmark.all }
+    before do
+      3.times { FactoryGirl.create(:bookmark) }
+      visit bookmarks_path
+    end
+
+    it { should have_page_title('Latest Bookmarks') }
+    it "should render the latest bookmarks" do
+      bookmarks.each { |bookmark| should show_bookmark(bookmark) }
+    end
+
+    context "with many bookmarks" do
+      let(:paged_bookmarks) { Bookmark.limit(15) }
+      let(:missing_bookmark) { Bookmark.offset(15).limit(1).first }
+      before do
+        30.times { FactoryGirl.create(:bookmark) }
+        visit bookmarks_path
+      end
+
+      it "should only render the first 15 bookmarks" do
+        paged_bookmarks.each { |bookmark| should show_bookmark(bookmark) }
+      end
+      it { should_not show_bookmark(missing_bookmark) }
+      it { should have_pagination }
+    end
+  end
+
 end

@@ -45,4 +45,17 @@ describe BookmarksController do
 
   end
 
+  describe "index" do
+    let(:bookmarks) { [] }
+    before do
+      3.times do |n|
+        bookmarks << FactoryGirl.create(:bookmark, created_at: Time.now.to_i + n)
+      end
+      get :index
+    end
+
+    its(:status) { should == 200 }
+    specify { expect(assigns(:bookmarks)).to eq(bookmarks.reverse) }
+  end
+
 end

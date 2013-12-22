@@ -3,7 +3,7 @@ WebDevBookmarks::Application.routes.draw do
 
   resources :sessions, only: [:create]
   resources :users, only: [:create]
-  resources :bookmarks, only: [:create]
+  resources :bookmarks, only: [:index, :show, :create]
 
   get '/signup' => 'users#new'
   delete '/signout' => 'sessions#destroy'

@@ -17,6 +17,8 @@
 
 class Bookmark < ActiveRecord::Base
 
+  self.per_page = 15
+
   # Associations:
   belongs_to :user
 
@@ -29,6 +31,9 @@ class Bookmark < ActiveRecord::Base
   validates :path, :query_string, length: { maximum: 255 }
   validates :protocol, length: { maximum: 10 }
   validate :validate_url
+
+  # Scopes:
+  default_scope { order('created_at DESC') }
 
   def url
     return @failed_url unless @failed_url.nil?

@@ -34,3 +34,9 @@ RSpec::Matchers.define(:have_error_list) do
     expect(page).to have_selector('.error-messages ul > li')
   end
 end
+
+RSpec::Matchers.define(:have_pagination) do
+  match do |page|
+    expect(page).to have_selector('div.pagination')
+  end
+end

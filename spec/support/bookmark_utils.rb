@@ -13,3 +13,11 @@ module WebDevBookmarks
     end
   end
 end
+
+RSpec::Matchers.define(:show_bookmark) do |bookmark|
+  match do |page|
+    expect(page).to have_link(bookmark.title, bookmark_path(bookmark))
+    expect(page).to have_link(bookmark.url)
+    expect(page).to have_content(bookmark.user.username)
+  end
+end

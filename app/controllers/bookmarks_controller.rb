@@ -5,6 +5,10 @@ class BookmarksController < ApplicationController
   # Filters:
   before_filter :restrict_to_signed_in, only: [:new, :create]
 
+  def index
+    @bookmarks = Bookmark.paginate(page: params[:page])
+  end
+
   def new
     @bookmark = current_user.bookmarks.build
   end

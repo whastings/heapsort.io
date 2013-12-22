@@ -91,4 +91,8 @@ describe User do
     its(:session) { should be_nil }
   end
 
+  describe "to_s" do
+    its(:to_s) { should == user.username }
+  end
+
 end

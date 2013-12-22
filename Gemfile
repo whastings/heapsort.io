@@ -4,6 +4,8 @@ ruby '2.0.0'
 gem 'rails', '4.0.1'
 gem 'bcrypt-ruby', '3.1.2'
 gem 'bootstrap-sass', '~> 3.0.3.0'
+gem 'will_paginate', '~> 3.0'
+gem 'bootstrap-will_paginate', '0.0.10'
 
 # Use PostgreSQL as the database for Active Record
 gem 'pg', '0.15.1'
