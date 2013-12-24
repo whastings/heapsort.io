@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131222221232) do
+ActiveRecord::Schema.define(version: 20131222224612) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,12 +28,21 @@ ActiveRecord::Schema.define(version: 20131222221232) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug"
+    t.integer  "category_id"
   end
 
   add_index "bookmarks", ["created_at"], name: "index_bookmarks_on_created_at", using: :btree
   add_index "bookmarks", ["domain", "path", "query_string"], name: "index_bookmarks_on_domain_and_path_and_query_string", unique: true, using: :btree
   add_index "bookmarks", ["slug"], name: "index_bookmarks_on_slug", unique: true, using: :btree
   add_index "bookmarks", ["user_id"], name: "index_bookmarks_on_user_id", using: :btree
+
+  create_table "categories", force: true do |t|
+    t.string  "name",      limit: 100, null: false
+    t.integer "parent_id"
+  end
+
+  add_index "categories", ["name"], name: "index_categories_on_name", using: :btree
+  add_index "categories", ["parent_id"], name: "index_categories_on_parent_id", using: :btree
 
   create_table "friendly_id_slugs", force: true do |t|
     t.string   "slug",                      null: false

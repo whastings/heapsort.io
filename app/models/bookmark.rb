@@ -13,6 +13,8 @@
 #  user_id      :integer          not null
 #  created_at   :datetime
 #  updated_at   :datetime
+#  slug         :string(255)
+#  category_id  :integer
 #
 
 class Bookmark < ActiveRecord::Base
@@ -24,6 +26,7 @@ class Bookmark < ActiveRecord::Base
 
   # Associations:
   belongs_to :user
+  belongs_to :category
 
   # Validations:
   validates_presence_of :title, :domain, :path, :port, :protocol

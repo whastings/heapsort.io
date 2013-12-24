@@ -131,4 +131,16 @@ describe Bookmark do
     it { should have_attribute(attribute) }
   end
 
+  describe "category" do
+    let(:attribute) { :category }
+    let(:category) { FactoryGirl.create(:category) }
+    let(:bookmark_with_category) do
+      FactoryGirl.create(:bookmark, category_id: category.id)
+    end
+    subject { bookmark_with_category }
+
+    it { should have_attribute(attribute) }
+    its(:category) { should == category }
+  end
+
 end
