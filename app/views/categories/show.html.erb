@@ -1,0 +1,18 @@
+<% provide(:page_title, @category.name) %>
+
+<h1><%= @category.name %></h1>
+
+<article class="category">
+  <div class="row">
+    <section class="child-categories col-md-5">
+      <ul>
+        <% @category.children.each do |child| %>
+          <li><%= link_to child.name, category_path(child) %></li>
+        <% end %>
+      </ul>
+    </section>
+    <section class="category-bookmarks col-md-7">
+      <%= render @category.bookmarks %>
+    </section>
+  </div>
+</article>
