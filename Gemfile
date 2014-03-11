@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.0.0'
+ruby '2.1.0'
 
 gem 'rails', '4.0.1'
 gem 'bcrypt-ruby', '3.1.2'
@@ -37,13 +37,19 @@ end
 
 group :development do
   gem 'annotate', '2.5.0'
+  gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'faker', '1.2.0'
+  gem 'letter_opener'
+  gem 'pry-rails'
 end
 
 group :test do
   gem 'capybara', '2.1.0'
-  gem 'factory_girl_rails', '4.2.0'
   gem 'database_cleaner', github: 'bmabey/database_cleaner'
+  gem 'factory_girl_rails', '4.2.0'
+  gem 'launchy' # For Capybara's save_and_open_page.
+  gem 'shoulda-matchers'
 end
 
 group :doc do
