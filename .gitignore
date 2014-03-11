@@ -21,3 +21,5 @@
 
 # Ignore sensitive files.
 .secret
+
+node_modules

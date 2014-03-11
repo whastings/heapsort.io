@@ -1,0 +1,12 @@
+{
+  "name": "web_dev_bookmarks",
+  "devDependencies": {
+    "browserify": "3.3.x",
+    "grunt": "~0.4.x",
+    "grunt-browserify": "1.3.x",
+    "grunt-contrib-watch": "~0.5.3"
+  },
+  "engines": {
+    "node": ">= 0.10"
+  }
+}
