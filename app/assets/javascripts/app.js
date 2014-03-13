@@ -1,5 +1,14 @@
-var list = require('./collections/bookmarks_list');
+var BookmarksList = require('./collections/bookmarks_list'),
+    BookmarksListView = require('./views/bookmarks_list_view');
 
-window.app = {
-  list: list
-};
+$(function() {
+
+  var list = new BookmarksList();
+  list.fetch({
+    success: function() {
+      var view = new BookmarksListView({collection: list});
+      $('#js-content').html(view.render().$el);
+    }
+  });
+
+});

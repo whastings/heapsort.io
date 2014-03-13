@@ -19,7 +19,9 @@ module.exports = function(grunt) {
     watch: {
       build: {
         files: [
+          jsDir + '/app.js',
           jsDir + '/models/**/*.js',
+          jsDir + '/views/**/*.js',
           jsDir + '/collections/**/*.js'
         ],
         tasks: ['build']

@@ -8,6 +8,8 @@ gem 'will_paginate', '~> 3.0'
 gem 'bootstrap-will_paginate', '0.0.10'
 gem 'friendly_id', '~> 5.0.0'
 gem 'backbone-on-rails'
+gem 'handlebars_assets'
+gem 'draper', '~> 1.3'
 
 # Use PostgreSQL as the database for Active Record
 gem 'pg', '0.15.1'
