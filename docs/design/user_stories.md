@@ -24,7 +24,9 @@
     + I can sort displayed bookmarks by date, ascending or descending
     + I can select a bookmark to view
     + I can see a feed of bookmarks from the categories and users I'm subscribed to
-    + I can browse through my list of favorited bookmarks.
+    + I can cancel any of my subscriptions
+    + I can browse through my list of favorited bookmarks
+    + I can remove any bookmark from my favorite bookmarks
 
 ## "As an admin..."
 - I can create Categories
