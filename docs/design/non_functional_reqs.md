@@ -6,4 +6,5 @@
 - Use Browserify for JS modules.
 - Use HandlebarsJS for JS templates.
 - Use a Bootswatch theme to start from.
+- Use a custom-build of jQuery to remove unneeded components.
 
