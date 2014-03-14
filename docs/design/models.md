@@ -3,6 +3,7 @@
 ## User
 - Associations:
     + has_many comments, votes, user_subscriptions, category_subscriptions, favorites
+    + has_many favorited_bookmarks through favorites
     + has_one session
 - Attributes:
     + username: required, unique

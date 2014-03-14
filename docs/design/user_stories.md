@@ -1,6 +1,6 @@
 # User Stories
 
-"As a user..."
+## "As a user..."
 - I can create a session (sign in)
 - I can destroy a session (sign out)
 - I can create a Bookmark
@@ -26,7 +26,7 @@
     + I can see a feed of bookmarks from the categories and users I'm subscribed to
     + I can browse through my list of favorited bookmarks.
 
-"As an admin..."
+## "As an admin..."
 - I can create Categories
 - I can rename Categories
 - I can delete Categories
