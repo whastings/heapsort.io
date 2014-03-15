@@ -1,14 +1,31 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= yield :page_title %></title>
+    <title>
+      <%= yield :page_title %> - Heapsort -
+      A socially-curated collection of developer resources
+    </title>
     <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
   </head>
   <body>
 
-    <section class="container">
+    <header class="main-header">
+      <div class="row">
+        <div class="col-md-3">
+          <%= link_to 'Heapsort', root_url, class: 'brand-heading' %>
+        </div>
+        <div class="col-md-9">
+          <p class="slogan">
+            A socially-curated collection of web
+            development &amp; programming resources
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <section>
       <% unless flash.empty? %>
         <div class="row">
           <div class="messages col-md-12">
@@ -20,7 +37,10 @@
         </div>
       <% end %>
       <div class="row">
-        <div class="content-main col-md-12">
+        <div class="user-controls col-md-1">
+
+        </div>
+        <div class="content-main col-md-11">
           <%= yield %>
         </div>
       </div>
