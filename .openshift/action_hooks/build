@@ -3,3 +3,10 @@
 # available.  Otherwise it will execute while your application is stopped
 # before the deploy step.  This script gets executed directly, so it
 # could be python, php, ruby, etc.
+#
+#
+
+cd ${OPENSHIFT_REPO_DIR}
+
+npm install
+./node_modules/grunt-cli/bin/grunt build

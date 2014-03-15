@@ -35,7 +35,4 @@ pushd ${OPENSHIFT_REPO_DIR} > /dev/null
 echo "exec rake db:migrate RAILS_ENV=${RAILS_ENV:-production}"
 bundle exec rake db:migrate RAILS_ENV=${RAILS_ENV:-production}
 
-npm install
-./node_modules/grunt-cli/bin/grunt build
-
 popd > /dev/null
