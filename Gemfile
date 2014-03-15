@@ -31,6 +31,8 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+gem 'faker', '1.2.0'
+
 group :development, :test do
   gem 'rspec-rails', '2.13.1'
   gem 'spork-rails', '4.0.0'
@@ -41,7 +43,6 @@ group :development do
   gem 'annotate', '2.5.0'
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'faker', '1.2.0'
   gem 'letter_opener'
   gem 'pry-rails'
 end
