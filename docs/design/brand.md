@@ -1,14 +1,10 @@
 # Brand
 
-## Name Possibilities
-- Web Dev Links
-- Web Dev Gold
+## Name
+Heapsort
 
-## Domain Possibilities
-- wdlinks.io
-- webdevlinks.io
-- wdgold.io
-- webdevgold.io
+## Domain
+heapsort.io
 
 ## Slogan Possibilities
 
