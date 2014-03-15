@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>
-      <%= yield :page_title %> - Heapsort -
+      <%= yield :page_title %>Heapsort -
       A socially-curated collection of developer resources
     </title>
     <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
@@ -14,6 +14,7 @@
     <header class="main-header">
       <div class="row">
         <div class="col-md-3">
+          <%= image_tag 'header-logo.png', class: 'logo' %>
           <%= link_to 'Heapsort', root_url, class: 'brand-heading' %>
         </div>
         <div class="col-md-9">
