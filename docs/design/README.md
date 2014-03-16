@@ -7,6 +7,6 @@ Here are the documents I've used to plan out the feature-set and my approach for
 - [User Stories](./user_stories.md)
 - [Non-Functional Requirements](./non_functional_reqs.md)
 - [Brand](./brand.md)
-- [Mockups](http://rawgithub.com/whastings/web_dev_bookmarks/master/docs/design/mockups/index.html)
+- [Mockups](http://whastings.github.io/heapsort.io/mockups/) (made with UXPin.com)
 - [Stretch-Goals](./stretch_goals.md)
 - [Models](./models.md)
