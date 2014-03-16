@@ -50,7 +50,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -310,7 +310,10 @@
        width="64"
        height="64"
        x="124.24876"
-       y="644.26056" />
+       y="644.26056"
+       inkscape:export-filename="/home/xm488/docs/repos/web_dev_bookmarks/app/assets/images/favicon.png"
+       inkscape:export-xdpi="44.912281"
+       inkscape:export-ydpi="44.912281" />
     <path
        transform="matrix(0.31910881,0,0,0.26932986,67.605446,628.29448)"
        sodipodi:type="arc"
@@ -321,9 +324,9 @@
        sodipodi:rx="23.233509"
        sodipodi:ry="23.233509"
        d="m 302.0356,128.0726 a 23.233509,23.233509 0 1 1 -46.46702,0 23.233509,23.233509 0 1 1 46.46702,0 z"
-       inkscape:export-filename="/home/xm488/docs/repos/web_dev_bookmarks/app/assets/images/header-logo.png"
-       inkscape:export-xdpi="8.1691341"
-       inkscape:export-ydpi="8.1691341" />
+       inkscape:export-filename="/home/xm488/docs/repos/web_dev_bookmarks/app/assets/images/favicon.png"
+       inkscape:export-xdpi="44.912281"
+       inkscape:export-ydpi="44.912281" />
     <path
        transform="matrix(0.31910881,0,0,0.26932986,49.876274,653.59646)"
        sodipodi:type="arc"
@@ -334,9 +337,9 @@
        sodipodi:rx="23.233509"
        sodipodi:ry="23.233509"
        d="m 302.0356,128.0726 a 23.233509,23.233509 0 1 1 -46.46702,0 23.233509,23.233509 0 1 1 46.46702,0 z"
-       inkscape:export-filename="/home/xm488/docs/repos/web_dev_bookmarks/app/assets/images/header-logo.png"
-       inkscape:export-xdpi="8.1691341"
-       inkscape:export-ydpi="8.1691341" />
+       inkscape:export-filename="/home/xm488/docs/repos/web_dev_bookmarks/app/assets/images/favicon.png"
+       inkscape:export-xdpi="44.912281"
+       inkscape:export-ydpi="44.912281" />
     <path
        transform="matrix(0.31910881,0,0,0.26932986,85.334618,653.86852)"
        sodipodi:type="arc"
@@ -347,24 +350,24 @@
        sodipodi:rx="23.233509"
        sodipodi:ry="23.233509"
        d="m 302.0356,128.0726 a 23.233509,23.233509 0 1 1 -46.46702,0 23.233509,23.233509 0 1 1 46.46702,0 z"
-       inkscape:export-filename="/home/xm488/docs/repos/web_dev_bookmarks/app/assets/images/header-logo.png"
-       inkscape:export-xdpi="8.1691341"
-       inkscape:export-ydpi="8.1691341" />
+       inkscape:export-filename="/home/xm488/docs/repos/web_dev_bookmarks/app/assets/images/favicon.png"
+       inkscape:export-xdpi="44.912281"
+       inkscape:export-ydpi="44.912281" />
     <path
        style="font-size:medium;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#ffffff;stroke-width:3.51797628;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Sans;-inkscape-font-specification:Sans"
        d="m 151.93303,667.32866 -13.2131,14.96464 0.2493,0.15992 13.22307,-14.95623 -0.25927,-0.16833 z"
        id="path3064-5-0"
        inkscape:connector-curvature="0"
-       inkscape:export-filename="/home/xm488/docs/repos/web_dev_bookmarks/app/assets/images/header-logo.png"
-       inkscape:export-xdpi="8.1691341"
-       inkscape:export-ydpi="8.1691341" />
+       inkscape:export-filename="/home/xm488/docs/repos/web_dev_bookmarks/app/assets/images/favicon.png"
+       inkscape:export-xdpi="44.912281"
+       inkscape:export-ydpi="44.912281" />
     <path
        style="font-size:medium;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#ffffff;stroke-width:3.51797628;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Sans;-inkscape-font-specification:Sans"
        d="m 161.41654,667.48858 -0.25928,0.15991 13.21311,14.96464 0.25927,-0.16833 -13.2131,-14.95622 z"
        id="path3064-2-4-1"
        inkscape:connector-curvature="0"
-       inkscape:export-filename="/home/xm488/docs/repos/web_dev_bookmarks/app/assets/images/header-logo.png"
-       inkscape:export-xdpi="8.1691341"
-       inkscape:export-ydpi="8.1691341" />
+       inkscape:export-filename="/home/xm488/docs/repos/web_dev_bookmarks/app/assets/images/favicon.png"
+       inkscape:export-xdpi="44.912281"
+       inkscape:export-ydpi="44.912281" />
   </g>
 </svg>
