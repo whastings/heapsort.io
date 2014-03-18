@@ -4,20 +4,25 @@
 
 ### Resources
 
-- GET /api/categories/:category_id/resources: Resource index, page 1
-- GET /api/categories/:category_id/resources/:page: Resource index, page *n*
 - POST /api/resources: Create resource
 - GET /api/resources/:id: Show resource
+    + Should include all resource data, including description
+    + Should include comments
 - PATCH /api/resources/:id: Update resource
 
 ### Categories
 
+- GET /api/categories/:category_id/resources: Resource index, page 1
+- GET /api/categories/:category_id/resources/:page: Resource index, page *n*
 - GET /api/categories/:id: Category show
-    + Should include data for child categories and page 1 of resources.
+    + Should include:
+        * Titles and IDs for child categories.
+        * Page 1 of resources with title, url, user, time, votes, tags.
 
 ### Feed
 
 - GET /api/feed: User's subscriptions feed
+    + Should return teaser data for each bookmark
 
 ### User Subscription
 

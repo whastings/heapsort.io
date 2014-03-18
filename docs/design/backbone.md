@@ -3,14 +3,23 @@
 ## Models
 
 - Resource
+    + urlRoot: /api/resources
+    + tags
+    + comments
 - Category
+    + urlRoot: /api/categories
+    + childCategories
+    + resources
 - Tag
 - Comment
+    + urlRoot: /api/resources/[resource_id]
 
 ## Collections
 
 - Resources
+    + url: /api/categories/[category_id]/resources
 - Categories
+    + url: /api/categories
 - Tags
 - Comments
 
@@ -30,6 +39,9 @@
 ### Home Page
 
 - IndexControlBar < ControlBar
+    + Events:
+        * favorite resource
+        * subscribe to category
 - CategoryBrowser
     + CategoriesList
         * Subview needed for each category???
