@@ -4,11 +4,15 @@
 
 - Resource
 - Category
+- Tag
+- Comment
 
 ## Collections
 
 - Resources
 - Categories
+- Tags
+- Comments
 
 ## Views
 
@@ -30,9 +34,7 @@
     + CategoriesList
         * Subview needed for each category???
     + ResourcesList < CollectionView
-        * Have separate template for single bookmark teaser
-        * Subview needed for single bookmark teaser???
-            - Might make sorting more difficult
+        * ResourceTeaser
     + BrowserControls
 
 ### Resource Show
@@ -41,6 +43,16 @@
 - ResourceShow < CompoundView
     + CommentForm
     + CommentsList
+
+### Add a Resource
+
+- Use BasicControlBar
+- ResourceForm
+    + CategorySelector
+
+### Feed
+
+### Favorites
 
 ## Mixins
 
