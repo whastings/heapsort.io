@@ -4,15 +4,16 @@
 
 ### Resources
 
-- GET /api/:category_id/resources: Resource index, page 1
-- GET /api/:category_id/resources/:page: Resource index, page *n*
+- GET /api/categories/:category_id/resources: Resource index, page 1
+- GET /api/categories/:category_id/resources/:page: Resource index, page *n*
 - POST /api/resources: Create resource
 - GET /api/resources/:id: Show resource
 - PATCH /api/resources/:id: Update resource
 
 ### Categories
 
-- GET /api/:category_id/categories: Category index, page 1
+- GET /api/categories/:id: Category show
+    + Should include data for child categories and page 1 of resources.
 
 ### Feed
 
@@ -36,9 +37,9 @@
 
 ### Comments
 
-- POST /api/:resource_id/comments: Add a comment
+- POST /api/resources/:resource_id/comments: Add a comment
 
 ### Votes
 
-- POST /api/:resource_id/votes: Vote on a resource
+- POST /api/resources/:resource_id/votes: Vote on a resource
 
