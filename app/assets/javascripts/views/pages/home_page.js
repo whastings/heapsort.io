@@ -5,6 +5,7 @@ var Category = require('../../models/category'),
     CompoundView = require('../../support/compound_view');
 
 var HomePage = module.exports = CompoundView.extend({
+  className: 'row',
   template: HandlebarsTemplates['pages/home_page'],
 
   initialize: function() {
