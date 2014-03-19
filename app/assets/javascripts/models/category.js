@@ -14,6 +14,11 @@ var Category = module.exports = Backbone.Model.extend({
   parse: function(data) {
     addChildren.call(this, data);
     addResources.call(this, data);
+
+    if (!data.parent_id) {
+      data.parent_id = 0;
+    }
+
     return data;
   },
 

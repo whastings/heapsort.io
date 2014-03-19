@@ -1,3 +1,6 @@
+{{#if parentCategory.id}}
+  <li><a href="#/categories/{{parentCategory.parent_id}}">..</a></li>
+{{/if}}
 {{#each items}}
   <li><a href="#/categories/{{id}}">{{name}}</a></li>
 {{/each}}
