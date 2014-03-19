@@ -30,7 +30,6 @@ class Resource < ActiveRecord::Base
 
   # Validations:
   validates_presence_of :title, :domain, :path, :port, :protocol
-  validates_uniqueness_of :title
   validates_numericality_of :port, { only_integer: true }
   validates :title, length: { maximum: 150 }
   validates :domain, length: { maximum: 75 }

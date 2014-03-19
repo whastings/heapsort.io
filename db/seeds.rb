@@ -6,8 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-def create_bookmark(user, category = nil)
-  user.bookmarks.create!(
+def create_resource(user, category = nil)
+  user.resources.create!(
     title: Faker::Lorem.sentence(5).titleize,
     url: Faker::Internet.url,
     description: Faker::Lorem.sentences(5).join(' '),
@@ -15,8 +15,7 @@ def create_bookmark(user, category = nil)
   )
 end
 
-ActiveRecord::Base.transaction do
-
+def random_seed
   # Create some users.
   users = []
   50.times do |n|
@@ -28,11 +27,11 @@ ActiveRecord::Base.transaction do
     )
   end
 
-  # Create some bookmarks.
-  bookmarks = []
+  # Create some resources.
+  resources = []
   users.sample(25).each do |user|
     rand(1..10).times do
-      bookmarks << create_bookmark(user)
+      resources << create_resource(user)
     end
   end
 
@@ -48,10 +47,15 @@ ActiveRecord::Base.transaction do
         parent_id: category.id
       )
     end
-    bookmarks.sample(rand(1..5)).each do |bookmark|
-      bookmark.update!(category_id: category.id)
-      bookmarks.delete(bookmark)
+    resources.sample(rand(1..5)).each do |resource|
+      resource.update!(category_id: category.id)
+      resources.delete(resource)
     end
   end
+end
+
+ActiveRecord::Base.transaction do
+
+  # random_seed
 
 end
