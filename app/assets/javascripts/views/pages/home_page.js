@@ -8,8 +8,8 @@ var HomePage = module.exports = CompoundView.extend({
   className: 'row',
   template: HandlebarsTemplates['pages/home_page'],
 
-  initialize: function() {
-    var rootCategory = new Category({id: 0});
+  initialize: function(options) {
+    var rootCategory = new Category({id: options.categoryId});
     rootCategory.fetch();
     this.addSubview(
       '#js-category-browser',
