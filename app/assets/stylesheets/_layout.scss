@@ -30,6 +30,12 @@
   line-height: 28px;
 }
 
+.messages {
+  .alert {
+    margin-bottom: 0;
+  }
+}
+
 .page-content {
   &> .row {
     margin: 0;

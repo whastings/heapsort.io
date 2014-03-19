@@ -1,6 +1,7 @@
 
-
-<%= render 'shared/welcome_message' %>
+<% content_for :messages do %>
+  <%= render 'shared/welcome_message' %>
+<% end %>
 <div id="js-content">
 
 </div>

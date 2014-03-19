@@ -1,0 +1,31 @@
+.categories-list {
+  a {
+    border: 1px #000 solid;
+    display: block;
+    font-size: 130%;
+    font-weight: bold;
+    list-style: none;
+    margin-bottom: 15px;
+    padding: 5px;
+    padding-left: 10px;
+    position: relative;
+    &:hover {
+      background-color: $brand-info;
+      text-decoration: none;
+    }
+    &:after {
+      border-style: solid;
+      border-width: 10.5px 0 10.5px 20px;
+      border-color: transparent transparent transparent $brand-primary;
+      content: "";
+      height: 0px;
+      position: absolute;
+      right: 8px;
+      top: 6px;
+      width: 0px;
+    }
+  }
+  li {
+    list-style: none;
+  }
+}

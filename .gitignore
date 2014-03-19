@@ -22,5 +22,6 @@
 # Ignore sensitive files.
 .secret
 
+public/assets
 node_modules
 bower_components

@@ -12,4 +12,8 @@ class ResourceDecorator < Draper::Decorator
   def posted_ago
     h.time_ago_in_words(object.created_at)
   end
+
+  def pretty_url
+    object.url.sub(/^https?:\/\//, '').sub(/\/$/, '')
+  end
 end

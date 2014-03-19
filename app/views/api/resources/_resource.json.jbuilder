@@ -1,1 +1,1 @@
-json.(resource, :title, :url, :link, :author, :posted_ago, :posted)
+json.(resource, :title, :url, :pretty_url, :author, :posted_ago, :posted)
