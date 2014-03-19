@@ -10,8 +10,8 @@ RSpec::Matchers.define(:have_been_created) do
     result = case object
       when User
         user_created?(object)
-      when Bookmark
-        bookmark_created?(object)
+      when Resource
+        resource_created?(object)
     end
     expect(result).to be_true
   end

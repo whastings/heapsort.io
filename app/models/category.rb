@@ -17,7 +17,7 @@ class Category < ActiveRecord::Base
   # Associations:
   belongs_to :parent, foreign_key: :parent_id, class_name: 'Category'
   has_many :children, foreign_key: :parent_id, class_name: 'Category'
-  has_many :bookmarks
+  has_many :resources
 
   # Validations:
   validates :name, presence: true, length: { maximum: 100 }

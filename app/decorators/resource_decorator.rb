@@ -1,4 +1,4 @@
-class BookmarkDecorator < Draper::Decorator
+class ResourceDecorator < Draper::Decorator
   delegate_all
 
   def link

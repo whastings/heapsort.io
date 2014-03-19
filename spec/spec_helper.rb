@@ -14,7 +14,7 @@ Spork.prefork do
 
   # Include spec helper modules.
   include WebDevBookmarks::Spec::UserUtils
-  include WebDevBookmarks::Spec::BookmarkUtils
+  include WebDevBookmarks::Spec::ResourceUtils
 
   # Checks for pending migrations before tests are run.
   # If you are not using ActiveRecord, you can remove this line.

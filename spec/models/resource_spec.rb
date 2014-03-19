@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe Bookmark do
-  let(:bookmark) { FactoryGirl.create(:bookmark) }
-  subject { bookmark }
+describe Resource do
+  let(:resource) { FactoryGirl.create(:resource) }
+  subject { resource }
 
   it { should be_valid }
 
@@ -86,8 +86,8 @@ describe Bookmark do
   describe "user" do
     let(:attribute) { :user }
     let(:user) { get_test_user }
-    let(:bookmark_with_user) { FactoryGirl.create(:bookmark, user_id: user.id) }
-    subject { bookmark_with_user }
+    let(:resource_with_user) { FactoryGirl.create(:resource, user_id: user.id) }
+    subject { resource_with_user }
 
     it { should have_attribute(attribute) }
     its(:user) { should == user }
@@ -96,7 +96,7 @@ describe Bookmark do
   describe "url" do
     let(:attribute) { :url }
     let(:url) { 'http://www.objectdotcreate.net:8080/a/url/path?this_is=a_test' }
-    before { bookmark.url = url }
+    before { resource.url = url }
 
     it { should have_attribute(attribute) }
     its(:protocol) { should == 'http' }
@@ -107,18 +107,18 @@ describe Bookmark do
     its(:url) { should == url }
 
     context "with default http port" do
-      before { bookmark.url = url.sub(':8080', '') }
+      before { resource.url = url.sub(':8080', '') }
 
       its(:url) { should_not =~ /:80\// }
     end
 
     describe "validations" do
       let(:bad_url) { 'http:www/this is one malformed url... com?' }
-      before { bookmark.url = bad_url }
+      before { resource.url = bad_url }
 
       it { should_not be_valid }
       specify do
-        expect(bookmark.errors.keys).to_not include(*[
+        expect(resource.errors.keys).to_not include(*[
           :domain, :path, :port, :protocol
         ])
       end
@@ -134,10 +134,10 @@ describe Bookmark do
   describe "category" do
     let(:attribute) { :category }
     let(:category) { FactoryGirl.create(:category) }
-    let(:bookmark_with_category) do
-      FactoryGirl.create(:bookmark, category_id: category.id)
+    let(:resource_with_category) do
+      FactoryGirl.create(:resource, category_id: category.id)
     end
-    subject { bookmark_with_category }
+    subject { resource_with_category }
 
     it { should have_attribute(attribute) }
     its(:category) { should == category }

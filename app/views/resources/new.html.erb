@@ -1,0 +1,14 @@
+<% provide(:page_title, 'Share a Resource') %>
+<h1>Share a Resource</h1>
+
+<%= bootstrap_form_for(@resource) do |f| %>
+  <%= render 'shared/error_messages', object: @resource %>
+
+  <%= f.field :text_field, :title %>
+
+  <%= f.field :url_field, :url, 'URL' %>
+
+  <%= f.field :text_area, :description %>
+
+  <%= f.submit 'Share!' %>
+<% end %>

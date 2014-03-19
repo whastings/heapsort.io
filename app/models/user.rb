@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
 
   # Associations:
   has_one :session, dependent: :destroy
-  has_many :bookmarks
+  has_many :resources
 
   # Validations:
   validates_presence_of :username, :email

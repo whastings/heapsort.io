@@ -22,15 +22,15 @@ describe "Category Pages" do
       end
     end
 
-    context "with bookmarks" do
+    context "with resources" do
       before do
-        10.times { FactoryGirl.create(:bookmark, category_id: category.id) }
+        10.times { FactoryGirl.create(:resource, category_id: category.id) }
         visit category_path(category)
       end
 
-      it "should render all the category's bookmarks" do
-        category.bookmarks.each do |bookmark|
-          should show_bookmark(bookmark)
+      it "should render all the category's resources" do
+        category.resources.each do |resource|
+          should show_resource(resource)
         end
       end
     end

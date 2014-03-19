@@ -1,0 +1,13 @@
+<article class="resource-full">
+  <h1 class="resource-title"><%= resource_full.title %></h1>
+  <div class="resource-url">
+    <%= link_to resource_full.url, resource_full.url, target: '_blank' %>
+  </div>
+  <div class="resource-meta">
+    Posted by <%= resource_full.user %>
+    on <%= l(resource_full.created_at, format: :date_with_time) %>
+  </div>
+  <div class="resource-description">
+    <%= resource_full.description %>
+  </div>
+</article>

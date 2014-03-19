@@ -3,17 +3,17 @@ WebDevBookmarks::Application.routes.draw do
 
   resources :sessions, only: [:create]
   resources :users, only: [:create]
-  resources :bookmarks, only: [:index, :show, :create]
+  resources :resources, only: [:index, :show, :create]
   resources :categories, only: [:show]
 
   get '/signup' => 'users#new'
   delete '/signout' => 'sessions#destroy'
   get '/signin' => 'sessions#new'
 
-  get '/add-bookmark' => 'bookmarks#new', as: :add_bookmark
+  get '/add-resource' => 'resources#new', as: :add_resource
 
   namespace 'api', :defaults => { :format => :json } do
-    resources :bookmarks, only: [:index, :show]
+    resources :resources, only: [:index, :show]
   end
 
 end

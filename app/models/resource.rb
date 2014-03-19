@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: bookmarks
+# Table name: resources
 #
 #  id           :integer          not null, primary key
 #  title        :string(150)      not null
@@ -17,7 +17,7 @@
 #  category_id  :integer
 #
 
-class Bookmark < ActiveRecord::Base
+class Resource < ActiveRecord::Base
 
   extend FriendlyId
 

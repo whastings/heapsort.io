@@ -11,30 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140103050903) do
+ActiveRecord::Schema.define(version: 20140319023825) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "bookmarks", force: true do |t|
-    t.string   "title",        limit: 150,                  null: false
-    t.string   "domain",       limit: 75,                   null: false
-    t.string   "path",                     default: "/",    null: false
-    t.string   "query_string"
-    t.integer  "port",                     default: 80,     null: false
-    t.string   "protocol",     limit: 10,  default: "http", null: false
-    t.text     "description"
-    t.integer  "user_id",                                   null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "slug"
-    t.integer  "category_id"
-  end
-
-  add_index "bookmarks", ["created_at"], name: "index_bookmarks_on_created_at", using: :btree
-  add_index "bookmarks", ["domain", "path", "query_string"], name: "index_bookmarks_on_domain_and_path_and_query_string", unique: true, using: :btree
-  add_index "bookmarks", ["slug"], name: "index_bookmarks_on_slug", unique: true, using: :btree
-  add_index "bookmarks", ["user_id"], name: "index_bookmarks_on_user_id", using: :btree
 
   create_table "categories", force: true do |t|
     t.string  "name",      limit: 100, null: false
@@ -58,6 +38,26 @@ ActiveRecord::Schema.define(version: 20140103050903) do
   add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+
+  create_table "resources", force: true do |t|
+    t.string   "title",        limit: 150,                  null: false
+    t.string   "domain",       limit: 75,                   null: false
+    t.string   "path",                     default: "/",    null: false
+    t.string   "query_string"
+    t.integer  "port",                     default: 80,     null: false
+    t.string   "protocol",     limit: 10,  default: "http", null: false
+    t.text     "description"
+    t.integer  "user_id",                                   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "slug"
+    t.integer  "category_id"
+  end
+
+  add_index "resources", ["created_at"], name: "index_resources_on_created_at", using: :btree
+  add_index "resources", ["domain", "path", "query_string"], name: "index_resources_on_domain_and_path_and_query_string", unique: true, using: :btree
+  add_index "resources", ["slug"], name: "index_resources_on_slug", unique: true, using: :btree
+  add_index "resources", ["user_id"], name: "index_resources_on_user_id", using: :btree
 
   create_table "sessions", force: true do |t|
     t.string   "token",      limit: 24, null: false

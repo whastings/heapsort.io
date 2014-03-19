@@ -43,19 +43,19 @@ describe Category do
     its(:children) { should == children }
   end
 
-  describe "bookmarks" do
-    let(:attribute) { :bookmarks }
-    let(:category_with_bookmarks) { FactoryGirl.create(:category) }
-    let(:bookmarks) { [] }
+  describe "resources" do
+    let(:attribute) { :resources }
+    let(:category_with_resources) { FactoryGirl.create(:category) }
+    let(:resources) { [] }
     before do
       10.times do
-        bookmarks << FactoryGirl.create(:bookmark, category_id: category_with_bookmarks.id)
+        resources << FactoryGirl.create(:resource, category_id: category_with_resources.id)
       end
     end
-    subject { category_with_bookmarks }
+    subject { category_with_resources }
 
     it { should have_attribute(attribute) }
-    its(:bookmarks) { should == bookmarks.reverse }
+    its(:resources) { should == resources.reverse }
   end
 
 end
