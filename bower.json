@@ -1,0 +1,21 @@
+{
+  "name": "heapsort.io",
+  "version": "0.0.1",
+  "homepage": "https://github.com/whastings/heapsort.io",
+  "authors": [
+    "Will Hastings <will@objectdotcreate.net>"
+  ],
+  "description": "A socially-curated collection of web development & programming resources",
+  "license": "All Rights Reserved",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "backbone.marionette": "~1.6.0"
+  }
+}
