@@ -14,6 +14,12 @@ module.exports = function(grunt) {
     browserify: {
       build: {
         files: browserifyFiles
+      },
+      buildDev: {
+        files: browserifyFiles,
+        options: {
+          debug: true
+        }
       }
     },
     watch: {
@@ -24,7 +30,7 @@ module.exports = function(grunt) {
           jsDir + '/views/**/*.js',
           jsDir + '/collections/**/*.js'
         ],
-        tasks: ['build']
+        tasks: ['buildDev']
       }
     }
   });
@@ -33,6 +39,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   grunt.registerTask('build', ['browserify:build']);
+  grunt.registerTask('buildDev', ['browserify:buildDev']);
   grunt.registerTask('default', ['watch:build']);
 
 };
