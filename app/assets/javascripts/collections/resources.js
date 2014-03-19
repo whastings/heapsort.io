@@ -1,6 +1,8 @@
+"use strict";
+
 var Resource = require('../models/resource');
 
-var ResourcesList = module.exports = Backbone.Collection.extend({
+var Resources = module.exports = Backbone.Collection.extend({
 
   url: '/api/resources',
   model: Resource

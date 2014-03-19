@@ -25,6 +25,7 @@
 //= require backbone.marionette/src/marionette.renderer.js
 //= require backbone.marionette/src/marionette.view.js
 //= require backbone.marionette/src/marionette.itemview.js
+//= require backbone.marionette/src/marionette.collectionview.js
 //= require handlebars.runtime
 //= require_tree ./templates
 //= require ./app-compiled

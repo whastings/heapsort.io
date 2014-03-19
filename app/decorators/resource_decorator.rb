@@ -1,10 +1,6 @@
 class ResourceDecorator < Draper::Decorator
   delegate_all
 
-  def link
-    h.link_to object.title, object
-  end
-
   def author
     object.user.username
   end

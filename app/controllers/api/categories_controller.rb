@@ -7,7 +7,7 @@ class Api::CategoriesController < ApplicationController
     else
       @category = Category.where(id: params[:id]).eager_load(:children).first
       @children = @category.children
-      @resources = @category.resources.paginate(page: 1)
+      @resources = @category.resources.eager_load(:user).paginate(page: 1).decorate
     end
   end
 end

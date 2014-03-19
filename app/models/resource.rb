@@ -38,7 +38,7 @@ class Resource < ActiveRecord::Base
   validate :validate_url
 
   # Scopes:
-  default_scope { order('created_at DESC') }
+  default_scope { order('resources.title') }
 
   def url
     return @failed_url unless @failed_url.nil?

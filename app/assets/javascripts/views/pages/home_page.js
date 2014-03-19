@@ -13,7 +13,10 @@ var HomePage = module.exports = CompoundView.extend({
     rootCategory.fetch();
     this.addSubview(
       '#js-category-browser',
-      new CategoryBrowser({collection: rootCategory.children()})
+      new CategoryBrowser({
+        collection: rootCategory.children(),
+        model: rootCategory
+      })
     );
   }
 });

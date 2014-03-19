@@ -1,6 +1,8 @@
 "use strict";
 
-var Categories = require('../collections/categories');
+var Categories = require('../collections/categories'),
+    Resource = require('./resource'),
+    Resources = require('../collections/resources');
 
 var Category = module.exports = Backbone.Model.extend({
   urlRoot: '/api/categories',
@@ -10,13 +12,30 @@ var Category = module.exports = Backbone.Model.extend({
   },
 
   parse: function(data) {
-    var children = this.children();
-    if (Array.isArray(data.children)) {
-      data.children.forEach(function(child) {
-        children.add(new Category(child));
-      });
-    }
-
+    addChildren.call(this, data);
+    addResources.call(this, data);
     return data;
+  },
+
+  resources: function() {
+    return this._resources || (this._resources = new Resources());
   }
 });
+
+var addChildren = function(data) {
+  var children = this.children();
+  if (Array.isArray(data.children)) {
+    data.children.forEach(function(child) {
+      children.add(new Category(child));
+    });
+  }
+};
+
+var addResources = function(data) {
+  var resources = this.resources();
+  if (Array.isArray(data.resources)) {
+    data.resources.forEach(function(resource) {
+      resources.add(new Resource(resource));
+    });
+  }
+};

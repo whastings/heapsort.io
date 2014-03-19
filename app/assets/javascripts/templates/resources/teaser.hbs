@@ -1,10 +1,12 @@
 <article class="resource-teaser">
-  <h3 class="resource-title">{{{resource.link}}}</h3>
+  <h3 class="resource-title">
+    <a href="#/resources/{{id}}">{{title}}</a>
+  </h3>
   <div class="resource-url">
-    <a href="{{resource.url}}" target="_blank">{{resource.url}}</a>
+    <a href="{{url}}" target="_blank">{{url}}</a>
   </div>
   <div class="resource-meta">
-    Posted by {{resource.author}}
-    {{resource.posted_ago}} ago
+    Posted by {{author}}
+    {{posted_ago}} ago
   </div>
 </article>
