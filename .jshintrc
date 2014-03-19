@@ -1,0 +1,16 @@
+{
+  "globalstrict": true,
+  "globals": {
+    "$": false,
+    "Backbone": false,
+    "console": false,
+    "exports": false,
+    "Handlebars": false,
+    "HandlebarsTemplates": false,
+    "module": false,
+    "require": false,
+    "window": false
+  },
+  "sub": true
+}
+
