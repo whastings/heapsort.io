@@ -1,14 +1,23 @@
-var ResourcesList = require('./collections/resources_list'),
-    ResourcesListView = require('./views/resources_list_view');
+"use strict";
+
+var AppRouter = require('./app_router'),
+    utils = require('./support/utils');
+
+var App = function() {
+
+};
+
+_.extend(App.prototype, {
+  initialize: function() {
+    var $rootEl = $('#js-content');
+    this.router = new AppRouter({
+      $rootEl: $rootEl
+    });
+    Backbone.history.start();
+  }
+});
 
 $(function() {
-
-  var list = new ResourcesList();
-  list.fetch({
-    success: function() {
-      var view = new ResourcesListView({collection: list});
-      $('#js-content').html(view.render().$el);
-    }
-  });
-
+  var app = new App();
+  app.initialize();
 });

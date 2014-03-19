@@ -26,7 +26,9 @@ module.exports = function(grunt) {
       build: {
         files: [
           jsDir + '/app.js',
+          jsDir + '/app_router.js',
           jsDir + '/models/**/*.js',
+          jsDir + '/support/**/*.js',
           jsDir + '/views/**/*.js',
           jsDir + '/collections/**/*.js'
         ],

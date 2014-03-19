@@ -20,7 +20,11 @@
 //= require backbone.marionette/src/marionette.helpers.js
 //= require backbone.marionette/src/marionette.callbacks.js
 //= require backbone.marionette/src/marionette.triggermethod.js
+//= require backbone.marionette/src/marionette.bindEntityEvents.js
+//= require backbone.marionette/src/marionette.domRefresh.js
+//= require backbone.marionette/src/marionette.renderer.js
 //= require backbone.marionette/src/marionette.view.js
+//= require backbone.marionette/src/marionette.itemview.js
 //= require handlebars.runtime
 //= require_tree ./templates
 //= require ./app-compiled

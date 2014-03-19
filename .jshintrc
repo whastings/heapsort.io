@@ -1,6 +1,7 @@
 {
   "globalstrict": true,
   "globals": {
+    "_": false,
     "$": false,
     "Backbone": false,
     "console": false,
