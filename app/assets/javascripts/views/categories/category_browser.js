@@ -13,6 +13,7 @@ var CategoryBrowser = module.exports = CompoundView.extend({
   ui: {
     resourcesContainer: '#js-resources-list'
   },
+  welcomeTemplate: HandlebarsTemplates['pages/welcome'],
 
   initialize: function() {
     this.addSubview(
@@ -23,5 +24,13 @@ var CategoryBrowser = module.exports = CompoundView.extend({
     );
     var resourcesList = new ResourcesList({collection: this.model.resources()});
     this.addSubview('#js-resources-list', resourcesList);
+  },
+
+  render: function() {
+    CompoundView.prototype.render.call(this);
+    if (this.model.id === 0 || this.model.id === null) {
+      $(this.ui.resourcesContainer).prepend(this.welcomeTemplate());
+    }
+    return this;
   }
 });

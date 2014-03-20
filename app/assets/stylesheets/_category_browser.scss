@@ -43,3 +43,8 @@
     @extend %background-hover;
   }
 }
+
+.welcome-message {
+  background-color: $brand-info;
+  color: #31708f;
+}
