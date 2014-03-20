@@ -7,7 +7,7 @@ var CategoriesList = require('./categories_list'),
 var CategoryBrowser = module.exports = CompoundView.extend({
   className: 'row',
   modelEvents: {
-    'change:parent_id': 'render'
+    'categoryChanged': 'changeCategory'
   },
   template: HandlebarsTemplates['categories/category_browser'],
   ui: {
@@ -15,22 +15,35 @@ var CategoryBrowser = module.exports = CompoundView.extend({
   },
   welcomeTemplate: HandlebarsTemplates['pages/welcome'],
 
+  changeCategory: function() {
+    this.categoriesList.transition(this.model);
+    toggleWelcomeMessage.call(this);
+  },
+
   initialize: function() {
+    this.categoriesList = new CategoriesList({
+      collection: this.collection, parentCategory: this.model
+    });
     this.addSubview(
       '#js-categories-list',
-      new CategoriesList({
-        collection: this.collection, parentCategory: this.model
-      })
+      this.categoriesList
     );
-    var resourcesList = new ResourcesList({collection: this.model.resources()});
-    this.addSubview('#js-resources-list', resourcesList);
+    this.resourcesList = new ResourcesList({collection: this.model.resources()});
+    this.addSubview('#js-resources-list', this.resourcesList);
+    this.listenToOnce(this.model, 'sync', this.render);
   },
 
   render: function() {
     CompoundView.prototype.render.call(this);
-    if (this.model.id === 0 || this.model.id === null) {
-      $(this.ui.resourcesContainer).prepend(this.welcomeTemplate());
-    }
+    toggleWelcomeMessage.call(this);
     return this;
   }
 });
+
+var toggleWelcomeMessage = function() {
+  if (this.model.id === null || parseInt(this.model.id) === 0) {
+    $(this.ui.resourcesContainer).prepend(this.welcomeTemplate());
+  } else {
+    this.$('.welcome-message').remove();
+  }
+};

@@ -10,7 +10,10 @@ var AppRouter = module.exports = Backbone.Router.extend({
   },
 
   home: function() {
-    swapView.call(this, new HomePage({categoryId: 0}));
+    if (!this.homeView) {
+      this.homeView = new HomePage({categoryId: 0});
+    }
+    swapView.call(this, this.homeView);
   },
 
   initialize: function(options) {
@@ -18,12 +21,19 @@ var AppRouter = module.exports = Backbone.Router.extend({
   },
 
   showCategory: function(id) {
-    swapView.call(this, new HomePage({categoryId: id}));
+    if (!this.homeView) {
+      this.homeView = new HomePage({categoryId: id});
+      swapView.call(this, this.homeView);
+    } else {
+      this.homeView.changeCategory(id);
+    }
   }
 });
 
 var swapView = function(view) {
-  this.currentView && this.currentView.remove(); // jshint ignore:line
+  if (view !== this.homeView) {
+    this.currentView && this.currentView.remove(); // jshint ignore:line
+  }
   this.currentView = view;
   this.$rootEl.html(view.render().$el);
   utils.fixHeight($('.content-main'));

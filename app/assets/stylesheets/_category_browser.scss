@@ -1,4 +1,7 @@
 .categories-list {
+  overflow: hidden;
+  padding-right: 0;
+  position: relative;
   a {
     border: 1px #000 solid;
     display: block;
@@ -27,7 +30,30 @@
   }
   li {
     list-style: none;
+    overflow-x: hidden;
+    width: 100%;
   }
+  ul {
+    padding: 0;
+    width: 100%;
+  }
+}
+
+.child-transitioning-in {
+  left: calc(100% + 30px);
+  position: absolute;
+  top: 0;
+}
+
+.parent-transitioning-in {
+  left: -100%;
+  position: absolute;
+  top: 0;
+}
+
+.child-transitioning-out,
+.parent-transitioning-out {
+  position: relative;
 }
 
 .resource-page-btn {

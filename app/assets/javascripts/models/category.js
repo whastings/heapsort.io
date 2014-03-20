@@ -11,14 +11,21 @@ var Category = module.exports = Backbone.Model.extend({
     return this._children || (this._children = new Categories());
   },
 
+  empty: function() {
+    this.children().reset([]);
+    this.resources().reset([]);
+  },
+
   parse: function(data) {
+    var resources = this.resources();
+    resources.total = data.resources_count;
+    resources.categoryId = this.id;
     addChildren.call(this, data);
     addResources.call(this, data);
 
     if (!data.parent_id) {
       data.parent_id = 0;
     }
-    this.resources().total = data.resources_count;
 
     return data;
   },
