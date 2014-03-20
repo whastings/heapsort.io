@@ -6,7 +6,6 @@
       A socially-curated collection of developer resources
     </title>
     <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
     <%= favicon_link_tag 'favicon.png', type: 'image/png' %>
   </head>
@@ -51,5 +50,6 @@
       </div>
     </section>
 
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   </body>
 </html>
