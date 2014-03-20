@@ -1,3 +1,6 @@
+html, body {
+  height: 100%;
+}
 
 .main-header {
   background-color: $brand-primary;
@@ -47,5 +50,6 @@
 
 .content-main {
   background-color: #fff;
+  overflow-y: visible;
   padding-top: 15px;
 }

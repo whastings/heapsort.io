@@ -1,7 +1,6 @@
 "use strict";
 
-var AppRouter = require('./app_router'),
-    utils = require('./support/utils');
+var AppRouter = require('./app_router');
 
 var App = function() {
 

@@ -1,6 +1,7 @@
 "use strict";
 
-var HomePage = require('./views/pages/home_page');
+var HomePage = require('./views/pages/home_page'),
+    utils = require('./support/utils');
 
 var AppRouter = module.exports = Backbone.Router.extend({
   routes: {
@@ -25,4 +26,5 @@ var swapView = function(view) {
   this.currentView && this.currentView.remove(); // jshint ignore:line
   this.currentView = view;
   this.$rootEl.html(view.render().$el);
+  utils.fixHeight($('.content-main'));
 };
