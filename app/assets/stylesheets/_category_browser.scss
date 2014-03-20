@@ -10,7 +10,7 @@
     padding-left: 10px;
     position: relative;
     &:hover {
-      background-color: $brand-info;
+      @extend %background-hover;
       text-decoration: none;
     }
     &:after {
@@ -27,5 +27,19 @@
   }
   li {
     list-style: none;
+  }
+}
+
+.resource-page-btn {
+  background-color: #fff;
+  border: 1px #000 solid;
+  color: $brand-primary;
+  font-size: 150%;
+  font-weight: bold;
+  margin-bottom: 20px;
+  padding: 10px 0;
+  width: 100%;
+  &:hover {
+    @extend %background-hover;
   }
 }

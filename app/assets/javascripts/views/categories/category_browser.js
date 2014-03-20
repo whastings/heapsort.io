@@ -10,6 +10,9 @@ var CategoryBrowser = module.exports = CompoundView.extend({
     'change:parent_id': 'render'
   },
   template: HandlebarsTemplates['categories/category_browser'],
+  ui: {
+    resourcesContainer: '#js-resources-list'
+  },
 
   initialize: function() {
     this.addSubview(
@@ -18,9 +21,7 @@ var CategoryBrowser = module.exports = CompoundView.extend({
         collection: this.collection, parentCategory: this.model
       })
     );
-    this.addSubview(
-      '#js-resources-list',
-      new ResourcesList({collection: this.model.resources()})
-    );
+    var resourcesList = new ResourcesList({collection: this.model.resources()});
+    this.addSubview('#js-resources-list', resourcesList);
   }
 });

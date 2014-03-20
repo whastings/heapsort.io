@@ -14,7 +14,9 @@ WebDevBookmarks::Application.routes.draw do
 
   namespace 'api', :defaults => { :format => :json } do
     resources :resources, only: [:index, :show]
-    resources :categories, only: [:show]
+    resources :categories, only: [:show] do
+      resources :resources, only: [:index]
+    end
   end
 
 end

@@ -18,12 +18,14 @@ var Category = module.exports = Backbone.Model.extend({
     if (!data.parent_id) {
       data.parent_id = 0;
     }
+    this.resources().total = data.resources_count;
 
     return data;
   },
 
   resources: function() {
-    return this._resources || (this._resources = new Resources());
+    return this._resources ||
+      (this._resources = new Resources([], {categoryId: this.id}));
   }
 });
 
@@ -33,6 +35,7 @@ var addChildren = function(data) {
     data.children.forEach(function(child) {
       children.add(new Category(child));
     });
+    delete data.children;
   }
 };
 
@@ -42,5 +45,6 @@ var addResources = function(data) {
     data.resources.forEach(function(resource) {
       resources.add(new Resource(resource));
     });
+    delete data.resources;
   }
 };

@@ -1,4 +1,4 @@
-json.(@category, :id, :name, :parent_id)
+json.(@category, :id, :name, :parent_id, :resources_count)
 json.children @children do |child|
   json.(child, :id, :name, :slug)
 end
