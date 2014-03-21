@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140319023825) do
+ActiveRecord::Schema.define(version: 20140321175101) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,23 +40,27 @@ ActiveRecord::Schema.define(version: 20140319023825) do
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
   create_table "resources", force: true do |t|
-    t.string   "title",        limit: 150,                  null: false
-    t.string   "domain",       limit: 75,                   null: false
-    t.string   "path",                     default: "/",    null: false
+    t.string   "title",            limit: 150,                  null: false
+    t.string   "domain",           limit: 75,                   null: false
+    t.string   "path",                         default: "/",    null: false
     t.string   "query_string"
-    t.integer  "port",                     default: 80,     null: false
-    t.string   "protocol",     limit: 10,  default: "http", null: false
+    t.integer  "port",                         default: 80,     null: false
+    t.string   "protocol",         limit: 10,  default: "http", null: false
     t.text     "description"
-    t.integer  "user_id",                                   null: false
+    t.integer  "user_id",                                       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug"
     t.integer  "category_id"
+    t.integer  "up_votes_count",               default: 0,      null: false
+    t.integer  "down_votes_count",             default: 0,      null: false
   end
 
   add_index "resources", ["created_at"], name: "index_resources_on_created_at", using: :btree
   add_index "resources", ["domain", "path", "query_string"], name: "index_resources_on_domain_and_path_and_query_string", unique: true, using: :btree
+  add_index "resources", ["down_votes_count"], name: "index_resources_on_down_votes_count", using: :btree
   add_index "resources", ["slug"], name: "index_resources_on_slug", unique: true, using: :btree
+  add_index "resources", ["up_votes_count"], name: "index_resources_on_up_votes_count", using: :btree
   add_index "resources", ["user_id"], name: "index_resources_on_user_id", using: :btree
 
   create_table "sessions", force: true do |t|
@@ -83,5 +87,17 @@ ActiveRecord::Schema.define(version: 20140319023825) do
   add_index "users", ["created_at"], name: "index_users_on_created_at", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
+
+  create_table "votes", force: true do |t|
+    t.integer  "user_id",     null: false
+    t.integer  "resource_id", null: false
+    t.integer  "direction",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "votes", ["resource_id", "user_id"], name: "index_votes_on_resource_id_and_user_id", unique: true, using: :btree
+  add_index "votes", ["resource_id"], name: "index_votes_on_resource_id", using: :btree
+  add_index "votes", ["user_id"], name: "index_votes_on_user_id", using: :btree
 
 end

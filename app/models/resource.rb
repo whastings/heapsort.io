@@ -2,19 +2,21 @@
 #
 # Table name: resources
 #
-#  id           :integer          not null, primary key
-#  title        :string(150)      not null
-#  domain       :string(75)       not null
-#  path         :string(255)      default("/"), not null
-#  query_string :string(255)
-#  port         :integer          default(80), not null
-#  protocol     :string(10)       default("http"), not null
-#  description  :text
-#  user_id      :integer          not null
-#  created_at   :datetime
-#  updated_at   :datetime
-#  slug         :string(255)
-#  category_id  :integer
+#  id               :integer          not null, primary key
+#  title            :string(150)      not null
+#  domain           :string(75)       not null
+#  path             :string(255)      default("/"), not null
+#  query_string     :string(255)
+#  port             :integer          default(80), not null
+#  protocol         :string(10)       default("http"), not null
+#  description      :text
+#  user_id          :integer          not null
+#  created_at       :datetime
+#  updated_at       :datetime
+#  slug             :string(255)
+#  category_id      :integer
+#  up_votes_count   :integer          default(0), not null
+#  down_votes_count :integer          default(0), not null
 #
 
 class Resource < ActiveRecord::Base
@@ -27,6 +29,7 @@ class Resource < ActiveRecord::Base
   # Associations:
   belongs_to :user
   belongs_to :category
+  has_many :votes
 
   # Validations:
   validates_presence_of :title, :domain, :path, :port, :protocol
@@ -38,7 +41,10 @@ class Resource < ActiveRecord::Base
   validate :validate_url
 
   # Scopes:
-  default_scope { order('resources.title') }
+  default_scope do
+    select('*, (up_votes_count - down_votes_count) AS rating')
+      .order('rating DESC, resources.title')
+  end
 
   def url
     return @failed_url unless @failed_url.nil?

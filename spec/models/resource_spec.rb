@@ -2,19 +2,21 @@
 #
 # Table name: resources
 #
-#  id           :integer          not null, primary key
-#  title        :string(150)      not null
-#  domain       :string(75)       not null
-#  path         :string(255)      default("/"), not null
-#  query_string :string(255)
-#  port         :integer          default(80), not null
-#  protocol     :string(10)       default("http"), not null
-#  description  :text
-#  user_id      :integer          not null
-#  created_at   :datetime
-#  updated_at   :datetime
-#  slug         :string(255)
-#  category_id  :integer
+#  id               :integer          not null, primary key
+#  title            :string(150)      not null
+#  domain           :string(75)       not null
+#  path             :string(255)      default("/"), not null
+#  query_string     :string(255)
+#  port             :integer          default(80), not null
+#  protocol         :string(10)       default("http"), not null
+#  description      :text
+#  user_id          :integer          not null
+#  created_at       :datetime
+#  updated_at       :datetime
+#  slug             :string(255)
+#  category_id      :integer
+#  up_votes_count   :integer          default(0), not null
+#  down_votes_count :integer          default(0), not null
 #
 
 require 'spec_helper'
