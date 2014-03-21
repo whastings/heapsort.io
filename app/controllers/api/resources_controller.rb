@@ -5,5 +5,9 @@ class Api::ResourcesController < ApplicationController
       .paginate(page: params[:page]).decorate
     render "api/resources/index"
   end
+
+  def show
+    @resource = Resource.find(params[:id]).decorate
+  end
 end
 
