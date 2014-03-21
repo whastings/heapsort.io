@@ -17,6 +17,7 @@ var Category = module.exports = Backbone.Model.extend({
   },
 
   parse: function(data) {
+    this.empty();
     var resources = this.resources();
     resources.total = data.resources_count;
     resources.categoryId = this.id;
