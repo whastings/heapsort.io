@@ -1,6 +1,6 @@
 "use strict";
 
-var CompoundView = module.exports = Backbone.Marionette.View.extend({
+var CompoundView = module.exports = Backbone.Marionette.ItemView.extend({
 
   addSubview: function(parentSelector, view) {
     view.parentSelector = parentSelector;
@@ -17,7 +17,7 @@ var CompoundView = module.exports = Backbone.Marionette.View.extend({
 
   render: function() {
     if (this.template) {
-      this.$el.html(this.template());
+      Backbone.Marionette.ItemView.prototype.render.apply(this);
     }
     return this.renderSubviews();
   },

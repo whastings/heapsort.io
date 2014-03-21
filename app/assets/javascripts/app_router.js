@@ -1,12 +1,14 @@
 "use strict";
 
 var HomePage = require('./views/pages/home_page'),
+    ResourcePage = require('./views/pages/resource_page'),
     utils = require('./support/utils');
 
 var AppRouter = module.exports = Backbone.Router.extend({
   routes: {
     '': 'home',
-    'categories/:id': 'showCategory'
+    'categories/:id': 'showCategory',
+    'resources/:id': 'showResource'
   },
 
   home: function() {
@@ -27,6 +29,10 @@ var AppRouter = module.exports = Backbone.Router.extend({
     } else {
       this.homeView.changeCategory(id);
     }
+  },
+
+  showResource: function(id) {
+    swapView.call(this, new ResourcePage({resourceId: id}));
   }
 });
 
