@@ -27,7 +27,7 @@ class Vote < ActiveRecord::Base
     if vote.nil?
       vote = self.new(attributes)
     else
-      return if vote.direction == direction
+      return nil if vote.direction == direction
       vote.resource.decrement!(
         direction == UP_VOTE ? :down_votes_count : :up_votes_count
       )
@@ -37,5 +37,6 @@ class Vote < ActiveRecord::Base
     vote.resource.increment!(
       direction == UP_VOTE ? :up_votes_count : :down_votes_count
     )
+    vote.resource(true).rating
   end
 end

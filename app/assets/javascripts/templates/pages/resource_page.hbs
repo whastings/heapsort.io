@@ -3,10 +3,21 @@
 </div>
 <div class="col-md-11 resource-view content-main" id="js-resource-view">
   <div class="row">
-    <article class="resource-details col-md-12">
+    <article class="resource-details col-md-12 col-lg-8">
       <h1 class="resource-title">
         {{title}}
       </h1>
+      <div class="vote-controls">
+        <a href="#" class="up-vote-btn" id="js-up-vote-btn">
+          <span class="sr-only">Cast an up vote for this resource.</span>
+        </a>
+        <a href="#" class="down-vote-btn" id="js-down-vote-btn">
+          <span class="sr-only">Cast a down vote for this resource.</span>
+        </a>
+      </div>
+      <div class="rating" id="js-resource-rating">
+        {{rating}}
+      </div>
       <div class="resource-url">
         <a href="{{url}}" target="_blank">{{pretty_url}}</a>
       </div>

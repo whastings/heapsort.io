@@ -1,3 +1,41 @@
+.resource-view {
+  padding: 25px;
+  padding-top: 0;
+}
+
+.resource-details {
+  .resource-title {
+    display: inline-block;
+    margin-right: 50px;
+  }
+}
+
 .resource-description {
   margin-top: 20px;
+}
+
+.vote-controls {
+  display: inline-block;
+  margin-right: 10px;
+  position: relative;
+  top: 17px;
+}
+
+.up-vote-btn,
+.down-vote-btn {
+  background-image: url('icon-sprite.png');
+  display: block;
+  height: 33px;
+  width: 50px;
+}
+
+.down-vote-btn {
+  background-position: 0 38px;
+}
+
+.rating {
+  display: inline-block;
+  font-size: 250%;
+  font-weight: bold;
+  line-height: 70px;
 }

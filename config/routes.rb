@@ -13,7 +13,9 @@ WebDevBookmarks::Application.routes.draw do
   get '/add-resource' => 'resources#new', as: :add_resource
 
   namespace 'api', :defaults => { :format => :json } do
-    resources :resources, only: [:show]
+    resources :resources, only: [:show] do
+      resources :votes, only: [:create]
+    end
     resources :categories, only: [:show] do
       resources :resources, only: [:index]
     end

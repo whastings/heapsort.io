@@ -16,6 +16,7 @@
 //= require backbone
 //= require backbone.babysitter/lib/backbone.babysitter.js
 //= require backbone.wreqr/lib/backbone.wreqr.js
+//= require backbone.stickit.js
 //= require backbone.marionette.js
 //= require backbone.marionette/src/marionette.helpers.js
 //= require backbone.marionette/src/marionette.callbacks.js
