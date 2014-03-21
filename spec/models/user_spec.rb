@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :integer          not null, primary key
+#  username        :string(50)       not null
+#  email           :string(100)      not null
+#  password_digest :string(60)
+#  last_sign_in    :datetime
+#  admin           :boolean          default(FALSE), not null
+#  blocked         :boolean          default(FALSE), not null
+#  created_at      :datetime
+#  updated_at      :datetime
+#
+
 require 'spec_helper'
 
 describe User do

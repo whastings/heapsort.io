@@ -1,3 +1,13 @@
+# == Schema Information
+#
+# Table name: categories
+#
+#  id        :integer          not null, primary key
+#  name      :string(100)      not null
+#  parent_id :integer
+#  slug      :string(255)
+#
+
 require 'spec_helper'
 
 describe Category do
