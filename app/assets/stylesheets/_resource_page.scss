@@ -19,7 +19,7 @@
   display: inline-block;
   margin-right: 10px;
   position: relative;
-  top: 17px;
+  top: 24px;
 }
 
 .up-vote-btn,
@@ -31,7 +31,8 @@
 }
 
 .down-vote-btn {
-  background-position: 0 38px;
+  background-position: 0 42px;
+  margin-top: 5px;
 }
 
 .rating {

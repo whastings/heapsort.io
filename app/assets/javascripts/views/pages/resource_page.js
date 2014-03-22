@@ -3,6 +3,7 @@
 var CommentForm = require('../resources/comment_form'),
     CommentsList = require('../resources/comments_list'),
     CompoundView = require('../../support/compound_view'),
+    ControlBar = require('../control_bars/control_bar'),
     Resource = require('../../models/resource'),
     Vote = require('../../models/vote');
 
@@ -28,6 +29,10 @@ var ResourcePage = module.exports = CompoundView.extend({
   initialize: function(options) {
     this.model = new Resource({id: options.resourceId});
     this.model.fetch();
+    this.addSubview(
+      '#js-control-bar',
+      new ControlBar()
+    );
     this.addSubview(
       '#js-comment-form',
       new CommentForm({

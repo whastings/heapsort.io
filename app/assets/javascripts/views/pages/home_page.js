@@ -2,7 +2,8 @@
 
 var Category = require('../../models/category'),
     CategoryBrowser = require('../categories/category_browser'),
-    CompoundView = require('../../support/compound_view');
+    CompoundView = require('../../support/compound_view'),
+    IndexControlBar = require('../control_bars/index_control_bar');
 
 var HomePage = module.exports = CompoundView.extend({
   className: 'row',
@@ -27,6 +28,10 @@ var HomePage = module.exports = CompoundView.extend({
   initialize: function(options) {
     var rootCategory = this.rootCategory = new Category({id: options.categoryId});
     rootCategory.fetch();
+    this.addSubview(
+      '#js-control-bar',
+      new IndexControlBar()
+    );
     this.addSubview(
       '#js-category-browser',
       new CategoryBrowser({

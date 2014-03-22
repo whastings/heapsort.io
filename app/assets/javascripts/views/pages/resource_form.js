@@ -1,13 +1,16 @@
 "use strict";
 
-var Resource = require('../../models/resource');
+var CompoundView = require('../../support/compound_view'),
+    ControlBar = require('../control_bars/control_bar'),
+    Resource = require('../../models/resource');
 
-var ResourceForm = module.exports = Backbone.Marionette.ItemView.extend({
+var ResourceForm = module.exports = CompoundView.extend({
   bindings: {
     '#js-resource-form-title': 'title',
     '#js-resource-form-url': 'url',
     '#js-resource-form-desc': 'description'
   },
+  className: 'row',
   events: {
     'submit form': 'submit'
   },
@@ -15,10 +18,11 @@ var ResourceForm = module.exports = Backbone.Marionette.ItemView.extend({
 
   initialize: function(options) {
     this.model = new Resource();
+    this.addSubview('#js-control-bar', new ControlBar({hideShareLink: true}));
   },
 
   render: function() {
-    Backbone.Marionette.ItemView.prototype.render.apply(this);
+    CompoundView.prototype.render.apply(this);
     this.stickit();
     return this;
   },

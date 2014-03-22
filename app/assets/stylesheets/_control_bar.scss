@@ -1,0 +1,28 @@
+.control-bar {
+  padding-top: 20px;
+}
+
+.control-bar-btn {
+  display: block;
+  font-weight: bold;
+  margin: 0 auto 25px;
+  text-align: center;
+  width: 75px;
+}
+
+.share-resource-link,
+.back-link {
+  background-image: url('icon-sprite.png');
+  display: block;
+  height: 38px;
+  margin: 0 auto;
+  width: 38px;
+}
+
+.share-resource-link {
+  background-position: -55px 0;
+}
+
+.back-link {
+  background-position: -55px -40px;
+}
