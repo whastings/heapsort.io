@@ -40,3 +40,15 @@
   font-weight: bold;
   line-height: 70px;
 }
+
+.comments-list {
+  li {
+    list-style: none;
+  }
+  h2 {
+    margin-bottom: 15px;
+  }
+  ul {
+    padding: 0;
+  }
+}

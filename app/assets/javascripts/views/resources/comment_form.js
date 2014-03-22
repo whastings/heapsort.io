@@ -16,6 +16,11 @@ var CommentForm = module.exports = Backbone.Marionette.ItemView.extend({
   submit: function(event) {
     event.preventDefault();
     var content = this.$('#js-comment-content').val();
-    this.model.save({content: content});
+    this.model.save({content: content}, {success: handleSuccess.bind(this)});
   }
 });
+
+var handleSuccess = function(model) {
+  this.collection.add(model);
+  this.$el[0].reset();
+};

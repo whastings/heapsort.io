@@ -1,0 +1,12 @@
+{{#each items}}
+  <li class="well">
+    {{content}}
+    <div class="comment-meta">
+      By {{author}} on {{posted}}
+    </div>
+  </li>
+{{else}}
+  <li class="alert alert-info">
+    There are no comments for this resource. Be the first to comment.
+  </li>
+{{/each}}

@@ -1,6 +1,7 @@
 "use strict";
 
 var CommentForm = require('../resources/comment_form'),
+    CommentsList = require('../resources/comments_list'),
     CompoundView = require('../../support/compound_view'),
     Resource = require('../../models/resource'),
     Vote = require('../../models/vote');
@@ -29,7 +30,14 @@ var ResourcePage = module.exports = CompoundView.extend({
     this.model.fetch();
     this.addSubview(
       '#js-comment-form',
-      new CommentForm({resourceId: this.model.id})
+      new CommentForm({
+        resourceId: this.model.id,
+        collection: this.model.comments()
+      })
+    );
+    this.addSubview(
+      '#js-comments-list',
+      new CommentsList({collection: this.model.comments()})
     );
   },
 

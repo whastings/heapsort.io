@@ -2,13 +2,14 @@ class Api::CommentsController < ApplicationController
   include AuthenticationHelper
 
   def create
-    comment = Comment.new(comment_params)
-    comment.user_id = current_user.id
-    comment.resource_id = params[:resource_id]
-    if comment.save
-      render json: comment
+    @comment = Comment.new(comment_params)
+    @comment.user_id = current_user.id
+    @comment.resource_id = params[:resource_id]
+    if @comment.save
+      @comment = @comment.decorate
+      render 'api/comments/show'
     else
-      render json: comment.errors.full_messages, status: :unprocessable_entity
+      render json: @comment.errors.full_messages, status: :unprocessable_entity
     end
   end
 
