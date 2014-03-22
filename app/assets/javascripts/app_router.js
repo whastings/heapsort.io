@@ -51,6 +51,8 @@ var swapView = function(view) {
     this.homeView.show();
     return;
   }
+  view.on('render', function() {
+    utils.fixHeight(view.$('.content-main'));
+  });
   this.$rootEl.append(view.render().$el);
-  utils.fixHeight($('.content-main'));
 };
