@@ -14,6 +14,7 @@ WebDevBookmarks::Application.routes.draw do
 
   namespace 'api', :defaults => { :format => :json } do
     resources :resources, only: [:create, :show] do
+      resources :comments, only: [:create]
       resources :votes, only: [:create]
     end
     resources :categories, only: [:show] do
