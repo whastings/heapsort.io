@@ -43,10 +43,14 @@ var AppRouter = module.exports = Backbone.Router.extend({
 });
 
 var swapView = function(view) {
+  this.currentView && this.currentView.remove(); // jshint ignore:line
   if (view !== this.homeView) {
-    this.currentView && this.currentView.remove(); // jshint ignore:line
+    this.currentView = view;
+    this.homeView && this.homeView.hide(); // jshint ignore:line
+  } else if (this.homeView.rendered) {
+    this.homeView.show();
+    return;
   }
-  this.currentView = view;
-  this.$rootEl.html(view.render().$el);
+  this.$rootEl.append(view.render().$el);
   utils.fixHeight($('.content-main'));
 };

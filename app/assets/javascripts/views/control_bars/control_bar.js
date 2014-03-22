@@ -10,6 +10,7 @@ var ControlBar = module.exports = Backbone.Marionette.ItemView.extend({
 
   initialize: function(options) {
     options = options || {};
+    this.templateHelpers = _.clone(ControlBar.prototype.templateHelpers);
     if (options.hideShareLink) {
       this.templateHelpers.showShareLink = false;
     }

@@ -25,11 +25,15 @@ var HomePage = module.exports = CompoundView.extend({
     }});
   },
 
+  hide: function() {
+    this.$el.hide();
+  },
+
   initialize: function(options) {
     var rootCategory = this.rootCategory = new Category({id: options.categoryId});
     rootCategory.fetch();
     this.addSubview(
-      '#js-control-bar',
+      '#js-index-control-bar',
       new IndexControlBar()
     );
     this.addSubview(
@@ -39,6 +43,14 @@ var HomePage = module.exports = CompoundView.extend({
         model: rootCategory
       })
     );
+  },
+
+  onRender: function() {
+    this.rendered = true;
+  },
+
+  show: function() {
+    this.$el.show();
   }
 });
 
