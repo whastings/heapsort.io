@@ -13,6 +13,7 @@ html, body {
 }
 
 .logo {
+  display: inline-block;
   margin-top: -6px;
   margin-right: 5px;
 }
@@ -20,6 +21,9 @@ html, body {
 .brand-heading {
   font-weight: bold;
   font-size: 150%;
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 .slogan {

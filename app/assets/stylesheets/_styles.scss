@@ -1,0 +1,11 @@
+input[type="text"],
+input[type="date"],
+input[type="password"],
+select,
+textarea {
+  @extend .form-control;
+}
+
+img {
+  @extend .img-responsive;
+}
