@@ -34,5 +34,7 @@ module WebDevBookmarks
     config.assets.version = '1.0'
 
     config.assets.paths << "#{Rails.root}/bower_components"
+
+    config.autoload_paths << "#{Rails.root}/app/decorators/concerns"
   end
 end

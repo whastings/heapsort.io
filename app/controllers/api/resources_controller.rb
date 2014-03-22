@@ -20,6 +20,7 @@ class Api::ResourcesController < ApplicationController
 
   def show
     @resource = Resource.find(params[:id]).decorate
+    @comments = @resource.comments.includes(:user).decorate
   end
 
   private
