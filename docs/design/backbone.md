@@ -33,12 +33,15 @@
     + To give extending views ability to render subviews
     + Methods: addSubview, removeSubview, remove, renderSubviews
 - ControlBar
-- BasicControlBar < ControlBar
-    + Includes "Add Resource" link
+- ControlBar
+    + Includes "Share Resource" link, "Back" button
+        * Both are optional to show.
+    + Includes Feed, Favorites, & Settings nav links
 
 ### Home Page
 
 - IndexControlBar < ControlBar
+    + Extends ControlBar to add "drag to subscribe" and "drag to favorite"
     + Events:
         * favorite resource
         * subscribe to category
@@ -51,14 +54,14 @@
 
 ### Resource Show
 
-- Use BasicControlBar
+- Use ControlBar
 - ResourceShow < CompoundView
     + CommentForm
     + CommentsList
 
 ### Add a Resource
 
-- Use BasicControlBar
+- Use ControlBar (with add resource off)
 - ResourceForm
     + CategorySelector
 
@@ -66,6 +69,3 @@
 
 ### Favorites
 
-## Mixins
-
-- BackButton
