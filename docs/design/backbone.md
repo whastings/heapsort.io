@@ -69,3 +69,7 @@
 
 ### Favorites
 
+- FavoritesPage
+    + Use ControlBar
+    + Use ResourcesList
+

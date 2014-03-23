@@ -16,6 +16,7 @@ var Resources = module.exports = Backbone.Collection.extend({
   },
 
   initialize: function(models, options) {
+    options = options || {};
     this.categoryId = options.categoryId;
     this.page = 1;
   }

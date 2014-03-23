@@ -25,6 +25,7 @@ class User < ActiveRecord::Base
   has_one :session, dependent: :destroy
   has_many :favorites
   has_many :resources
+  has_many :favorite_resources, through: :favorites, source: :resource
 
   # Validations:
   validates_presence_of :username, :email

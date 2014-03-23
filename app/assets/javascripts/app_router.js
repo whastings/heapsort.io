@@ -1,6 +1,7 @@
 "use strict";
 
 var HomePage = require('./views/pages/home_page'),
+    FavoritesPage = require('./views/pages/favorites_page'),
     ResourceForm = require('./views/pages/resource_form'),
     ResourcePage = require('./views/pages/resource_page'),
     utils = require('./support/utils');
@@ -9,6 +10,7 @@ var AppRouter = module.exports = Backbone.Router.extend({
   routes: {
     '': 'home',
     'categories/:id': 'showCategory',
+    'favorites': 'showFavorites',
     'resources/:id': 'showResource',
     'share-resource': 'showResourceForm'
   },
@@ -31,6 +33,10 @@ var AppRouter = module.exports = Backbone.Router.extend({
     } else {
       this.homeView.changeCategory(id);
     }
+  },
+
+  showFavorites: function() {
+    swapView.call(this, new FavoritesPage());
   },
 
   showResource: function(id) {

@@ -11,6 +11,11 @@ class Api::FavoritesController < ApplicationController
     end
   end
 
+  def index
+    @resources = current_user.favorite_resources.decorate
+    render 'api/resources/index'
+  end
+
   private
 
   def favorite_params
