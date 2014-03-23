@@ -2,7 +2,3 @@
 # This is a simple post deploy hook executed after your application
 # is deployed and started.  This script gets executed directly, so
 # it could be python, php, ruby, etc.
-
-echo "Compiling assets"
-cd $OPENSHIFT_REPO_DIR
-bundle exec rake assets:precompile RAILS_ENV=production FORCE_ASSET_PRECOMPILE=true

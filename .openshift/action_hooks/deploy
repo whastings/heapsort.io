@@ -6,6 +6,8 @@
 
 source $OPENSHIFT_CARTRIDGE_SDK_BASH
 
+export RAILS_ENV=production
+
 set -e
 
 if [ ! -z "$OPENSHIFT_POSTGRESQL_DB_HOST" ]; then
