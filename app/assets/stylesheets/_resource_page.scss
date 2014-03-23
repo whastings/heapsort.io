@@ -24,14 +24,14 @@
 
 .up-vote-btn,
 .down-vote-btn {
-  background-image: url('icon-sprite.png');
+  background-image: image-url('icon-sprite.png');
   display: block;
   height: 33px;
   width: 50px;
 }
 
 .down-vote-btn {
-  background-position: 0 42px;
+  background-position: 0 96px;
   margin-top: 5px;
 }
 
