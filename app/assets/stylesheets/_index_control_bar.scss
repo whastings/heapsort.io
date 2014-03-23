@@ -1,0 +1,23 @@
+.drop-region {
+  border: 3px $brand-primary dashed;
+  height: 120px;
+  margin: 0 auto;
+  width: 120px;
+}
+
+.favorite-drop {
+  color: $brand-primary;
+  font-weight: bold;
+  text-align: center;
+  .favorite-icon {
+    margin: 5px auto 15px;
+  }
+}
+
+.favorite-icon {
+  background-image: url('icon-sprite.png');
+  background-position: -2px -76px;
+  display: block;
+  height: 40px;
+  width: 42px;
+}

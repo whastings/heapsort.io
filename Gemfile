@@ -9,6 +9,7 @@ gem 'friendly_id', '~> 5.0.0'
 gem 'backbone-on-rails'
 gem 'handlebars_assets'
 gem 'draper', '~> 1.3'
+gem 'jquery-ui-rails'
 
 # Use PostgreSQL as the database for Active Record
 gem 'pg', '0.15.1'

@@ -21,8 +21,8 @@ var ResourcesListView = module.exports = Backbone.Marionette.CollectionView.exte
     } else {
       this.$pageButton && this.$pageButton.remove();
     }
+    resourceView.$el.draggable({helper: 'clone', opacity: 0.7});
   }
-
 });
 
 var loadMoreButton = function() {
