@@ -36,5 +36,11 @@ module WebDevBookmarks
     config.assets.paths << "#{Rails.root}/bower_components"
 
     config.autoload_paths << "#{Rails.root}/app/decorators/concerns"
+
+    # Delay precompiling of assets on deploy until I ask for them.
+    if ENV['FORCE_ASSET_PRECOMPILE'].nil? || ENV['FORCE_ASSET_PRECOMPILE'] != 'true'
+      puts "Skipping precompile: FORCE_ASSET_PRECOMPILE='#{ENV['FORCE_ASSET_PRECOMPILE']}'"
+      config.assets.precompile = []
+    end
   end
 end
