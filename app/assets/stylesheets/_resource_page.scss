@@ -4,6 +4,10 @@
 }
 
 .resource-details {
+  .favorite-icon {
+    display: inline-block;
+    float: none;
+  }
   .resource-title {
     display: inline-block;
     margin-right: 50px;
@@ -20,19 +24,6 @@
   margin-right: 10px;
   position: relative;
   top: 24px;
-}
-
-.up-vote-btn,
-.down-vote-btn {
-  background-image: image-url('icon-sprite.png');
-  display: block;
-  height: 33px;
-  width: 50px;
-}
-
-.down-vote-btn {
-  background-position: 0 96px;
-  margin-top: 5px;
 }
 
 .rating {
