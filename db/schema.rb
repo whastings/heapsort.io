@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140322233221) do
+ActiveRecord::Schema.define(version: 20140324180659) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,16 @@ ActiveRecord::Schema.define(version: 20140322233221) do
   add_index "categories", ["name"], name: "index_categories_on_name", using: :btree
   add_index "categories", ["parent_id"], name: "index_categories_on_parent_id", using: :btree
   add_index "categories", ["slug"], name: "index_categories_on_slug", unique: true, using: :btree
+
+  create_table "category_subscriptions", force: true do |t|
+    t.integer  "subscriber_id", null: false
+    t.integer  "category_id",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "category_subscriptions", ["category_id"], name: "index_category_subscriptions_on_category_id", using: :btree
+  add_index "category_subscriptions", ["subscriber_id", "category_id"], name: "index_category_subscriptions_on_subscriber_id_and_category_id", unique: true, using: :btree
 
   create_table "comments", force: true do |t|
     t.text     "content"
