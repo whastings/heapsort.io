@@ -11,8 +11,16 @@ class Api::FavoritesController < ApplicationController
     end
   end
 
+  def destroy
+    favorite = Favorite.find(params[:id])
+    return unless favorite.user_id == current_user.id
+    favorite.destroy
+    render json: favorite
+  end
+
   def index
-    @resources = current_user.favorite_resources.decorate
+    @resources = current_user.favorite_resources
+      .select('favorites.id AS favorite_id').decorate
     render 'api/resources/index'
   end
 

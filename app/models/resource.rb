@@ -43,8 +43,19 @@ class Resource < ActiveRecord::Base
 
   # Scopes:
   default_scope do
-    select('*, (up_votes_count - down_votes_count) AS rating')
+    select('resources.*, (up_votes_count - down_votes_count) AS rating')
       .order('rating DESC, resources.title')
+  end
+
+  scope :with_favorites, ->(user_id) do
+    joins_query = <<-SQL
+      LEFT OUTER JOIN
+        favorites
+      ON resources.id = favorites.resource_id
+        AND favorites.user_id = '%s'
+    SQL
+    joins_query = self.sanitize_sql_for_conditions([joins_query, user_id])
+    joins(joins_query).select('favorites.id AS favorite_id')
   end
 
   def url

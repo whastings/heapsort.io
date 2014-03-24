@@ -20,7 +20,7 @@ WebDevBookmarks::Application.routes.draw do
     resources :categories, only: [:show] do
       resources :resources, only: [:index]
     end
-    resources :favorites, only: [:create, :index]
+    resources :favorites, only: [:create, :destroy, :index]
   end
 
 end

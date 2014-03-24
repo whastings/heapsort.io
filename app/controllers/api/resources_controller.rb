@@ -14,7 +14,11 @@ class Api::ResourcesController < ApplicationController
 
   def index
     @resources = Resource.where(category_id: params[:category_id])
-      .paginate(page: params[:page]).decorate
+      .paginate(page: params[:page])
+    if current_user
+      @resources = @resources.with_favorites(current_user.id)
+    end
+    @resources = @resources.decorate
     render "api/resources/index"
   end
 
