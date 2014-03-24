@@ -12,9 +12,15 @@ class Api::ResourcesController < ApplicationController
     end
   end
 
+  def feed
+    @resources = current_user.category_feed_items.includes(:user)
+      .with_favorites(current_user.id).reorder('created_at DESC').decorate
+    render 'api/resources/index'
+  end
+
   def index
     @resources = Resource.where(category_id: params[:category_id])
-      .paginate(page: params[:page])
+      .includes(:user).paginate(page: params[:page])
     if current_user
       @resources = @resources.with_favorites(current_user.id)
     end

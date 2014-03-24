@@ -12,6 +12,7 @@
 class CategorySubscription < ActiveRecord::Base
   belongs_to :category
   belongs_to :subscriber, foreign_key: :subscriber_id, class_name: 'User'
+  has_many :feed_items, through: :category, source: :resources
 
   validates :subscriber, :category, presence: true
 end

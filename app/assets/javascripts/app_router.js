@@ -2,6 +2,7 @@
 
 var HomePage = require('./views/pages/home_page'),
     FavoritesPage = require('./views/pages/favorites_page'),
+    FeedPage = require('./views/pages/feed_page'),
     ResourceForm = require('./views/pages/resource_form'),
     ResourcePage = require('./views/pages/resource_page'),
     utils = require('./support/utils');
@@ -11,6 +12,7 @@ var AppRouter = module.exports = Backbone.Router.extend({
     '': 'home',
     'categories/:id': 'showCategory',
     'favorites': 'showFavorites',
+    'feed': 'showFeed',
     'resources/:id': 'showResource',
     'share-resource': 'showResourceForm'
   },
@@ -37,6 +39,10 @@ var AppRouter = module.exports = Backbone.Router.extend({
 
   showFavorites: function() {
     swapView.call(this, new FavoritesPage());
+  },
+
+  showFeed: function() {
+    swapView.call(this, new FeedPage());
   },
 
   showResource: function(id) {

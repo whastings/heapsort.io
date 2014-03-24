@@ -13,6 +13,7 @@ WebDevBookmarks::Application.routes.draw do
   get '/add-resource' => 'resources#new', as: :add_resource
 
   namespace 'api', :defaults => { :format => :json } do
+    get 'feed' => 'resources#feed'
     resources :resources, only: [:create, :show] do
       resources :comments, only: [:create]
       resources :votes, only: [:create]

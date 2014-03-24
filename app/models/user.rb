@@ -26,6 +26,7 @@ class User < ActiveRecord::Base
   has_many :category_subscriptions, foreign_key: :subscriber_id
   has_many :favorites
   has_many :resources
+  has_many :category_feed_items, through: :category_subscriptions, source: :feed_items
   has_many :favorite_resources, through: :favorites, source: :resource
 
   # Validations:
