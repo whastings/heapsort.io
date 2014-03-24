@@ -23,7 +23,11 @@ class Api::ResourcesController < ApplicationController
   end
 
   def show
-    @resource = Resource.find(params[:id]).decorate
+    @resource = Resource.where(id: params[:id])
+    if current_user
+      @resource = @resource.with_favorites(current_user.id)
+    end
+    @resource = @resource.first.decorate
     @comments = @resource.comments.includes(:user).decorate
   end
 

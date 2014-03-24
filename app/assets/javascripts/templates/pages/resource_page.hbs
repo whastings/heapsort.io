@@ -6,6 +6,15 @@
     <article class="resource-details col-md-12">
       <h1 class="resource-title">
         {{title}}
+        {{#if favorite_id}}
+          <a href="#" class="favorite-icon js-remove-favorite-btn"
+             title="Remove from favorites"></a>
+        {{else}}
+          <a href="#" class="js-add-favorite-btn icon-link"
+             title="Add to favorites">
+            <span class="icon-star-o"></span>
+          </a>
+        {{/if}}
       </h1>
       <div class="vote-controls">
         <a href="#" class="up-vote-btn" id="js-up-vote-btn">

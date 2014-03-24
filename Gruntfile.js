@@ -28,6 +28,7 @@ module.exports = function(grunt) {
           jsDir + '/app.js',
           jsDir + '/app_router.js',
           jsDir + '/models/**/*.js',
+          jsDir + '/mixins/**/*.js',
           jsDir + '/support/**/*.js',
           jsDir + '/views/**/*.js',
           jsDir + '/collections/**/*.js'

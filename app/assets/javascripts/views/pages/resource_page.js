@@ -4,6 +4,7 @@ var CommentForm = require('../resources/comment_form'),
     CommentsList = require('../resources/comments_list'),
     CompoundView = require('../../support/compound_view'),
     ControlBar = require('../control_bars/control_bar'),
+    FavoriteControls = require('../../mixins/favorite_controls'),
     Resource = require('../../models/resource'),
     Vote = require('../../models/vote');
 
@@ -17,7 +18,9 @@ var ResourcePage = module.exports = CompoundView.extend({
     'click #js-down-vote-btn': 'downVote'
   },
   modelEvents: {
-    'sync': 'render'
+    'favorited': 'render',
+    'sync': 'render',
+    'unfavorited': 'render'
   },
   template: HandlebarsTemplates['pages/resource_page'],
 
@@ -58,6 +61,8 @@ var ResourcePage = module.exports = CompoundView.extend({
     recordVote.call(this, 'up');
   }
 });
+
+$.extend(true, ResourcePage.prototype, FavoriteControls);
 
 var recordVote = function(direction) {
   var vote = new Vote({
