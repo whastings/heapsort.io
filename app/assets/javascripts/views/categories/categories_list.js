@@ -25,6 +25,11 @@ var CategoriesList = module.exports = Backbone.Marionette.ItemView.extend({
       this.childTransition ? animateChildTransition.call(this, content) :
         animateParentTransition.call(this, content);
     }
+    this.$('.category-link').draggable({
+      helper: 'clone',
+      opacity: 0.7,
+      appendTo: $('#js-content')
+    });
     return this;
   },
 

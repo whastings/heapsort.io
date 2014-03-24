@@ -1,15 +1,23 @@
 .drop-region {
   border: 3px $brand-primary dashed;
+  color: $brand-primary;
+  font-weight: bold;
   height: 120px;
-  margin: 0 auto;
+  margin: 0 auto 20px;
+  text-align: center;
   width: 120px;
+  span {
+    display: block;
+    font-size: 40px;
+    margin: 5px auto 5px;
+  }
 }
 
 .favorite-drop {
-  color: $brand-primary;
-  font-weight: bold;
-  text-align: center;
   .favorite-icon {
-    margin: 5px auto 15px;
   }
+}
+
+.category-drop {
+
 }
