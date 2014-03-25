@@ -17,6 +17,7 @@
 #  category_id      :integer
 #  up_votes_count   :integer          default(0), not null
 #  down_votes_count :integer          default(0), not null
+#  resource_type_id :integer
 #
 
 require 'spec_helper'

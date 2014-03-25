@@ -54,8 +54,25 @@ def random_seed
   end
 end
 
+def create_resource_types
+  return unless ResourceType.count == 0
+  ResourceType.create!([
+    {name: 'Article'},
+    {name: 'Book'},
+    {name: 'Event'},
+    {name: 'Framework'},
+    {name: 'Library'},
+    {name: 'News Source'},
+    {name: 'Presentation'},
+    {name: 'Reference'},
+    {name: 'Tool'},
+    {name: 'Video'}
+  ])
+end
+
 ActiveRecord::Base.transaction do
 
   # random_seed
+  create_resource_types
 
 end

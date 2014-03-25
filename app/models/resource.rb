@@ -17,6 +17,7 @@
 #  category_id      :integer
 #  up_votes_count   :integer          default(0), not null
 #  down_votes_count :integer          default(0), not null
+#  resource_type_id :integer
 #
 
 class Resource < ActiveRecord::Base
@@ -27,6 +28,7 @@ class Resource < ActiveRecord::Base
   friendly_id :title, use: :slugged
 
   # Associations:
+  belongs_to :resource_type
   belongs_to :user
   belongs_to :category
   has_many :comments

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140324180659) do
+ActiveRecord::Schema.define(version: 20140325172109) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,12 @@ ActiveRecord::Schema.define(version: 20140324180659) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
+  create_table "resource_types", force: true do |t|
+    t.string   "name",       limit: 50
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "resources", force: true do |t|
     t.string   "title",            limit: 150,                  null: false
     t.string   "domain",           limit: 75,                   null: false
@@ -85,11 +91,13 @@ ActiveRecord::Schema.define(version: 20140324180659) do
     t.integer  "category_id"
     t.integer  "up_votes_count",               default: 0,      null: false
     t.integer  "down_votes_count",             default: 0,      null: false
+    t.integer  "resource_type_id"
   end
 
   add_index "resources", ["created_at"], name: "index_resources_on_created_at", using: :btree
   add_index "resources", ["domain", "path", "query_string"], name: "index_resources_on_domain_and_path_and_query_string", unique: true, using: :btree
   add_index "resources", ["down_votes_count"], name: "index_resources_on_down_votes_count", using: :btree
+  add_index "resources", ["resource_type_id"], name: "index_resources_on_resource_type_id", using: :btree
   add_index "resources", ["slug"], name: "index_resources_on_slug", unique: true, using: :btree
   add_index "resources", ["up_votes_count"], name: "index_resources_on_up_votes_count", using: :btree
   add_index "resources", ["user_id"], name: "index_resources_on_user_id", using: :btree

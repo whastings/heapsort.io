@@ -23,6 +23,7 @@ WebDevBookmarks::Application.routes.draw do
     end
     resources :category_subscriptions, only: [:create, :destroy, :index]
     resources :favorites, only: [:create, :destroy, :index]
+    resources :resource_types, only: [:index]
   end
 
 end
