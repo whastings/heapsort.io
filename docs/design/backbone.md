@@ -10,6 +10,8 @@
     + urlRoot: /api/categories
     + childCategories
     + resources
+- ResourceType
+    + urlRoot: /api/resource_types
 - Tag
 - Comment
     + urlRoot: /api/resources/[resource_id]
@@ -18,6 +20,7 @@
 
 - Resources
     + url: /api/categories/[category_id]/resources
+- ResourceTypes
 - Categories
     + url: /api/categories
 - Tags

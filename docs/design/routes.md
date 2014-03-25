@@ -49,3 +49,6 @@
 
 - POST /api/resources/:resource_id/votes: Vote on a resource
 
+### Resource Types
+- GET /api/resource_types: Index of all bookmark types
+
