@@ -25,4 +25,36 @@ class Category < ActiveRecord::Base
   # Scopes:
   default_scope -> { order(:name) }
 
+  def absolute_name
+    category_names = [self.name]
+    self.ancestors.each do |ancestor|
+      category_names << ancestor.name
+    end
+    category_names.reverse.join('/')
+  end
+
+  def ancestors
+    ancestors_query = <<-SQL
+      WITH RECURSIVE ancestors(id, name, parent_id) AS (
+        SELECT
+          id, name, parent_id
+        FROM
+          categories
+        WHERE
+          id = ?
+      UNION ALL
+        SELECT
+          categories.id, categories.name, categories.parent_id
+        FROM
+          ancestors
+        INNER JOIN
+          categories
+        ON
+          categories.id = ancestors.parent_id
+      )
+      SELECT * FROM ancestors
+    SQL
+    self.class.find_by_sql([ancestors_query, self.parent_id])
+  end
+
 end
