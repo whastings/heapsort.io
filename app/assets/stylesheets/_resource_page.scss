@@ -4,13 +4,14 @@
 }
 
 .resource-details {
-  .favorite-icon {
-    display: inline-block;
-    float: none;
-  }
   .resource-title {
     display: inline-block;
     margin-right: 50px;
+    .icon-link {
+      display: inline-block;
+      font-size: 95%;
+      float: none;
+    }
   }
 }
 

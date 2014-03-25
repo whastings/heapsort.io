@@ -7,8 +7,10 @@
       <h1 class="resource-title">
         {{title}}
         {{#if favorite_id}}
-          <a href="#" class="favorite-icon js-remove-favorite-btn"
-             title="Remove from favorites"></a>
+          <a href="#" class="js-remove-favorite-btn icon-link"
+             title="Remove from favorites">
+            <span class="icon-star"></span>
+          </a>
         {{else}}
           <a href="#" class="js-add-favorite-btn icon-link"
              title="Add to favorites">

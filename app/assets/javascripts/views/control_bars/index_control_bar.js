@@ -7,16 +7,9 @@ var CategorySubscription = require('../../models/category_subscription'),
 
 var IndexControlBar = module.exports = CompoundView.extend({
   events: {
-    'drop #js-favorite-drop': 'addFavorite',
     'drop #js-category-drop': 'subscribeToCategory'
   },
   template: HandlebarsTemplates['control_bars/index_control_bar'],
-
-  addFavorite: function(event, ui) {
-    var resourceId = ui.draggable.children().first().data('id');
-    var favorite = new Favorite({resource_id: resourceId});
-    favorite.save();
-  },
 
   initialize: function() {
     this.addSubview(
