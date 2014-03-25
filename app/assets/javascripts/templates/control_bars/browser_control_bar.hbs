@@ -1,0 +1,11 @@
+<h2>Filter By</h2>
+
+<h3>Type</h3>
+
+{{#each types}}
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" value="{{id}}" class="js-type-filter"> {{name}}
+    </label>
+  </div>
+{{/each}}

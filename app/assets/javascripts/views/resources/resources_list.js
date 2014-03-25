@@ -3,6 +3,9 @@
 var ResourceTeaser = require('./resource_teaser');
 
 var ResourcesListView = module.exports = Backbone.Marionette.CollectionView.extend({
+  collectionEvents: {
+    'sort': 'render'
+  },
   events: {
     'click #js-resource-page-btn': 'loadPage'
   },

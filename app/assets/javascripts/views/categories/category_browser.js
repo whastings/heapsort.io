@@ -1,6 +1,7 @@
 "use strict";
 
-var CategoriesList = require('./categories_list'),
+var BrowserControlBar = require('../control_bars/browser_control_bar'),
+    CategoriesList = require('./categories_list'),
     CompoundView = require('../../support/compound_view'),
     ResourcesList = require('../resources/resources_list');
 
@@ -30,6 +31,10 @@ var CategoryBrowser = module.exports = CompoundView.extend({
     );
     this.resourcesList = new ResourcesList({collection: this.model.resources()});
     this.addSubview('#js-resources-list', this.resourcesList);
+    this.addSubview(
+      '#js-browser-controls',
+      new BrowserControlBar({collection: this.model.resources()})
+    );
     this.listenToOnce(this.model, 'sync', this.render);
   },
 
