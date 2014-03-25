@@ -19,9 +19,9 @@ WebDevBookmarks::Application.routes.draw do
       resources :votes, only: [:create]
     end
     resources :categories, only: [:show] do
-      resources :category_subscriptions, only: [:create]
       resources :resources, only: [:index]
     end
+    resources :category_subscriptions, only: [:create, :destroy, :index]
     resources :favorites, only: [:create, :destroy, :index]
   end
 

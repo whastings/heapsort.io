@@ -12,4 +12,16 @@ class Api::CategorySubscriptionsController < ApplicationController
              status: :unprocessable_entity
     end
   end
+
+  def destroy
+    subscription = CategorySubscription.find(params[:id])
+    return unless subscription.subscriber_id == current_user.id
+    subscription.destroy
+    render json: subscription
+  end
+
+  def index
+    @subscriptions = current_user.category_subscriptions.eager_load(:category)
+    render 'api/category_subscriptions/index'
+  end
 end

@@ -1,0 +1,13 @@
+<h3>Category Subscriptions</h3>
+
+<ul class="category-subscriptions">
+  {{#each items}}
+    <li>
+      <a href="#/categories/{{category_id}}">{{category_name}}</a>
+      <a href="#" class="js-remove-catsub-btn">
+        <span class="icon-times" title="Remove subscription" data-id="{{id}}">
+        </span>
+      </a>
+    </li>
+  {{/each}}
+</ul>

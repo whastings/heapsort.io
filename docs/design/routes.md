@@ -33,6 +33,7 @@
 
 - POST /api/categories/:category_id/category_subscriptions: Add a category subscription
 - DELETE /api/category_subscriptions/:id: Delete a category subscription
+- GET /api/category_subscriptions: Subscriptions Index
 
 ### Favorites
 

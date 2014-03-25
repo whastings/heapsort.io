@@ -15,4 +15,8 @@ class CategorySubscription < ActiveRecord::Base
   has_many :feed_items, through: :category, source: :resources
 
   validates :subscriber, :category, presence: true
+
+  def category_name
+    self.category.absolute_name
+  end
 end
