@@ -3,7 +3,7 @@
 ## User
 - Associations:
     + has_many comments, votes, user_subscriptions, category_subscriptions, favorites
-    + has_many favorited_bookmarks through favorites
+    + has_many favorited_resources through favorites
     + has_one session
 - Attributes:
     + username: required, unique
@@ -26,11 +26,11 @@
 - Indexes:
     + token
 
-## Bookmark:
+## Resource:
 - Associations:
     + has_many comments, votes, favorites, taggings, reports
     + has_many tags through taggings
-    + belongs_to user, category, bookmark_type
+    + belongs_to user, category, resource_type
 - Attributes:
     + title: required
     + domain: required
@@ -39,7 +39,7 @@
     + port: required, default: 80
     + protocol (http or https): required, default: http
     + category_id: required
-    + bookmark_type_id: required
+    + resource_type_id: required
     + description
     + user_id: required
 Indexes:
@@ -47,33 +47,33 @@ Indexes:
     + domain
     + path
     + user_id
-    + bookmark_type_id
+    + resource_type_id
 
 ## Comment:
 - Associations:
-    + belongs_to user, bookmark
+    + belongs_to user, resource
 - Attributes:
     + content: required
-    + bookmark_id: required
+    + resource_id: required
     + user_id: required
 - Indexes:
-    + bookmark_id
+    + resource_id
     + user_id
 
 ## Vote
 - Associations:
-    + belongs_to user, bookmark
+    + belongs_to user, resource
 - Attributes:
     + direction (up or down): required
-    + bookmark_id: required
+    + resource_id: required
     + user_id: required
 - Indexes:
-    + bookmark_id
+    + resource_id
 
 ## Category
 - Associations:
     + belongs_to parent_category
-    + has_many children, bookmarks
+    + has_many children, resources
 - Attributes:
     + name: required
     + parent_id
@@ -81,10 +81,10 @@ Indexes:
     + parent_id
     + [name, parent_id], unique: true
 
-## BookmarkType
+## ResourceType
 - (e.g. article, tutorial, reference, video, video tutorial)
 - Associations:
-    + has_many bookmarks
+    + has_many resources
 - Attributes:
     + name: required
 
@@ -108,18 +108,18 @@ Indexes:
 
 ## Favorite
 - Associations:
-    + belongs_to user, bookmark
+    + belongs_to user, resource
 - Attributes:
-    + bookmark_id: required
+    + resource_id: required
     + user_id: required
 - Indexes:
     + user_id
 
 ## Report
 - Associations:
-    + belongs_to user, bookmark
+    + belongs_to user, resource
 - Attributes:
-    + bookmark_id: required
+    + resource_id: required
     + user_id (user making the report): required
     + type (duplicate, inappropriate, spam, miscategorized): required
         * Need Report Type model???
@@ -130,11 +130,11 @@ Indexes:
 
 ## Tagging
 - Associations:
-    + belongs_to tag, bookmark
+    + belongs_to tag, resource
 - Attributes:
     + tag_id: required
-    + bookmark_id: required
+    + resource_id: required
 - Indexes:
     + tag_id
-    + bookmark_id
+    + resource_id
 
