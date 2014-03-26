@@ -3,7 +3,8 @@
 var CategorySubscription = require('../../models/category_subscription'),
     CompoundView = require('../../support/compound_view'),
     ControlBar = require('./control_bar'),
-    Favorite = require('../../models/favorite');
+    Favorite = require('../../models/favorite'),
+    notice = require('../../support/notice');
 
 var IndexControlBar = module.exports = CompoundView.extend({
   events: {
@@ -19,12 +20,15 @@ var IndexControlBar = module.exports = CompoundView.extend({
   },
 
   onRender: function() {
-    this.$('.drop-region').droppable({tolerance: 'touch'});
+    this.$('.drop-region').droppable({tolerance: 'touch', hoverClass: 'hover'});
   },
 
   subscribeToCategory: function(event, ui) {
     var categoryId = ui.draggable.data('id');
     var subscription = new CategorySubscription({category_id: categoryId});
-    subscription.save();
+    subscription.save(
+      {},
+      {success: notice.display.bind(null, 'Subscription saved!')}
+    );
   }
 });

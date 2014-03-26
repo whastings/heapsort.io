@@ -6,6 +6,10 @@
   margin: 0 auto 20px;
   text-align: center;
   width: 120px;
+  &.hover {
+    border-color: $link-hover-color;
+    color: $link-hover-color;
+  }
   span {
     display: block;
     font-size: 40px;

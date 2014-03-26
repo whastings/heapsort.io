@@ -9,3 +9,16 @@ textarea {
 img {
   @extend .img-responsive;
 }
+
+.notice {
+  @extend .alert;
+  @extend .alert-info;
+  box-shadow: 4px 4px 6px #082938;
+  display: none;
+  font-size: 120%;
+  left: 50%;
+  margin-left: -150px;
+  position: fixed;
+  top: 150px;
+  width: 300px;
+}
