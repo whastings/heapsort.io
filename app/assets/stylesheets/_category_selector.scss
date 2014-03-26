@@ -1,0 +1,18 @@
+.category-selector {
+  border: 1px #000 solid;
+  margin-bottom: 20px;
+  overflow-x: auto;
+}
+
+.category-selector-col {
+  float: left;
+  height: 300px;
+  list-style: none;
+  overflow-y: auto;
+  margin: 0;
+  padding: 15px 15px 0;
+  width: 20%;
+  .selected {
+    @extend %background-hover;
+  }
+}

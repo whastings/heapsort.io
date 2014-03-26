@@ -1,6 +1,11 @@
 class Api::CategoriesController < ApplicationController
   include AuthenticationHelper
 
+  def index
+    @categories = Category.all
+    render 'api/categories/index'
+  end
+
   def show
     if params[:id].to_i == 0
       @category = Category.new(name: 'root').decorate

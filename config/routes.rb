@@ -23,7 +23,7 @@ WebDevBookmarks::Application.routes.draw do
       resources :comments, only: [:create]
       resources :votes, only: [:create]
     end
-    resources :categories, only: [:show] do
+    resources :categories, only: [:index, :show] do
       resources :resources, only: [:index]
     end
     resources :category_subscriptions, only: [:create, :destroy, :index]

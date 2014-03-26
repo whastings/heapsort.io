@@ -40,7 +40,7 @@ class Api::ResourcesController < ApplicationController
   private
 
   def resource_params
-    params.permit(:title, :url, :description, :resource_type_id)
+    params.permit(:title, :url, :description, :resource_type_id, :category_id)
   end
 end
 

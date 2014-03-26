@@ -1,6 +1,7 @@
 "use strict";
 
-var CompoundView = require('../../support/compound_view'),
+var CategorySelector = require('../categories/category_selector'),
+    CompoundView = require('../../support/compound_view'),
     ControlBar = require('../control_bars/control_bar'),
     Resource = require('../../models/resource'),
     ResourceTypes = require('../../collections/resource_types');
@@ -28,6 +29,8 @@ var ResourceForm = module.exports = CompoundView.extend({
   initialize: function(options) {
     this.model = new Resource();
     this.addSubview('#js-control-bar', new ControlBar({hideShareLink: true}));
+    this.categorySelector = new CategorySelector();
+    this.addSubview('#js-category-selector', this.categorySelector);
     this.resourceTypes = new ResourceTypes();
     this.resourceTypes.fetch({success: this.render.bind(this)});
   },
@@ -40,7 +43,11 @@ var ResourceForm = module.exports = CompoundView.extend({
 
   submit: function(event) {
     event.preventDefault();
-    this.model.save({}, {success: handleSuccess.bind(this)});
+    var categoryId = this.categorySelector.currentCategory;
+    this.model.save(
+      {category_id: categoryId},
+      {success: handleSuccess.bind(this)}
+    );
   }
 });
 
