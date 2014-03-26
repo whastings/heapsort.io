@@ -7,8 +7,12 @@ html, body {
   color: #fff;
   height: 35px;
   padding: 2px 25px 0;
-  a {
+  a,
+  input {
     color: #fff;
+    &:hover {
+      color: #fff;
+    }
   }
 }
 
@@ -35,6 +39,9 @@ html, body {
 
 .auth-links {
   line-height: 28px;
+  input {
+    padding-top: 0;
+  }
 }
 
 .messages {
