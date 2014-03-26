@@ -1,10 +1,15 @@
 <% provide(:page_title, 'Sign In') %>
-<h1>Sign In</h1>
 
-<%= bootstrap_form_for(:session, url: sessions_path) do |f| %>
-  <%= f.field :email_field, :email %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <h1>Sign In</h1>
 
-  <%= f.field :password_field, :password %>
+    <%= bootstrap_form_for(:session, url: sessions_path) do |f| %>
+      <%= f.field :email_field, :email %>
 
-  <%= f.submit 'Sign in' %>
-<% end %>
+      <%= f.field :password_field, :password %>
+
+      <%= f.submit 'Sign in' %>
+    <% end %>
+  </div>
+</div>
