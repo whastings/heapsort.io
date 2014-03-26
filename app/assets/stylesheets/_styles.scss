@@ -26,3 +26,9 @@ img {
 .alert-hidden {
   display: none;
 }
+
+.icon-link {
+  &:hover {
+    text-decoration: none;
+  }
+}

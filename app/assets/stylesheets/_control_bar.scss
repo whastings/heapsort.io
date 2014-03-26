@@ -17,4 +17,11 @@
   margin: 0 auto 25px;
   text-align: center;
   width: 75px;
+  &:hover {
+    text-decoration: none;
+  }
+  span {
+    display: block;
+    font-size: 38px;
+  }
 }
