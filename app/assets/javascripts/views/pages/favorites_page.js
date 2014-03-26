@@ -17,6 +17,7 @@ var FavoritesPage = module.exports = CompoundView.extend({
       self.collection.forEach(function(resource) {
         self.listenTo(resource, 'unfavorited', self.removeFavorite);
       });
+      checkEmpty.call(self);
     }});
     this.resourcesList = new ResourcesList({collection: this.collection});
     this.addSubview('#js-favorites-list', this.resourcesList);
@@ -25,5 +26,12 @@ var FavoritesPage = module.exports = CompoundView.extend({
   removeFavorite: function(resource) {
     this.stopListening(resource);
     this.collection.remove(resource);
+    checkEmpty.call(this);
   }
 });
+
+var checkEmpty = function() {
+  if (!this.collection.length) {
+    this.$('.alert-hidden').show();
+  }
+};
