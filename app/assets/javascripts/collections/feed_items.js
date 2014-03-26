@@ -3,5 +3,7 @@
 var Resources = require('./resources');
 
 var FeedItems = module.exports = Resources.extend({
-  url: '/api/feed'
+  url: function() {
+    return '/api/feed?page=' + this.page;
+  }
 });

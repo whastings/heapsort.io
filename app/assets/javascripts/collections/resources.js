@@ -19,6 +19,13 @@ var Resources = module.exports = Backbone.Collection.extend({
     options = options || {};
     this.categoryId = options.categoryId;
     this.page = 1;
+  },
+
+  parse: function(data) {
+    if (data.total) {
+      this.total = data.total;
+    }
+    return data.resources;
   }
 
 });

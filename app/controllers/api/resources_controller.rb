@@ -14,7 +14,11 @@ class Api::ResourcesController < ApplicationController
 
   def feed
     @resources = current_user.category_feed_items.includes(:user)
-      .with_favorites(current_user.id).reorder('created_at DESC').decorate
+      .with_favorites(current_user.id).reorder('created_at DESC')
+      .paginate(page: params[:page]).decorate
+    if (params[:page].nil? || params[:page].to_i == 1)
+      @total = current_user.category_feed_items.count
+    end
     render 'api/resources/index'
   end
 
