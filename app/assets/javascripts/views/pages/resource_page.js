@@ -10,7 +10,7 @@ var CommentForm = require('../resources/comment_form'),
 
 var ResourcePage = module.exports = CompoundView.extend({
   bindings: {
-    '#js-resource-rating': 'rating'
+    '#js-resource-rating': 'ratingDisplay'
   },
   className: 'row',
   events: {

@@ -10,6 +10,11 @@ var Resource = module.exports = Backbone.Model.extend({
     return this._comments || (this._comments = new Comments());
   },
 
+  initialize: function() {
+    updateRatingDisplay.call(this);
+    this.on('change:rating', updateRatingDisplay.bind(this));
+  },
+
   parse: function(data) {
     var comments = this.comments();
     if (Array.isArray(data.comments)) {
@@ -22,3 +27,11 @@ var Resource = module.exports = Backbone.Model.extend({
     return data;
   }
 });
+
+var updateRatingDisplay = function() {
+  var rating = this.get('rating');
+  if (rating > 0) {
+    rating = '+' + rating;
+  }
+  this.set('ratingDisplay', rating);
+};

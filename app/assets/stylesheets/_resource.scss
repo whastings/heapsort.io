@@ -2,6 +2,12 @@
   border: 1px #000 solid;
   padding: 15px;
   margin-bottom: 15px;
+  position: relative;
+  .rating {
+    position: absolute;
+    right: 80px;
+    top: -2px;
+  }
 }
 
 .resource-title {
