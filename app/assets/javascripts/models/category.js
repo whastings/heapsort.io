@@ -16,6 +16,16 @@ var Category = module.exports = Backbone.Model.extend({
     this.resources().reset([]);
   },
 
+  fetchByFriendlyId: function(options) {
+    var self = this;
+    options = options || {};
+    this.url = this.urlRoot + '/' + this.get('friendly_id');
+    this.fetch({success: function() {
+      delete self.url;
+      options.success && options.success();
+    }});
+  },
+
   parse: function(data) {
     this.empty();
     var resources = this.resources();
@@ -33,7 +43,7 @@ var Category = module.exports = Backbone.Model.extend({
 
   resources: function() {
     return this._resources ||
-      (this._resources = new Resources([], {categoryId: this.id}));
+      (this._resources = new Resources([], {category: this}));
   }
 });
 

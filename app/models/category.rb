@@ -12,7 +12,7 @@ class Category < ActiveRecord::Base
 
   extend FriendlyId
 
-  friendly_id :name, use: :slugged
+  friendly_id :absolute_name, use: :slugged
 
   # Associations:
   belongs_to :parent, foreign_key: :parent_id, class_name: 'Category'
@@ -57,4 +57,11 @@ class Category < ActiveRecord::Base
     self.class.find_by_sql([ancestors_query, self.parent_id])
   end
 
+  def normalize_friendly_id(string)
+    parts = string.split('/')
+    parts.map! do |part|
+      part.parameterize
+    end
+    parts.join('/')
+  end
 end

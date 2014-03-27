@@ -11,24 +11,25 @@ WebDevBookmarks::Application.routes.draw do
   get '/add-resource' => 'resources#new', as: :add_resource
 
   # Routes that Backbone handles:
-  get '/categories/:id' => 'pages#home'
+  get '/categories/*id' => 'pages#home'
   get '/resources/:id' => 'pages#home'
   get '/feed' => 'pages#home'
   get '/favorites' => 'pages#home'
   get '/share-resource' => 'pages#home'
 
   namespace 'api', :defaults => { :format => :json } do
-    get 'feed' => 'resources#feed'
     resources :resources, only: [:create, :show] do
       resources :comments, only: [:create]
       resources :votes, only: [:create]
     end
-    resources :categories, only: [:index, :show] do
+    resources :categories, only: [:index] do
       resources :resources, only: [:index]
     end
     resources :category_subscriptions, only: [:create, :destroy, :index]
     resources :favorites, only: [:create, :destroy, :index]
     resources :resource_types, only: [:index]
+    get 'feed' => 'resources#feed'
+    get 'categories/*id' => 'categories#show'
   end
 
 end

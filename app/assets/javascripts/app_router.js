@@ -10,7 +10,7 @@ var HomePage = require('./views/pages/home_page'),
 var AppRouter = module.exports = Backbone.Router.extend({
   routes: {
     '': 'home',
-    'categories/:id': 'showCategory',
+    'categories/*friendly_id': 'showCategory',
     'favorites': 'showFavorites',
     'feed': 'showFeed',
     'resources/:id': 'showResource',

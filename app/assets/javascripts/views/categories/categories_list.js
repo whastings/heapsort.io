@@ -34,7 +34,8 @@ var CategoriesList = module.exports = Backbone.Marionette.ItemView.extend({
   },
 
   transition: function(newCategory) {
-    if (newCategory.get('parent_id') === this.currentCategoryId) {
+    if (this.currentCategoryId === undefined ||
+        newCategory.get('parent_id') === this.currentCategoryId) {
       this.childTransition = true;
     } else {
       this.childTransition = false;

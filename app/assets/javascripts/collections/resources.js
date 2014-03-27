@@ -5,7 +5,7 @@ var Resource = require('../models/resource');
 var Resources = module.exports = Backbone.Collection.extend({
 
   url: function() {
-    return '/api/categories/' + this.categoryId +
+    return '/api/categories/' + this.category.id +
       '/resources?page=' + this.page;
   },
   model: Resource,
@@ -17,7 +17,7 @@ var Resources = module.exports = Backbone.Collection.extend({
 
   initialize: function(models, options) {
     options = options || {};
-    this.categoryId = options.categoryId;
+    this.category = options.category;
     this.page = 1;
   },
 

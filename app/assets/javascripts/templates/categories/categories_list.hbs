@@ -1,13 +1,13 @@
 {{#if parentCategory.id}}
   <li>
-    <a href="/categories/{{parentCategory.parent_id}}" class="category-link">
+    <a href="/categories/{{parentCategory.parent_friendly_id}}" class="category-link">
       ..
     </a>
   </li>
 {{/if}}
 {{#each items}}
   <li>
-    <a href="/categories/{{id}}" class="category-link" data-id="{{id}}">
+    <a href="/categories/{{friendly_id}}" class="category-link" data-id="{{id}}">
       {{name}}
     </a>
   </li>

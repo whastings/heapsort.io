@@ -11,14 +11,14 @@ var HomePage = module.exports = CompoundView.extend({
 
   changeCategory: function(id) {
     var self = this;
-    this.rootCategory.set('id', id);
+    this.rootCategory.set('friendly_id', id);
     var loadFinished = false;
     window.setTimeout(function() {
       if (!loadFinished) {
         addLoadingDiv.call(self);
       }
     }, 500);
-    this.rootCategory.fetch({success: function() {
+    this.rootCategory.fetchByFriendlyId({success: function() {
       loadFinished = true;
       self.rootCategory.trigger('categoryChanged');
       removeLoadingDiv.call(self);
@@ -30,8 +30,8 @@ var HomePage = module.exports = CompoundView.extend({
   },
 
   initialize: function(options) {
-    var rootCategory = this.rootCategory = new Category({id: options.categoryId});
-    rootCategory.fetch();
+    var rootCategory = this.rootCategory = new Category({friendly_id: options.categoryId});
+    rootCategory.fetchByFriendlyId();
     this.addSubview(
       '#js-index-control-bar',
       new IndexControlBar()
