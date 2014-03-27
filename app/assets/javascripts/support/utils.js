@@ -8,3 +8,7 @@ exports.fixHeight = function($element) {
   var bodyHeight = $('body').height();
   $element.css('min-height', bodyHeight);
 };
+
+exports.isSignedIn = function() {
+  return document.cookie.indexOf('signed_in=true') !== -1;
+};

@@ -5,6 +5,7 @@
     "$": false,
     "Backbone": false,
     "console": false,
+    "document": false,
     "exports": false,
     "Handlebars": false,
     "HandlebarsTemplates": false,

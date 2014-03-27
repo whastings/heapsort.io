@@ -1,6 +1,7 @@
 "use strict";
 
-var Comment = require('../../models/comment');
+var Comment = require('../../models/comment'),
+    utils = require('../../support/utils');
 
 var CommentForm = module.exports = Backbone.Marionette.ItemView.extend({
   events: {
@@ -8,6 +9,9 @@ var CommentForm = module.exports = Backbone.Marionette.ItemView.extend({
   },
   tagName: 'form',
   template: HandlebarsTemplates['resources/comment_form'],
+  templateHelpers: {
+    isSignedIn: utils.isSignedIn()
+  },
 
   initialize: function(options) {
     this.model = new Comment({resource_id: options.resourceId});

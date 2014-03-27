@@ -4,7 +4,8 @@ var CategorySubscription = require('../../models/category_subscription'),
     CompoundView = require('../../support/compound_view'),
     ControlBar = require('./control_bar'),
     Favorite = require('../../models/favorite'),
-    notice = require('../../support/notice');
+    notice = require('../../support/notice'),
+    utils = require('../../support/utils');
 
 var IndexControlBar = module.exports = CompoundView.extend({
   events: {
@@ -24,6 +25,9 @@ var IndexControlBar = module.exports = CompoundView.extend({
   },
 
   subscribeToCategory: function(event, ui) {
+    if (!utils.isSignedIn()) {
+      return notice.requestSignIn('subscribe to categories');
+    }
     var categoryId = ui.draggable.data('id');
     var subscription = new CategorySubscription({category_id: categoryId});
     subscription.save(

@@ -38,10 +38,16 @@ var AppRouter = module.exports = Backbone.Router.extend({
   },
 
   showFavorites: function() {
+    if (!requireSignedIn()) {
+      return;
+    }
     swapView.call(this, new FavoritesPage());
   },
 
   showFeed: function() {
+    if (!requireSignedIn()) {
+      return;
+    }
     swapView.call(this, new FeedPage());
   },
 
@@ -50,9 +56,20 @@ var AppRouter = module.exports = Backbone.Router.extend({
   },
 
   showResourceForm: function() {
+    if (!requireSignedIn()) {
+      return;
+    }
     swapView.call(this, new ResourceForm());
   }
 });
+
+var requireSignedIn = function() {
+  if (!utils.isSignedIn()) {
+    window.location = '/signin';
+    return false;
+  }
+  return true;
+};
 
 var swapView = function(view) {
   this.currentView && this.currentView.remove(); // jshint ignore:line

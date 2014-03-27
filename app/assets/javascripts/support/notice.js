@@ -15,11 +15,15 @@ var Notice = Backbone.View.extend({
   }
 });
 
-exports.display = function(message) {
+var display = exports.display = function(message) {
   var notice = new Notice({message: message});
   $('body').append(notice.render().$el);
   notice.$el.fadeIn('fast');
   window.setTimeout(function() {
     notice.$el.fadeOut('fast');
-  }, 2000);
+  }, 4000);
+};
+
+exports.requestSignIn = function(action) {
+  display('Please sign in to ' + action + '.');
 };

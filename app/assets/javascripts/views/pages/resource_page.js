@@ -5,7 +5,9 @@ var CommentForm = require('../resources/comment_form'),
     CompoundView = require('../../support/compound_view'),
     ControlBar = require('../control_bars/control_bar'),
     FavoriteControls = require('../../mixins/favorite_controls'),
+    notice = require('../../support/notice'),
     Resource = require('../../models/resource'),
+    utils = require('../../support/utils'),
     Vote = require('../../models/vote');
 
 var ResourcePage = module.exports = CompoundView.extend({
@@ -65,6 +67,9 @@ var ResourcePage = module.exports = CompoundView.extend({
 $.extend(true, ResourcePage.prototype, FavoriteControls);
 
 var recordVote = function(direction) {
+  if (!utils.isSignedIn()) {
+    return notice.requestSignIn('vote on resources');
+  }
   var vote = new Vote({
     resource_id: this.model.id,
     direction: (direction === 'up') ? 1 : 0

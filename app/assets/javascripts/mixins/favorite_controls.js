@@ -1,6 +1,8 @@
 "use strict";
 
-var Favorite = require('../models/favorite');
+var Favorite = require('../models/favorite'),
+    notice = require('../support/notice'),
+    utils = require('../support/utils');
 
 var FavoriteControls = module.exports = {
   events: {
@@ -9,6 +11,9 @@ var FavoriteControls = module.exports = {
   },
 
   favorite: function(event) {
+    if (!utils.isSignedIn()) {
+      return notice.requestSignIn('favorite resources');
+    }
     var self = this;
     event.preventDefault();
     var resourceId = this.model.id;

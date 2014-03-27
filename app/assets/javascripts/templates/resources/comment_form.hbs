@@ -1,6 +1,14 @@
 <div class="form-group">
   <h2><label for="js-comment-content">Add a Comment</label></h2>
-  <textarea id="js-comment-content"></textarea>
+  {{#if isSignedIn}}
+    <textarea id="js-comment-content"></textarea>
+  {{else}}
+    <div class="alert alert-info">
+      Please sign in to comment.
+    </div>
+  {{/if}}
 </div>
 
-<input type="submit" value="Add" class="btn btn-primary">
+{{#if isSignedIn}}
+  <input type="submit" value="Add" class="btn btn-primary">
+{{/if}}
