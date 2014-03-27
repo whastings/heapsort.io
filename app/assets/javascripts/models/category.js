@@ -1,10 +1,11 @@
 "use strict";
 
-var Categories = require('../collections/categories'),
+var BaseModel = require('./base_model'),
+    Categories = require('../collections/categories'),
     Resource = require('./resource'),
     Resources = require('../collections/resources');
 
-var Category = module.exports = Backbone.Model.extend({
+var Category = module.exports = BaseModel.extend({
   urlRoot: '/api/categories',
 
   children: function() {
@@ -14,16 +15,6 @@ var Category = module.exports = Backbone.Model.extend({
   empty: function() {
     this.children().reset([]);
     this.resources().reset([]);
-  },
-
-  fetchByFriendlyId: function(options) {
-    var self = this;
-    options = options || {};
-    this.url = this.urlRoot + '/' + this.get('friendly_id');
-    this.fetch({success: function() {
-      delete self.url;
-      options.success && options.success();
-    }});
   },
 
   parse: function(data) {

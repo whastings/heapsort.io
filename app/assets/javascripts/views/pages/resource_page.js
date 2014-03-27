@@ -32,8 +32,8 @@ var ResourcePage = module.exports = CompoundView.extend({
   },
 
   initialize: function(options) {
-    this.model = new Resource({id: options.resourceId});
-    this.model.fetch();
+    this.model = new Resource({friendly_id: options.resourceId});
+    this.model.fetchByFriendlyId();
     this.addSubview(
       '#js-control-bar',
       new ControlBar()
@@ -41,7 +41,7 @@ var ResourcePage = module.exports = CompoundView.extend({
     this.addSubview(
       '#js-comment-form',
       new CommentForm({
-        resourceId: this.model.id,
+        resource: this.model,
         collection: this.model.comments()
       })
     );

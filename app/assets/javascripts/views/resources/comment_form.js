@@ -14,7 +14,8 @@ var CommentForm = module.exports = Backbone.Marionette.ItemView.extend({
   },
 
   initialize: function(options) {
-    this.model = new Comment({resource_id: options.resourceId});
+    this.model = new Comment();
+    this.model.resource = options.resource;
   },
 
   submit: function(event) {

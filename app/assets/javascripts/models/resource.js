@@ -1,9 +1,10 @@
 "use strict";
 
-var Comment = require('./comment'),
+var BaseModel = require('./base_model'),
+    Comment = require('./comment'),
     Comments = require('../collections/comments');
 
-var Resource = module.exports = Backbone.Model.extend({
+var Resource = module.exports = BaseModel.extend({
   urlRoot: '/api/resources',
 
   comments: function() {

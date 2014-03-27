@@ -52,5 +52,7 @@ var ResourceForm = module.exports = CompoundView.extend({
 });
 
 var handleSuccess = function(model) {
-  Backbone.history.navigate('resources/' + model.id, {trigger: true});
+  Backbone.history.navigate(
+    'resources/' + model.get('slug'), {trigger: true}
+  );
 };

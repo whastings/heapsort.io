@@ -85,6 +85,19 @@ class Resource < ActiveRecord::Base
     self.query_string = parsed_url.query
   end
 
+  def normalize_friendly_id(string)
+    resource_number = 1
+    formatted_title = self.title.parameterize
+    resource_title = formatted_title
+    loop do
+      existing_resource = self.class.find_by(slug: resource_title)
+      break unless existing_resource
+      resource_title = formatted_title + "-#{resource_number}"
+      resource_number += 1
+    end
+    resource_title
+  end
+
   private
 
     def validate_url

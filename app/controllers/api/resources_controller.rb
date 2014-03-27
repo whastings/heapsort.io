@@ -33,7 +33,7 @@ class Api::ResourcesController < ApplicationController
   end
 
   def show
-    @resource = Resource.where(id: params[:id])
+    @resource = Resource.where(slug: params[:id])
     if current_user
       @resource = @resource.with_favorites(current_user.id)
     end
