@@ -8,6 +8,7 @@ var CategorySubscription = require('../../models/category_subscription'),
     utils = require('../../support/utils');
 
 var IndexControlBar = module.exports = CompoundView.extend({
+  className: 'index-control-bar',
   events: {
     'drop #js-category-drop': 'subscribeToCategory'
   },
