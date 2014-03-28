@@ -9,4 +9,8 @@ class ResourceDecorator < Draper::Decorator
   def pretty_url
     object.url.sub(/^https?:\/\//, '').sub(/\/$/, '')
   end
+
+  def title
+    object.title.truncate(80)
+  end
 end
