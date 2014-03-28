@@ -67,6 +67,7 @@ var ResourcePage = module.exports = CompoundView.extend({
 $.extend(true, ResourcePage.prototype, FavoriteControls);
 
 var recordVote = function(direction) {
+  var self = this;
   if (!utils.isSignedIn()) {
     return notice.requestSignIn('vote on resources');
   }
@@ -74,7 +75,15 @@ var recordVote = function(direction) {
     resource_id: this.model.id,
     direction: (direction === 'up') ? 1 : 0
   });
-  vote.save({}, {success: updateResourceRating.bind(this)});
+  vote.save({}, {
+    success: function(vote, data) {
+      updateResourceRating.call(self, vote, data);
+      notice.display('Vote recorded!');
+    },
+    error: function() {
+      notice.display('Sorry, that vote is invalid.');
+    }
+  });
 };
 
 var updateResourceRating = function(vote, data) {
