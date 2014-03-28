@@ -31,10 +31,10 @@ var AppRouter = module.exports = Backbone.Router.extend({
   showCategory: function(id) {
     if (!this.homeView) {
       this.homeView = new HomePage({categoryId: id});
-      swapView.call(this, this.homeView);
     } else {
       this.homeView.changeCategory(id);
     }
+    swapView.call(this, this.homeView);
   },
 
   showFavorites: function() {

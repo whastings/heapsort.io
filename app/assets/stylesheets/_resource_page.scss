@@ -1,6 +1,11 @@
 .resource-view {
   padding: 25px;
-  padding-top: 0;
+}
+
+.resource-path {
+  font-size: 130%;
+  font-weight: bold;
+  margin-bottom: -20px;
 }
 
 .resource-details {
@@ -13,6 +18,10 @@
       float: none;
     }
   }
+}
+
+.resource-url {
+  margin-top: 5px;
 }
 
 .resource-description {

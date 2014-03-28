@@ -35,16 +35,16 @@ class Category < ActiveRecord::Base
 
   def ancestors
     ancestors_query = <<-SQL
-      WITH RECURSIVE ancestors(id, name, parent_id) AS (
+      WITH RECURSIVE ancestors(id, name, parent_id, slug) AS (
         SELECT
-          id, name, parent_id
+          id, name, parent_id, slug
         FROM
           categories
         WHERE
           id = ?
       UNION ALL
         SELECT
-          categories.id, categories.name, categories.parent_id
+          categories.id, categories.name, categories.parent_id, categories.slug
         FROM
           ancestors
         INNER JOIN

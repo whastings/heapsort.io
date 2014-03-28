@@ -60,6 +60,12 @@ class Resource < ActiveRecord::Base
     joins(joins_query).select('favorites.id AS favorite_id')
   end
 
+  def category_tree
+    ancestor_categories = self.category.ancestors.reverse
+    ancestor_categories << self.category
+    ancestor_categories
+  end
+
   def url
     return @failed_url unless @failed_url.nil?
     return 'http://' if domain.blank?
