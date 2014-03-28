@@ -1,17 +1,18 @@
 module AuthenticationHelper
 
   def sign_in(user)
-    token = user.sign_in
+    session = user.sessions.create
     cookies.permanent[:token] = {
-      value: token,
+      value: session.token,
       httponly: true
     }
     cookies.permanent[:signed_in] = true
   end
 
   def sign_out(user)
-    user.sign_out
     @current_user = nil
+    session = Session.find_by(token: cookies[:token])
+    session && session.destroy
     cookies.delete(:token)
     cookies.delete(:signed_in)
   end

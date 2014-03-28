@@ -16,7 +16,7 @@ class Session < ActiveRecord::Base
 
   # Validations:
   validates_presence_of :token, :user_id
-  validates_uniqueness_of :token, :user_id
+  validates_uniqueness_of :token
 
   # Callbacks:
   after_initialize :generate_token

@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   # Associations:
-  has_one :session, dependent: :destroy
+  has_many :sessions, dependent: :destroy
   has_many :category_subscriptions, foreign_key: :subscriber_id
   has_many :favorites
   has_many :resources
@@ -36,16 +36,6 @@ class User < ActiveRecord::Base
             format: { with: /\A[a-z0-9_\.-]+\z/i }
   validates :email, length: { maximum: 100 },
             format: { with: VALID_EMAIL_REGEX }
-
-  def sign_in
-    create_session
-    session.token
-  end
-
-  def sign_out
-    session.destroy
-    reload
-  end
 
   def to_s
     username
