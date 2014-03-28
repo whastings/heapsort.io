@@ -3,6 +3,7 @@
 var CategorySelector = require('../categories/category_selector'),
     CompoundView = require('../../support/compound_view'),
     ControlBar = require('../control_bars/control_bar'),
+    ErrorDisplay = require('../../mixins/error_display'),
     Resource = require('../../models/resource'),
     ResourceTypes = require('../../collections/resource_types');
 
@@ -21,6 +22,7 @@ var ResourceForm = module.exports = CompoundView.extend({
     }
   },
   className: 'row',
+  errorsElement: '#js-resource-form-errors',
   events: {
     'submit form': 'submit'
   },
@@ -42,14 +44,20 @@ var ResourceForm = module.exports = CompoundView.extend({
   },
 
   submit: function(event) {
+    this.hideErrors();
     event.preventDefault();
     var categoryId = this.categorySelector.currentCategory;
     this.model.save(
       {category_id: categoryId},
-      {success: handleSuccess.bind(this)}
+      {
+        success: handleSuccess.bind(this),
+        error: this.showResponseErrors.bind(this)
+      }
     );
   }
 });
+
+_.extend(ResourceForm.prototype, ErrorDisplay);
 
 var handleSuccess = function(model) {
   Backbone.history.navigate(

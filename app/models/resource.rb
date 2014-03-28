@@ -35,7 +35,7 @@ class Resource < ActiveRecord::Base
   has_many :votes
 
   # Validations:
-  validates_presence_of :title, :domain, :path, :port, :protocol
+  validates_presence_of :title, :domain, :category
   validates_numericality_of :port, { only_integer: true }
   validates :title, length: { maximum: 150 }
   validates :domain, length: { maximum: 75 }
@@ -73,16 +73,17 @@ class Resource < ActiveRecord::Base
     parsed_url = nil
     begin
       parsed_url = URI.parse(url_string)
-    rescue URI::InvalidURIError => error
+      raise URI::InvalidURIError if parsed_url.host.blank?
+    rescue URI::InvalidURIError
       @failed_url = url_string
       return
     end
     @failed_url = nil
-    self.protocol = parsed_url.scheme
+    self.protocol = parsed_url.scheme unless parsed_url.scheme.blank?
     self.domain = parsed_url.host
-    self.path = parsed_url.path.blank? ? '/' : parsed_url.path
-    self.port = parsed_url.port
-    self.query_string = parsed_url.query
+    self.path = parsed_url.path unless parsed_url.path.blank?
+    self.port = parsed_url.port unless parsed_url.port.blank?
+    self.query_string = parsed_url.query unless parsed_url.query.blank?
   end
 
   def normalize_friendly_id(string)
