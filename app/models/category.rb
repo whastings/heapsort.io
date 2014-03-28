@@ -2,10 +2,12 @@
 #
 # Table name: categories
 #
-#  id        :integer          not null, primary key
-#  name      :string(100)      not null
-#  parent_id :integer
-#  slug      :string(255)
+#  id         :integer          not null, primary key
+#  name       :string(100)      not null
+#  parent_id  :integer
+#  slug       :string(255)
+#  created_at :datetime
+#  updated_at :datetime
 #
 
 class Category < ActiveRecord::Base
@@ -15,7 +17,8 @@ class Category < ActiveRecord::Base
   friendly_id :absolute_name, use: :slugged
 
   # Associations:
-  belongs_to :parent, foreign_key: :parent_id, class_name: 'Category'
+  belongs_to :parent, foreign_key: :parent_id,
+             class_name: 'Category', touch: true
   has_many :children, foreign_key: :parent_id, class_name: 'Category'
   has_many :resources
 

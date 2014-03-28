@@ -2,10 +2,12 @@
 #
 # Table name: categories
 #
-#  id        :integer          not null, primary key
-#  name      :string(100)      not null
-#  parent_id :integer
-#  slug      :string(255)
+#  id         :integer          not null, primary key
+#  name       :string(100)      not null
+#  parent_id  :integer
+#  slug       :string(255)
+#  created_at :datetime
+#  updated_at :datetime
 #
 
 require 'spec_helper'
