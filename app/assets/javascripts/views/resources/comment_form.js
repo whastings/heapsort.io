@@ -1,9 +1,11 @@
 "use strict";
 
 var Comment = require('../../models/comment'),
+    ErrorDisplay = require('../../mixins/error_display'),
     utils = require('../../support/utils');
 
 var CommentForm = module.exports = Backbone.Marionette.ItemView.extend({
+  errorsElement: '#js-comment-form-errors',
   events: {
     'submit': 'submit'
   },
@@ -20,10 +22,19 @@ var CommentForm = module.exports = Backbone.Marionette.ItemView.extend({
 
   submit: function(event) {
     event.preventDefault();
+    this.hideErrors();
     var content = this.$('#js-comment-content').val();
-    this.model.save({content: content}, {success: handleSuccess.bind(this)});
+    this.model.save(
+      {content: content},
+      {
+        success: handleSuccess.bind(this),
+        error: this.showResponseErrors.bind(this)
+      }
+    );
   }
 });
+
+_.extend(CommentForm.prototype, ErrorDisplay);
 
 var handleSuccess = function(model) {
   this.collection.add(model);
