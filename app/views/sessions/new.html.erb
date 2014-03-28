@@ -1,7 +1,12 @@
 <% provide(:page_title, 'Sign In') %>
 
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
+  <div class="col-md-6 col-md-offset-3 sign-in-form">
+    <% if ENV['HEAPSORT_GUEST_ENABLED'] %>
+      <%= button_to 'Or Sign In as Guest', sign_in_guest_url,
+          class: 'btn btn-primary guest-signin-btn' %>
+    <% end %>
+
     <h1>Sign In</h1>
 
     <%= bootstrap_form_for(:session, url: sessions_path) do |f| %>

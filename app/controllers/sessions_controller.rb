@@ -9,7 +9,6 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       reset_session # Prevents session fixation.
       sign_in(user)
-      flash[:success] = 'Welcome!'
       redirect_to root_path
     else
       flash.now[:error] = 'Incorrect email or password.'
@@ -19,6 +18,20 @@ class SessionsController < ApplicationController
 
   def destroy
     sign_out(current_user) unless current_user.nil?
+    redirect_to root_path
+  end
+
+  def sign_in_guest
+    unless ENV['HEAPSORT_GUEST_ENABLED']
+      render(
+        file: File.join(Rails.root, 'public/403.html'),
+        status: 403,
+        layout: false
+      )
+      return
+    end
+    user = User.find_by(username: 'guest')
+    user && sign_in(user)
     redirect_to root_path
   end
 

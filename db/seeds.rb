@@ -70,9 +70,21 @@ def create_resource_types
   ])
 end
 
+def create_guest_user
+  return if User.find_by(username: 'guest')
+  password = SecureRandom.urlsafe_base64
+  User.create!(
+    username: 'guest',
+    email: 'guest@heapsort.io',
+    password: password,
+    password_confirmation: password
+  )
+end
+
 ActiveRecord::Base.transaction do
 
   # random_seed
   create_resource_types
+  create_guest_user
 
 end

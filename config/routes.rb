@@ -7,6 +7,7 @@ WebDevBookmarks::Application.routes.draw do
   get '/signup' => 'users#new'
   delete '/signout' => 'sessions#destroy'
   get '/signin' => 'sessions#new'
+  post '/siginin-guest' => 'sessions#sign_in_guest', as: :sign_in_guest
 
   get '/add-resource' => 'resources#new', as: :add_resource
 
