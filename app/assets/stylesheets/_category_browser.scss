@@ -26,26 +26,22 @@
   margin-bottom: 15px;
   padding: 5px;
   padding-left: 10px;
+  padding-right: 25px;
   position: relative;
   &:hover {
     @extend %background-hover;
     text-decoration: none;
   }
-  &:after {
-    border-style: solid;
-    border-width: 10.5px 0 10.5px 20px;
-    border-color: transparent transparent transparent $brand-primary;
-    content: "";
-    height: 0px;
-    position: absolute;
-    right: 8px;
-    top: 6px;
-    width: 0px;
-  }
   &.ui-draggable-dragging {
-    &:after {
+    .icon {
       display: none;
     }
+  }
+  .icon {
+    font-size: 120%;
+    line-height: 120%;
+    position: absolute;
+    right: 5px;
   }
 }
 
