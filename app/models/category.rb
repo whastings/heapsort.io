@@ -20,6 +20,7 @@ class Category < ActiveRecord::Base
   belongs_to :parent, foreign_key: :parent_id,
              class_name: 'Category', touch: true
   has_many :children, foreign_key: :parent_id, class_name: 'Category'
+  has_many :interactions, class_name: 'UserInteraction', as: :interactive
   has_many :resources
 
   # Validations:

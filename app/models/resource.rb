@@ -32,6 +32,7 @@ class Resource < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
   has_many :comments
+  has_many :interactions, class_name: 'UserInteraction', as: :interactive
   has_many :votes
 
   # Validations:
