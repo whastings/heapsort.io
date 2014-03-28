@@ -16,7 +16,10 @@ var FeedPage = module.exports = CompoundView.extend({
     this.collection.fetch({success: checkEmpty.bind(this)});
     this.resourcesList = new ResourcesList({collection: this.collection});
     this.addSubview('#js-resource-feed', this.resourcesList);
-    this.addSubview('#js-feed-control-bar', new FeedControlBar());
+    this.addSubview(
+      '#js-feed-control-bar',
+      new FeedControlBar({feedItems: this.collection})
+    );
   }
 });
 

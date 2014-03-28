@@ -26,6 +26,12 @@ var Resources = module.exports = Backbone.Collection.extend({
       this.total = data.total;
     }
     return data.resources;
+  },
+
+  reset: function() {
+    this.page = 1;
+    var args = Array.prototype.slice.call(arguments);
+    Backbone.Collection.prototype.reset.apply(this, args);
   }
 
 });

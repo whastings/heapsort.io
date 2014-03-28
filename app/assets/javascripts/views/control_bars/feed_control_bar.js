@@ -12,7 +12,8 @@ var FeedControlBar = module.exports = Backbone.Marionette.ItemView.extend({
   },
   template: HandlebarsTemplates['control_bars/feed_control_bar'],
 
-  initialize: function() {
+  initialize: function(options) {
+    this.feedItems = options.feedItems;
     this.collection = new CategorySubscriptions();
     this.collection.fetch();
   },
@@ -24,6 +25,8 @@ var FeedControlBar = module.exports = Backbone.Marionette.ItemView.extend({
     var subscription = this.collection.get(subscriptionId);
     subscription.destroy({success: function() {
       self.collection.remove(subscription);
+      self.feedItems.reset();
+      self.feedItems.fetch();
     }});
   }
 });
