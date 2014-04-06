@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.ui.droppable
+//= require bootstrap/affix
 //= require underscore
 //= require backbone
 //= require backbone.babysitter/lib/backbone.babysitter.js
