@@ -19,7 +19,7 @@ var ResourcesListView = module.exports = Backbone.Marionette.CollectionView.exte
       }
       this.$pageButton.insertAfter(resourceView.$el);
     } else {
-      this.$pageButton && this.$pageButton.remove();
+      this.$pageButton && this.$pageButton.remove(); // jshint ignore:line
     }
   }
 });
