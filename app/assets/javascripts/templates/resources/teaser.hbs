@@ -1,19 +1,19 @@
 <article class="resource-teaser" data-id="{{id}}">
   <h3 class="resource-title">
     <a href="/resources/{{friendly_id}}">{{title}}</a>
-    {{#if favorite_id}}
-      <a href="#" class="js-remove-favorite-btn icon-link"
-         title="Remove from favorites">
-        <span class="icon-star"></span>
-      </a>
-    {{else}}
-      <a href="#" class="js-add-favorite-btn icon-link"
-         title="Add to favorites">
-        <span class="icon-star-o"></span>
-      </a>
-    {{/if}}
   </h3>
   <div class="rating">{{ratingDisplay}}</div>
+  {{#if favorite_id}}
+    <a href="#" class="js-remove-favorite-btn icon-link"
+       title="Remove from favorites">
+      <span class="icon-star"></span>
+    </a>
+  {{else}}
+    <a href="#" class="js-add-favorite-btn icon-link"
+       title="Add to favorites">
+      <span class="icon-star-o"></span>
+    </a>
+  {{/if}}
   <div class="resource-url">
     <a href="{{url}}" target="_blank">{{pretty_url}}</a>
   </div>

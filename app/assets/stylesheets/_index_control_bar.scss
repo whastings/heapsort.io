@@ -2,10 +2,10 @@
   border: 3px $brand-primary dashed;
   color: $brand-primary;
   font-weight: bold;
-  height: 120px;
   margin: 0 auto 20px;
+  max-width: 140px;
   text-align: center;
-  width: 120px;
+  width: 90%;
   &.hover {
     border-color: $link-hover-color;
     color: $link-hover-color;
@@ -16,10 +16,3 @@
     margin: 10px auto 5px;
   }
 }
-
-.category-drop {
-  left: 20px;
-  position: fixed;
-  top: 250px;
-}
-

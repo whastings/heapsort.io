@@ -1,6 +1,6 @@
 // Import Bootstrap dependencies:
-@import "bootstrap/variables";
 @import "variables"; // So I can override Bootstrap's if I want.
+@import "bootstrap/variables";
 @import "bootstrap/mixins";
 @import "bootstrap/normalize";
 @import "bootstrap/print";
