@@ -16,9 +16,13 @@
     float: right;
     font-size: 215%;
   }
+  .resource-url {
+    width: 85%;
+  }
 }
 
 .resource-title {
+  @include hyphenation;
   display: inline-block;
   font-weight: bold;
   margin-bottom: 5px;
@@ -27,6 +31,7 @@
 }
 
 .resource-url {
+  @include hyphenation;
   font-size: 120%;
   font-weight: bold;
   margin-bottom: 15px;
