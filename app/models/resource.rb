@@ -69,7 +69,7 @@ class Resource < ActiveRecord::Base
   def url
     return @failed_url unless @failed_url.nil?
     return 'http://' if domain.blank?
-    rendered_port = (port == 80) ? '' : port
+    rendered_port = ([80, 443].include?(port)) ? '' : port
     assembled_url = URI::Generic.new(protocol, nil, domain, rendered_port, nil, path,
                                      nil, query_string, nil)
     assembled_url.to_s
