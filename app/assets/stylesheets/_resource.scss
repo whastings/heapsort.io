@@ -5,8 +5,12 @@
   position: relative;
   .rating {
     position: absolute;
-    right: 10%;
-    top: -2px;
+    right: 20px;
+    top: 35px;
+    @include breakpoint($screen-md){
+      right: 10%;
+      top: -2px;
+    }
   }
   .icon-link {
     float: right;

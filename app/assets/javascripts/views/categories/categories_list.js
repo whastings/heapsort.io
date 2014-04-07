@@ -1,5 +1,7 @@
 "use strict";
 
+var responsive = require('../../support/responsive');
+
 var CategoriesList = module.exports = Backbone.Marionette.ItemView.extend({
   tagName: 'ul',
   template: HandlebarsTemplates['categories/categories_list'],
@@ -18,7 +20,7 @@ var CategoriesList = module.exports = Backbone.Marionette.ItemView.extend({
     var data = this.serializeData();
     data = this.mixinTemplateHelpers(data);
     var content = Backbone.Marionette.Renderer.render(this.template, data);
-    if (!this.renderedOnce) {
+    if (!this.renderedOnce || responsive.maxWidth('screen-md')) {
       this.$el.html(content);
       this.renderedOnce = true;
     } else {
@@ -81,7 +83,7 @@ var animateTransition = function(content, inClass, outClass, widthCallback) {
   $oldEl.removeAttr('style');
   this.$el.addClass(inClass);
   this.$el.insertAfter($oldEl);
-  this.$el.width($container.width());
+  this.$el.width($container.width() - 1);
   var containerHeight = Math.max($oldEl.height(), this.$el.height());
   $container.css('height', containerHeight + 25);
   $oldEl.addClass(outClass);

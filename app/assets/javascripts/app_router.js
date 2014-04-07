@@ -5,6 +5,7 @@ var HomePage = require('./views/pages/home_page'),
     FeedPage = require('./views/pages/feed_page'),
     ResourceForm = require('./views/pages/resource_form'),
     ResourcePage = require('./views/pages/resource_page'),
+    responsive = require('./support/responsive'),
     utils = require('./support/utils');
 
 var AppRouter = module.exports = Backbone.Router.extend({
@@ -72,6 +73,7 @@ var requireSignedIn = function() {
 };
 
 var swapView = function(view) {
+  $(document.body).scrollTop(this.$rootEl.offset().top);
   this.currentView && this.currentView.remove(); // jshint ignore:line
   if (view !== this.homeView) {
     this.currentView = view;
@@ -80,8 +82,10 @@ var swapView = function(view) {
     this.homeView.show();
     return;
   }
-  view.on('render', function() {
-    utils.fixHeight(view.$('.content-main'));
-  });
+  if (responsive.minWidth('screen-md')) {
+    view.on('render', function() {
+      utils.fixHeight(view.$('.content-main'));
+    });
+  }
   this.$rootEl.append(view.render().$el);
 };

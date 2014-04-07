@@ -5,8 +5,7 @@ html, body {
 .main-header {
   background-color: $brand-primary;
   color: #fff;
-  height: 35px;
-  padding: 2px 25px 0;
+  padding: 2px 25px 3px;
   a,
   input {
     color: #fff;
@@ -63,4 +62,5 @@ html, body {
   background-color: #fff;
   overflow-y: visible;
   padding-top: 15px;
+  padding-bottom: 25px;
 }

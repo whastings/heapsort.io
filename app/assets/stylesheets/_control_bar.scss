@@ -1,28 +1,51 @@
 .control-bar {
-  padding-top: 20px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  @include breakpoint($screen-md) {
+    padding-top: 20px;
+  }
+  a {
+    margin-right: 40px;
+    @include breakpoint($screen-md) {
+      display: block;
+      margin-right: auto;
+    }
+  }
 }
 
 .nav-links {
-  margin-bottom: 25px;
-  padding-left: 10px;
-  a {
+  @include breakpoint(658px) {
+    display: inline-block;
+  }
+  @include breakpoint($screen-md) {
     display: block;
+    margin-bottom: 25px;
+    padding-left: 10px;
+  }
+  a {
     font-size: 130%;
     font-weight: bold;
+    margin-right: 40px;
   }
 }
 
 .control-bar-btn {
-  display: block;
+  font-size: 130%;
   font-weight: bold;
-  margin: 0 auto 25px;
   text-align: center;
-  width: 75px;
+  @include breakpoint($screen-md) {
+    display: block;
+    font-size: 100%;
+    margin: 0 auto 25px auto;
+    width: 75px;
+  }
   &:hover {
     text-decoration: none;
   }
   span {
-    display: block;
-    font-size: 38px;
+    @include breakpoint($screen-md) {
+      display: block;
+      font-size: 38px;
+    }
   }
 }

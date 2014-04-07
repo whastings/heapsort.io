@@ -4,7 +4,9 @@
 
 .categories-list {
   overflow: hidden;
-  padding-right: 0;
+  @include breakpoint($screen-md) {
+    padding-right: 0;
+  }
   position: relative;
   li {
     list-style: none;
