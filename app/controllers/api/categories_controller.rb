@@ -15,7 +15,7 @@ class Api::CategoriesController < ApplicationController
       @category = Category.where(slug: params[:id])
         .eager_load(:children).first.decorate
       @children = @category.children
-      @resources = @category.resources.includes(:user).paginate(page: 1)
+      @resources = @category.resources.includes(:user).page(1)
       if current_user
         @resources = @resources.with_favorites(current_user.id)
       end

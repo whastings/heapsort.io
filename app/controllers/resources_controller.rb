@@ -7,7 +7,7 @@ class ResourcesController < ApplicationController
   before_filter :restrict_to_signed_in, only: [:new, :create]
 
   def index
-    @resources = Resource.paginate(page: params[:page])
+    @resources = Resource.page(params[:page])
   end
 
   def show

@@ -24,7 +24,7 @@ class Resource < ActiveRecord::Base
 
   extend FriendlyId
 
-  self.per_page = 15
+  paginates_per 15
   friendly_id :title, use: :slugged
 
   # Associations:

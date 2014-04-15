@@ -3,22 +3,22 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.1'
 gem 'bcrypt-ruby', '3.1.2'
 gem 'bootstrap-sass', '~> 3.1'
-gem 'will_paginate', '~> 3.0'
-gem 'bootstrap-will_paginate', '0.0.10'
 gem 'friendly_id', '~> 5.0.0'
 gem 'backbone-on-rails'
 gem 'handlebars_assets'
 gem 'draper', '~> 1.3'
 gem 'jquery-ui-rails'
 gem 'compass-rails'
-gem 'breakpoint', '~>2.4.0'
+# TODO: Upgrade breakpoint when sass-rails get sass 3.3 support.
+gem 'breakpoint', '~>2.0.6'
 gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'kaminari'
 
 # Use PostgreSQL as the database for Active Record
 gem 'pg', '0.15.1'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
+gem 'sass-rails', '~> 4.0.3'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
