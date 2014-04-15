@@ -12,6 +12,7 @@ gem 'draper', '~> 1.3'
 gem 'jquery-ui-rails'
 gem 'compass-rails'
 gem 'breakpoint', '~>2.4.0'
+gem 'activeadmin', github: 'gregbell/active_admin'
 
 # Use PostgreSQL as the database for Active Record
 gem 'pg', '0.15.1'
