@@ -1,6 +1,5 @@
 WebDevBookmarks::Application.routes.draw do
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
+
   root to: 'pages#home'
 
   resources :sessions, only: [:create]
@@ -33,6 +32,15 @@ WebDevBookmarks::Application.routes.draw do
     resources :resource_types, only: [:index]
     get 'feed' => 'resources#feed'
     get 'categories/*id' => 'categories#show'
+  end
+
+  # For ActiveAdmin:
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+  namespace 'admin' do
+    get '/categories/*id/edit' => 'categories#edit'
+    get '/categories/*id' => 'categories#show'
+    delete '/categories/*id' => 'categories#destroy'
   end
 
 end
