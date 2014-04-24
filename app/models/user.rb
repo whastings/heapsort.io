@@ -23,8 +23,8 @@ class User < ActiveRecord::Base
 
   # Associations:
   has_many :sessions, dependent: :destroy
-  has_many :category_subscriptions, foreign_key: :subscriber_id
-  has_many :favorites
+  has_many :category_subscriptions, foreign_key: :subscriber_id, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   has_many :resources
   has_many :category_feed_items, through: :category_subscriptions, source: :feed_items
   has_many :favorite_resources, through: :favorites, source: :resource

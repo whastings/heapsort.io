@@ -19,8 +19,13 @@ class Category < ActiveRecord::Base
   # Associations:
   belongs_to :parent, foreign_key: :parent_id,
              class_name: 'Category', touch: true
-  has_many :children, foreign_key: :parent_id, class_name: 'Category'
-  has_many :resources
+  has_many(
+    :children,
+    foreign_key: :parent_id,
+    class_name: 'Category',
+    dependent: :destroy
+  )
+  has_many :resources, dependent: :destroy
 
   # Validations:
   validates :name, presence: true, length: { maximum: 100 }

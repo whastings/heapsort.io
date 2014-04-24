@@ -31,8 +31,8 @@ class Resource < ActiveRecord::Base
   belongs_to :resource_type
   belongs_to :user
   belongs_to :category
-  has_many :comments
-  has_many :votes
+  has_many :comments, dependent: :destroy
+  has_many :votes, dependent: :destroy
 
   # Validations:
   validates_presence_of :title, :domain, :category
