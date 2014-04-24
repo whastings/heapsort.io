@@ -1,7 +1,37 @@
 ActiveAdmin.register Category do
+  decorate_with Admin::CategoryDecorator
+  menu priority: 1
 
   controller do
     defaults finder: :find_by_slug
+  end
+
+  index do
+    selectable_column
+    id_column
+    column :name
+    column :created_at
+    column :updated_at
+    actions
+  end
+
+  show do
+    attributes_table do
+      row :id
+      row :name
+      row :parent
+      row :slug
+      row :created_at
+      row :updated_at
+    end
+
+    panel 'Resources' do
+      table_for category.resources do
+        column do |resource|
+          link_to resource.title, [ :admin, resource ]
+        end
+      end
+    end
   end
 
   # See permitted parameters documentation:
