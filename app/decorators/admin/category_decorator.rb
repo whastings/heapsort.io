@@ -4,7 +4,7 @@ module Admin
     delegate_all
 
     def name
-      "#{object.name} (#{object.friendly_id})"
+      self.full_name
     end
   end
 end

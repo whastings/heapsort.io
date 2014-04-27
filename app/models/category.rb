@@ -65,6 +65,10 @@ class Category < ActiveRecord::Base
     self.class.find_by_sql([ancestors_query, self.parent_id])
   end
 
+  def full_name
+    "#{name} (#{friendly_id})"
+  end
+
   def normalize_friendly_id(string)
     parts = string.split('/')
     parts.map! do |part|

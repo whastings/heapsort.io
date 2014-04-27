@@ -1,4 +1,4 @@
-ActiveAdmin.register Category do
+ActiveAdmin.register(Category, label_method: :full_name) do
   decorate_with Admin::CategoryDecorator
   menu priority: 1
 
@@ -28,7 +28,7 @@ ActiveAdmin.register Category do
     panel 'Children' do
       table_for category.children do
         column do |child|
-          link_to child.name, [ :admin, child ]
+          link_to child.full_name, [ :admin, child ]
         end
       end
     end
