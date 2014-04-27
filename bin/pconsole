@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+ssh heapsort.io -t "cd app-root/repo && bundle exec rails console production"
