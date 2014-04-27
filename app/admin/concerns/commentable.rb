@@ -10,6 +10,9 @@ module Admin
             column 'User' do |comment|
               link_to comment.user, [ :admin, comment.user ]
             end
+            column 'Resource' do |comment|
+              link_to comment.resource.title, [ :admin, comment.resource ]
+            end
             column 'Date' do |comment|
               comment.created_at
             end
