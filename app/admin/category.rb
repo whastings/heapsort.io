@@ -25,6 +25,14 @@ ActiveAdmin.register Category do
       row :updated_at
     end
 
+    panel 'Children' do
+      table_for category.children do
+        column do |child|
+          link_to child.name, [ :admin, child ]
+        end
+      end
+    end
+
     panel 'Resources' do
       table_for category.resources do
         column do |resource|

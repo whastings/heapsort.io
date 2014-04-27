@@ -28,6 +28,8 @@ class User < ActiveRecord::Base
   has_many :resources
   has_many :category_feed_items, through: :category_subscriptions, source: :feed_items
   has_many :favorite_resources, through: :favorites, source: :resource
+  has_many :votes
+  has_many :comments
 
   # Validations:
   validates_presence_of :username, :email

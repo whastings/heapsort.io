@@ -37,6 +37,7 @@ module WebDevBookmarks
     config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
 
     config.autoload_paths << "#{Rails.root}/app/decorators/concerns"
+    config.autoload_paths << "#{Rails.root}/app/admin/concerns"
 
   end
 end
