@@ -40,6 +40,7 @@
       <div class="messages">
         <% flash.each do |key, value| %>
           <% key = :danger if key == :error %>
+          <% next if key == :js_notice %>
           <%= content_tag(:div, value, class: "alert alert-#{key}") %>
         <% end %>
         <%= yield :messages %>
@@ -50,6 +51,12 @@
         </div>
       </div>
     </section>
+
+    <% if flash[:js_notice] %>
+      <script type="text/template" id="js-page-notice">
+        <%= flash[:js_notice] %>
+      </script>
+    <% end %>
 
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   </body>

@@ -1,6 +1,7 @@
 "use strict";
 
-var AppRouter = require('./app_router');
+var AppRouter = require('./app_router'),
+    notice = require('./support/notice');
 
 var App = function() {
 
@@ -18,6 +19,7 @@ _.extend(App.prototype, {
     });
     Backbone.history.start({pushState: true});
     this.attachLinkHandler();
+    this.showNotice();
   },
 
   navigate: function(event) {
@@ -30,6 +32,14 @@ _.extend(App.prototype, {
       var url = href.replace(/^\//,'').replace(/^#\//,'');
       Backbone.history.navigate(url, {trigger: true});
     }
+  },
+
+  showNotice: function() {
+    var $notice = $('#js-page-notice');
+    if (!$notice.length) {
+      return;
+    }
+    notice.display($notice.html());
   }
 });
 
