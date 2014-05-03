@@ -38,6 +38,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'faker', '1.2.0'
 
 group :development, :test do
+  gem 'jasmine'
   gem 'rspec-rails', '2.13.1'
   gem 'spork-rails', '4.0.0'
   gem 'childprocess', '0.3.6'

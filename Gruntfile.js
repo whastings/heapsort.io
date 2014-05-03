@@ -20,6 +20,21 @@ module.exports = function(grunt) {
         options: {
           debug: true
         }
+      },
+      buildSpec: {
+        files: {
+          'spec/javascripts/specs_compiled.js': 'spec/javascripts/specs.js'
+        }
+      }
+    },
+    shell: {
+      runSpecs: {
+        command: 'bundle exec rake jasmine',
+        options: {
+          failOnError: true,
+          stderr: true,
+          stdout: true
+        }
       }
     },
     watch: {
@@ -40,9 +55,12 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-browserify');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-shell');
 
   grunt.registerTask('build', ['browserify:build']);
   grunt.registerTask('buildDev', ['browserify:buildDev']);
+  grunt.registerTask('buildSpec', ['browserify:buildSpec']);
   grunt.registerTask('default', ['watch:build']);
+  grunt.registerTask('specs', ['buildSpec', 'shell:runSpecs']);
 
 };

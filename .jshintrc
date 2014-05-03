@@ -5,10 +5,13 @@
     "$": false,
     "Backbone": false,
     "console": false,
+    "describe": false,
     "document": false,
+    "expect": false,
     "exports": false,
     "Handlebars": false,
     "HandlebarsTemplates": false,
+    "it": false,
     "module": false,
     "require": false,
     "window": false
