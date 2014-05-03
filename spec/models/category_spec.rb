@@ -13,61 +13,45 @@
 require 'spec_helper'
 
 describe Category do
-  let(:category) { FactoryGirl.create(:category) }
-  subject { category }
+  subject(:category) { build(:category) }
+  let(:names) { ('a'..'d').to_a.reverse }
+  before do
+    categories = []
+    names.each_with_index do |name, index|
+      parent_id = (index.zero?) ? nil : categories[index - 1].id
+      categories << create(:category, name: name, parent_id: parent_id)
+    end
+  end
 
   it { should be_valid }
 
-  describe "name" do
-    let(:attribute) { :name }
-    let(:too_long) { 101 }
-    it { should have_attribute(attribute) }
-
-    it_should_behave_like "required attribute"
-    it_should_behave_like "attribute with max length"
+  describe "validations" do
+    it { should validate_presence_of(:name) }
+    it { should ensure_length_of(:name).is_at_most(100) }
   end
 
-  describe "parent" do
-    let(:attribute) { :parent }
-    let(:parent_category) { FactoryGirl.create(:category) }
-    let(:category_with_parent) do
-      FactoryGirl.create(:category, parent_id: parent_category.id)
+  describe "associations" do
+    it { should belong_to(:parent).class_name('Category') }
+    it { should have_many(:children).class_name('Category') }
+    it { should have_many(:resources) }
+  end
+
+  describe "default_scope" do
+
+    it "orders by name ascending" do
+      expect(Category.all.pluck(:name)).to eq(names.reverse)
     end
-    subject { category_with_parent }
-
-    it { should have_attribute(attribute) }
-    its(:parent) { should == parent_category }
   end
 
-  describe "children" do
-    let(:attribute) { :children }
-    let(:category_with_children) { FactoryGirl.create(:category) }
-    let(:children) { [] }
-    before do
-      FactoryGirl.reload
-      5.times do
-        children << FactoryGirl.create(:category, parent_id: category_with_children.id)
-      end
+  describe "#absolute_name" do
+    it "creates name from ancestors" do
+      expect(Category.first.absolute_name).to eq(names.join('/'))
     end
-    subject { category_with_children }
-
-    it { should have_attribute(attribute) }
-    its(:children) { should == children }
   end
 
-  describe "resources" do
-    let(:attribute) { :resources }
-    let(:category_with_resources) { FactoryGirl.create(:category) }
-    let(:resources) { [] }
-    before do
-      10.times do
-        resources << FactoryGirl.create(:resource, category_id: category_with_resources.id)
-      end
+  describe "#ancestors" do
+    it "retrieves category's parent, parent's parent, etc." do
+      expect(Category.first.ancestors.map(&:name)).to eq(names[0..-2].reverse)
     end
-    subject { category_with_resources }
-
-    it { should have_attribute(attribute) }
-    its(:resources) { should == resources.reverse }
   end
-
 end
