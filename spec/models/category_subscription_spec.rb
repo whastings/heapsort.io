@@ -12,5 +12,14 @@
 require 'spec_helper'
 
 describe CategorySubscription do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "validations" do
+    it { should validate_presence_of(:subscriber) }
+    it { should validate_presence_of(:category) }
+  end
+
+  describe "associations" do
+    it { should belong_to(:category) }
+    it { should belong_to(:subscriber).class_name('User') }
+    it { should have_many(:feed_items).through(:category) }
+  end
 end
