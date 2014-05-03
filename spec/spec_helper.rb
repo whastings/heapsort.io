@@ -7,6 +7,7 @@ Spork.prefork do
   require File.expand_path("../../config/environment", __FILE__)
   require 'rspec/rails'
   require 'rspec/autorun'
+  require 'shoulda/matchers'
 
   # Requires supporting ruby files with custom matchers and macros, etc,
   # in spec/support/ and its subdirectories.
@@ -55,6 +56,9 @@ Spork.prefork do
 
     # Include Capybara for integration tests.
     config.include Capybara::DSL
+
+    # Include FactoryGirl methods.
+    config.include FactoryGirl::Syntax::Methods
   end
 end
 
