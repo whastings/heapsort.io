@@ -52,6 +52,10 @@ module.exports = function(grunt) {
           jsDir + '/collections/**/*.js'
         ],
         tasks: ['buildDev']
+      },
+      buildSpecs: {
+        files: ['spec/javascripts/models/*.js'],
+        tasks: ['buildSpec']
       }
     }
   });
@@ -65,5 +69,6 @@ module.exports = function(grunt) {
   grunt.registerTask('buildSpec', ['browserify:buildSpec']);
   grunt.registerTask('default', ['watch:build']);
   grunt.registerTask('specs', ['buildSpec', 'shell:runSpecs']);
+  grunt.registerTask('watchSpecs', ['watch:buildSpecs']);
 
 };

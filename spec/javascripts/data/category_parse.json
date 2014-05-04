@@ -1,0 +1,106 @@
+{
+  "id": 127,
+  "name": "Git",
+  "parent_id": null,
+  "resources_count": 7,
+  "friendly_id": "git",
+  "parent_friendly_id": 0,
+  "children": [
+    {
+      "id": 129,
+      "name": "Tools",
+      "friendly_id": "git/tools"
+    },
+    {
+      "id": 128,
+      "name": "Articles",
+      "friendly_id": "git/articles"
+    }
+  ],
+  "resources": [
+    {
+      "id": 656,
+      "title": "Git Autocompletion Script",
+      "url": "http://git.kernel.org/cgit/git/git.git/plain/contrib/completion/git-completion.bash?id=HEAD",
+      "pretty_url": "git.kernel.org/cgit/git/git.git/plain/contrib/completion/git-completion.bash?id=HEAD",
+      "author": "whastings",
+      "posted": "March 20, 2014, 2:54am",
+      "posted_ago": "about 2 months",
+      "rating": 1,
+      "favorite_id": null,
+      "friendly_id": "git-autocompletion-script"
+    },
+    {
+      "id": 658,
+      "title": "GitList - An elegant and modern git repository viewer",
+      "url": "http://gitlist.org/",
+      "pretty_url": "gitlist.org",
+      "author": "whastings",
+      "posted": "March 20, 2014, 2:54am",
+      "posted_ago": "about 2 months",
+      "rating": 1,
+      "favorite_id": null,
+      "friendly_id": "gitlist-an-elegant-and-modern-git-repository-viewer"
+    },
+    {
+      "id": 657,
+      "title": "Git Immersion - Brought to you by Neo",
+      "url": "http://gitimmersion.com/",
+      "pretty_url": "gitimmersion.com",
+      "author": "whastings",
+      "posted": "March 20, 2014, 2:54am",
+      "posted_ago": "about 2 months",
+      "rating": 0,
+      "favorite_id": null,
+      "friendly_id": "git-immersion-brought-to-you-by-neo"
+    },
+    {
+      "id": 659,
+      "title": "Git - prevent to commit code containing debugging functions | Drupal snippets",
+      "url": "http://dropbucket.org/node/655",
+      "pretty_url": "dropbucket.org/node/655",
+      "author": "whastings",
+      "posted": "March 20, 2014, 2:54am",
+      "posted_ago": "about 2 months",
+      "rating": 0,
+      "favorite_id": null,
+      "friendly_id": "git-prevent-to-commit-code-containing-debugging-functions-drupal-snippets"
+    },
+    {
+      "id": 660,
+      "title": "Git Reference",
+      "url": "http://gitref.org/",
+      "pretty_url": "gitref.org",
+      "author": "whastings",
+      "posted": "March 20, 2014, 2:54am",
+      "posted_ago": "about 2 months",
+      "rating": 0,
+      "favorite_id": null,
+      "friendly_id": "git-reference"
+    },
+    {
+      "id": 661,
+      "title": "Help.GitHub - Git cheat sheets",
+      "url": "http://help.github.com/git-cheat-sheets/",
+      "pretty_url": "help.github.com/git-cheat-sheets",
+      "author": "whastings",
+      "posted": "March 20, 2014, 2:54am",
+      "posted_ago": "about 2 months",
+      "rating": 0,
+      "favorite_id": null,
+      "friendly_id": "help-github-git-cheat-sheets"
+    },
+    {
+      "id": 662,
+      "title": "Pro Git Book",
+      "url": "http://git-scm.com/book",
+      "pretty_url": "git-scm.com/book",
+      "author": "whastings",
+      "posted": "March 20, 2014, 2:54am",
+      "posted_ago": "about 2 months",
+      "rating": 0,
+      "favorite_id": null,
+      "friendly_id": "pro-git-book"
+    }
+  ]
+}
