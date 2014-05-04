@@ -1,0 +1,44 @@
+{
+  "id": 827,
+  "title": "backbone.stickit (Data binding)",
+  "url": "https://github.com/NYTimes/backbone.stickit",
+  "pretty_url": "github.com/NYTimes/backbone.stickit",
+  "author": "whastings",
+  "posted": "March 20, 2014, 2:54am",
+  "posted_ago": "about 2 months",
+  "rating": 1,
+  "favorite_id": null,
+  "friendly_id": "backbone-stickit-data-binding",
+  "description": null,
+  "category_id": 145,
+  "category_tree": [
+    {
+      "name": "JavaScript",
+      "friendly_id": "javascript"
+    },
+    {
+      "name": "Frameworks",
+      "friendly_id": "javascript/frameworks"
+    },
+    {
+      "name": "Backbone.js",
+      "friendly_id": "javascript/frameworks/backbone-js"
+    },
+    {
+      "name": "Plugins",
+      "friendly_id": "javascript/frameworks/backbone-js/plugins"
+    }
+  ],
+  "comments": [
+    {
+      "content": "I love two way binding! It makes things so much easier. I won't have to use serializeJSON on my forms anymore, thanks Will!",
+      "posted": "March 25, 2014, 1:22am",
+      "author": "alvinang"
+    },
+    {
+      "content": "Thanks! I really enjoy using it and recommend it highly.",
+      "posted": "May 4, 2014, 7:25pm",
+      "author": "guest"
+    }
+  ]
+}
