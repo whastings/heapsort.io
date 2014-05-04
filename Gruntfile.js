@@ -24,6 +24,9 @@ module.exports = function(grunt) {
       buildSpec: {
         files: {
           'spec/javascripts/specs_compiled.js': 'spec/javascripts/specs.js'
+        },
+        options: {
+          transform: ['bulkify']
         }
       }
     },

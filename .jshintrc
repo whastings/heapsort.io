@@ -4,6 +4,7 @@
     "_": false,
     "$": false,
     "Backbone": false,
+    "beforeEach": false,
     "console": false,
     "describe": false,
     "document": false,
