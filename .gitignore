@@ -25,4 +25,4 @@
 public/assets
 node_modules
 bower_components
-/spec/javascripts/specs_compiled.js
+/spec/javascripts/compiled_spec.js

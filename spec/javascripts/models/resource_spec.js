@@ -12,12 +12,12 @@ describe('Resource', function() {
   });
 
   it('has a urlRoot set', function() {
-    expect(resource.urlRoot).toBe('/api/resources');
+    expect(resource.urlRoot).to.equal('/api/resources');
   });
 
   describe('comments', function() {
     it('returns a collection of comments', function() {
-      expect(resource.comments() instanceof Comments).toBe(true);
+      expect(resource.comments()).to.be.an.instanceof(Comments);
     });
   });
 
@@ -28,7 +28,7 @@ describe('Resource', function() {
     it('adds comments to resource', function() {
       resourceData.comments.forEach(function(comment, index) {
         var commentModel = resource.comments().at(index);
-        expect(commentModel.get('content')).toBe(comment.content);
+        expect(commentModel.get('content')).to.equal(comment.content);
       });
     });
   });
@@ -39,12 +39,12 @@ describe('Resource', function() {
     });
 
     it('prepends a "+" to positive ratings', function() {
-      expect(resource.get('ratingDisplay')).toBe('+3');
+      expect(resource.get('ratingDisplay')).to.equal('+3');
     });
 
     it('updates as rating changes', function() {
       resource.set('rating', 5);
-      expect(resource.get('ratingDisplay')).toBe('+5');
+      expect(resource.get('ratingDisplay')).to.equal('+5');
     });
   });
 });

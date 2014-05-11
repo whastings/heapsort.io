@@ -23,16 +23,20 @@ module.exports = function(grunt) {
       },
       buildSpec: {
         files: {
-          'spec/javascripts/specs_compiled.js': 'spec/javascripts/specs.js'
+          'spec/javascripts/compiled_spec.js': 'spec/javascripts/specs.js'
         },
         options: {
-          transform: ['bulkify']
+          transform: ['bulkify'],
+          postBundleCB: function(error, src, next) {
+            src = '//= require underscore\n//= require backbone\n' + src;
+            next(error, src);
+          }
         }
       }
     },
     shell: {
       runSpecs: {
-        command: 'bundle exec rake jasmine',
+        command: 'bundle exec rake konacha:serve SPEC=compiled_spec',
         options: {
           failOnError: true,
           stderr: true,
