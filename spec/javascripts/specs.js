@@ -2,5 +2,6 @@
 
 var bulk = require('bulk-require');
 var specs = bulk(__dirname, [
-  'models/*_spec.js'
+  'models/*_spec.js',
+  'collections/*_spec.js'
 ]);

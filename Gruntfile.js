@@ -58,7 +58,10 @@ module.exports = function(grunt) {
         tasks: ['buildDev']
       },
       buildSpecs: {
-        files: ['spec/javascripts/models/*.js'],
+        files: [
+          'spec/javascripts/models/*.js',
+          'spec/javascripts/collections/*.js'
+        ],
         tasks: ['buildSpec']
       }
     }
