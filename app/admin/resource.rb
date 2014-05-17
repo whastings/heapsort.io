@@ -1,5 +1,8 @@
 ActiveAdmin.register Resource do
   menu priority: 2
+  permit_params :title, :domain, :path, :query_string, :port, :protocol,
+                :description, :user_id, :slug, :category_id, :up_votes_count,
+                :down_votes_count, :resource_type_id
 
   controller do
     defaults finder: :find_by_slug

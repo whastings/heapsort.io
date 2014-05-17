@@ -1,6 +1,7 @@
 ActiveAdmin.register(Category, label_method: :full_name) do
   decorate_with Admin::CategoryDecorator
   menu priority: 1
+  permit_params :name, :parent_id, :slug
 
   controller do
     defaults finder: :find_by_slug
