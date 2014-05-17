@@ -1,3 +1,9 @@
 <div id="js-content">
 
 </div>
+
+<% if @bootstrap_json %>
+  <script type="application/json" id="bootstrap-data">
+    <%= @bootstrap_json.html_safe %>
+  </script>
+<% end %>

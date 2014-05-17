@@ -31,7 +31,6 @@ var HomePage = module.exports = CompoundView.extend({
 
   initialize: function(options) {
     var rootCategory = this.rootCategory = new Category({friendly_id: options.categoryId});
-    rootCategory.fetchByFriendlyId();
     this.addSubview(
       '#js-index-control-bar',
       new IndexControlBar()
@@ -43,6 +42,7 @@ var HomePage = module.exports = CompoundView.extend({
         model: rootCategory
       })
     );
+    fetchRootCategory(rootCategory);
   },
 
   onRender: function() {
@@ -69,6 +69,20 @@ var addLoadingDiv = function() {
   this.spinner = this.spinner || getSpinner();
   this.spinner.spin();
   $container.append(this.spinner.el);
+};
+
+var fetchRootCategory = function(rootCategory) {
+  var $bootstrapData = $('#bootstrap-data');
+  if ($bootstrapData.length > 0) {
+    var data = JSON.parse($bootstrapData.text());
+    window.setTimeout(function() {
+      rootCategory.set(rootCategory.parse(data));
+      rootCategory.trigger('sync');
+    }, 0);
+    $bootstrapData.remove();
+  } else {
+    rootCategory.fetchByFriendlyId();
+  }
 };
 
 var removeLoadingDiv = function() {
