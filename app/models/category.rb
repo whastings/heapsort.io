@@ -33,6 +33,8 @@ class Category < ActiveRecord::Base
   # Scopes:
   default_scope -> { order(:name) }
 
+  before_save :check_parent_change
+
   def absolute_name
     category_names = [self.name]
     self.ancestors.each do |ancestor|
@@ -65,6 +67,30 @@ class Category < ActiveRecord::Base
     self.class.find_by_sql([ancestors_query, self.parent_id])
   end
 
+  def descendants
+    descendants_query = <<-SQL
+      WITH RECURSIVE descendants(id, name, parent_id, slug) AS (
+        SELECT
+          id, name, parent_id, slug
+        FROM
+          categories
+        WHERE
+          parent_id = ?
+        UNION ALL
+          SELECT
+            categories.id, categories.name, categories.parent_id, categories.slug
+          FROM
+            descendants
+          INNER JOIN
+            categories
+          ON
+            categories.parent_id = descendants.id
+      )
+      SELECT * FROM descendants
+    SQL
+    self.class.find_by_sql([descendants_query, self.id])
+  end
+
   def full_name
     "#{name} (#{friendly_id})"
   end
@@ -75,5 +101,18 @@ class Category < ActiveRecord::Base
       part.parameterize
     end
     parts.join('/')
+  end
+
+  private
+
+  def check_parent_change
+  return unless self.parent_id_changed?
+  to_update = self.descendants
+    self.class.transaction do
+      to_update.each do |descendant|
+        descendant.slug = nil
+        descendant.save!
+      end
+    end
   end
 end

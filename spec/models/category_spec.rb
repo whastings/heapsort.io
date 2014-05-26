@@ -54,4 +54,27 @@ describe Category do
       expect(Category.first.ancestors.map(&:name)).to eq(names[0..-2].reverse)
     end
   end
+
+  describe "#descendants" do
+    before do
+      names << create(:category, name: 'e', parent_id: Category.first.id).name
+      names << create(:category, name: 'f', parent_id: Category.first.id).name
+    end
+    it "retrieves category's children, children's children, etc." do
+      expect(Category.find_by(name: 'd').descendants.map(&:name))
+        .to eq(['c', 'b', 'a', 'e', 'f'])
+    end
+  end
+
+  describe "updating friendly ID" do
+    let(:new_category) { create(:category, name: 'e') }
+    it "recursively updates the friendly IDs of descendants" do
+      expect do
+        Category.last.update_attributes(parent_id: new_category.id)
+      end
+        .to change { Category.first.slug }
+        .from(names.join('/'))
+        .to(([new_category.name] + names).join('/'))
+    end
+  end
 end
