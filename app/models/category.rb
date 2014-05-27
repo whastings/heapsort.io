@@ -33,7 +33,7 @@ class Category < ActiveRecord::Base
   # Scopes:
   default_scope -> { order(:name) }
 
-  before_save :check_parent_change
+  after_save :check_parent_change
 
   def absolute_name
     category_names = [self.name]
@@ -103,14 +103,17 @@ class Category < ActiveRecord::Base
     parts.join('/')
   end
 
+  def should_generate_new_friendly_id?
+    true
+  end
+
   private
 
   def check_parent_change
-  return unless self.parent_id_changed?
-  to_update = self.descendants
+    return unless self.parent_id_changed?
+    to_update = self.descendants
     self.class.transaction do
       to_update.each do |descendant|
-        descendant.slug = nil
         descendant.save!
       end
     end

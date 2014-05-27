@@ -68,11 +68,12 @@ describe Category do
 
   describe "updating friendly ID" do
     let(:new_category) { create(:category, name: 'e') }
+    let(:test_category) { Category.find_by(name: 'd') }
     it "recursively updates the friendly IDs of descendants" do
       expect do
-        Category.last.update_attributes(parent_id: new_category.id)
+        test_category.update_attributes(parent_id: new_category.id)
       end
-        .to change { Category.first.slug }
+        .to change { Category.first.reload.friendly_id }
         .from(names.join('/'))
         .to(([new_category.name] + names).join('/'))
     end
