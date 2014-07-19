@@ -1,8 +1,10 @@
 "use strict";
 
-var responsive = require('../../support/responsive');
+var responsive = require('../../support/responsive'),
+    transitionHelper = require('../../support/transition_helper');
 
 var CategoriesList = module.exports = Backbone.Marionette.ItemView.extend({
+  animationTime: 500,
   tagName: 'ul',
   template: HandlebarsTemplates['categories/categories_list'],
   templateHelpers: {},
@@ -56,46 +58,37 @@ var CategoriesList = module.exports = Backbone.Marionette.ItemView.extend({
 });
 
 var animateChildTransition = function(content) {
-  animateTransition.call(
-    this,
-    content,
-    'child-transitioning-in',
-    'parent-transitioning-out',
-    (this.$el.parent().width() * -1) - 15
-  );
+  animateTransition.call(this, content, 1);
 };
 
 var animateParentTransition = function(content) {
-  animateTransition.call(
-    this,
-    content,
-    'parent-transitioning-in',
-    'child-transitioning-out',
-    this.$el.parent().width() + 15
-  );
+  animateTransition.call(this, content, -1);
 };
 
-var animateTransition = function(content, inClass, outClass, widthCallback) {
-  var self = this;
-  var $oldEl = this.$el;
-  var $container = this.$el.parent();
+var animateTransition = function(content, direction) {
+  var self = this,
+      $oldEl = this.$el,
+      currentHeight = $oldEl.height() + 11,
+      currentWidth = $oldEl.width() + 15,
+      startTransitionX = (currentWidth * direction) + 'px',
+      endTransitionX = (currentWidth * direction * -1) + 'px',
+      transitionY = (currentHeight * -1) + 'px';
   this.$el = this.$el.clone().html(content);
-  this.$el.removeAttr('style');
-  $oldEl.removeAttr('style');
-  this.$el.addClass(inClass);
+  transitionHelper.addTransform(
+    this.$el,
+    'translate',
+    startTransitionX,
+    transitionY
+  );
   this.$el.insertAfter($oldEl);
-  this.$el.width($container.width() - 1);
-  var containerHeight = Math.max($oldEl.height(), this.$el.height());
-  $container.css('height', containerHeight + 25);
-  $oldEl.addClass(outClass);
-  $oldEl.animate({
-    left: widthCallback
-  }, 500, function() {
+  this.$el.get(0).offsetWidth; // Force relayout.
+  this.$el.addClass('list-animating');
+  $oldEl.addClass('list-animating');
+  transitionHelper.addTransform($oldEl, 'translate', endTransitionX, 0);
+  transitionHelper.addTransform(this.$el, 'translate', 0, (currentHeight * -1) + 'px');
+  transitionHelper.onTransitionEnd(this.$el, this.animationTime, function() {
+    self.$el.removeAttr('style');
     $oldEl.remove();
-  });
-  this.$el.animate({
-    left: 15
-  }, 500, function() {
-    self.$el.removeClass(inClass);
+    self.$el.removeClass('list-animating');
   });
 };

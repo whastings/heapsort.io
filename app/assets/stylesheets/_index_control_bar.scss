@@ -1,3 +1,5 @@
+@import "compass/css3/transform";
+
 .drop-region {
   border: 3px $brand-primary dashed;
   color: $brand-primary;
@@ -20,6 +22,7 @@
 .category-drop {
   display: none;
   @include breakpoint($screen-md) {
+    @include translateZ(0);
     display: block;
   }
 }
