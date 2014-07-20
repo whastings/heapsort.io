@@ -24,5 +24,8 @@
   @include breakpoint($screen-md) {
     @include translateZ(0);
     display: block;
+    max-width: none;
+    position: fixed;
+    top: 300px;
   }
 }

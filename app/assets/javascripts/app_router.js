@@ -96,4 +96,5 @@ var swapView = function(view) {
     });
   }
   this.$rootEl.append(view.render().$el);
+  view.onShow && view.onShow();
 };

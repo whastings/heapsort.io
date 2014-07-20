@@ -21,11 +21,10 @@ var IndexControlBar = module.exports = CompoundView.extend({
     );
   },
 
-  onRender: function() {
+  onShow: function() {
     this.$('.drop-region').droppable({tolerance: 'touch', hoverClass: 'hover'});
     var $categoryDrop = this.$('#js-category-drop');
-    $categoryDrop.affix({top: 200});
-    $categoryDrop.on('affix.bs.affix', fixDropLeft);
+    fixDropLeft($categoryDrop);
   },
 
   subscribeToCategory: function(event, ui) {
@@ -41,11 +40,11 @@ var IndexControlBar = module.exports = CompoundView.extend({
   }
 });
 
-var fixDropLeft = function(event) {
-  var $categoryDrop = $(event.target);
-  var $container = $categoryDrop.parent();
-  $categoryDrop.css('width', $container.outerWidth() * 0.9);
-  var leftOffset = ($container.outerWidth() - $categoryDrop.outerWidth()) / 2;
-  leftOffset += 14;
+var fixDropLeft = function($categoryDrop) {
+  var $container = $categoryDrop.parent(),
+      containerWidth = $container.width(),
+      dropWidth = Math.ceil(containerWidth * 0.9),
+      leftOffset = Math.floor((containerWidth - dropWidth) / 2) + 15;
+  $categoryDrop.css('width', dropWidth);
   $categoryDrop.css('left', leftOffset);
 };

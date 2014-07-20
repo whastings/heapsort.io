@@ -7,6 +7,12 @@ var CompoundView = module.exports = Backbone.Marionette.ItemView.extend({
     this.subviews().push(view);
   },
 
+  onShow: function() {
+    this.subviews().forEach(function(subview) {
+      subview.onShow && subview.onShow();
+    });
+  },
+
   remove: function() {
     Backbone.View.prototype.remove.call(this);
 
