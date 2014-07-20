@@ -33,6 +33,7 @@
   padding-left: 10px;
   padding-right: 25px;
   position: relative;
+  -webkit-backface-visibility: hidden;
   &:hover {
     @extend %background-hover;
     text-decoration: none;

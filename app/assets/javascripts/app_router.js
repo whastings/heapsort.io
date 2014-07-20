@@ -72,8 +72,16 @@ var requireSignedIn = function() {
   return true;
 };
 
+var allowedScroll = null;
+var scrollToTop = function() {
+  allowedScroll = allowedScroll || $('.main-header').height();
+  if (window.scrollY > allowedScroll) {
+    window.scroll(0, 0);
+  }
+};
+
 var swapView = function(view) {
-  $(document.body).scrollTop(this.$rootEl.offset().top);
+  scrollToTop();
   this.currentView && this.currentView.remove(); // jshint ignore:line
   if (view !== this.homeView) {
     this.currentView = view;
